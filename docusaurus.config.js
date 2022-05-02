@@ -9,12 +9,13 @@ const config = {
   title: 'My Site',
   tagline: 'Dinosaurs are cool',
   url: 'https://pwang649.github.io',
-  baseUrl: '/',
+  baseUrl: '/myWiki/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'pwang649', // Usually your GitHub org/user name.
   projectName: 'myWiki', // Usually your repo name.
+  trailingSlash: false,
 
   presets: [
     [
@@ -57,7 +58,7 @@ const config = {
           },
           {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/pwang649',
             label: 'GitHub',
             position: 'right',
           },
