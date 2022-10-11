@@ -1,6 +1,6 @@
 ---
 id: Communication Protocol - I2C
-title: Communication Protocol - I2C
+title: I2C
 ---
 
 I2C stands for Inter-Integrated Circuit. It is a bus interface connection protocol incorporated into devices for serial communication. It was originally designed by Philips Semiconductor in 1982. Recently, it is a widely used protocol for short-distance communication. It is also known as Two Wired Interface(TWI).
@@ -50,10 +50,10 @@ Max resistance provides the longest capable rise time.
 - Cost-efficient.
 - It uses ACK/NACK feature due to which it has improved error handling capabilities.
 
-## Limitaions
+### Limitaions
 - Slower speed.
 - Half-duplex communication is used in the I2C communication protocol.
 
-## Citations
+### Citations
 
 - [I2C - Sparkfun](https://learn.sparkfun.com/tutorials/i2c/all)
