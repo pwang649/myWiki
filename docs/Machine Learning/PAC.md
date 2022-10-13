@@ -19,12 +19,12 @@ $|H|$. Then $H$ is PAC-learnable with
 
 $$
 \begin{gather*}
-n(\epsilon, \delta) = O({log(|H|/\delta) \over \epsilon})
+n(\epsilon, \delta) = O({\log(|H|/\delta) \over \epsilon})
 \end{gather*}
 $$
 
 The proof is shown in the previous note.  
-We can solve for n and say that if $n \geq {log(|H|/\delta) \over \epsilon}$, the probability of failure in PAC learning is at most $\delta$, and hence we succeed w.p. $1 − \delta$.
+We can solve for n and say that if $n \geq {\log(|H|/\delta) \over \epsilon}$, the probability of failure in PAC learning is at most $\delta$, and hence we succeed w.p. $1 − \delta$.
 
 ### Agnostic PAC-Learning
 
@@ -77,7 +77,7 @@ Did we talk about that in class?
 Let $H$ be a class $|H| < \infty$. Then $H$ is agnostic PAC learnable with
 $$
 \begin{gather*}
-m_H(\epsilon, \delta) \leq \biggl \lceil {2log(2|H|/\delta) \over \epsilon^2} \biggl \rceil.
+m_H(\epsilon, \delta) \leq \biggl \lceil {2\log(2|H|/\delta) \over \epsilon^2} \biggl \rceil.
 \end{gather*}
 $$
 
@@ -95,7 +95,7 @@ We will show:
     Pr[\forall h \in H, |\hat{L}(h) - L(h)| \leq \epsilon] \geq 1 - 2|H|e^{-2n\epsilon^2}.
     \end{gather*}
     $$
-3. For $m \geq \biggl \lceil {log(2|H|/\delta) \over 2 \epsilon^2} \biggl \rceil$, with probability $1 - \delta$,
+3. For $m \geq \biggl \lceil {\log(2|H|/\delta) \over 2 \epsilon^2} \biggl \rceil$, with probability $1 - \delta$,
     $$
     \begin{gather*}
     |\hat{L}(h) - L(h)| < \epsilon \quad \forall h \in H.
@@ -104,14 +104,14 @@ We will show:
 4. By UC, $H$ is agnostic PAC learnable with
     $$
     \begin{gather*}
-    m \geq \biggl \lceil {2log(2|H|/\delta) \over \epsilon^2} \biggl \rceil
+    m \geq \biggl \lceil {2\log(2|H|/\delta) \over \epsilon^2} \biggl \rceil
     \end{gather*}
     $$
     samples.
 
 #### Proof of (1)
 
-**Lemma** (Hoeffdings inequality). Let $X_1, X_2, ... , X_n$ be independent random variables such that $a_i \leq x_i \leq b_i$ for each $i \in [n]$. Then for any $\epsilon > 0$,
+**Lemma** (Hoeffdings inequality). Let $X_1, X_2, \cdots , X_n$ be independent random variables such that $a_i \leq x_i \leq b_i$ for each $i \in [n]$. Then for any $\epsilon > 0$,
 $$
 \begin{gather*}
 Pr \Biggl [ \Biggl |{1 \over m} \sum_{i = 1}^{m} x_i - \mathbb{E} \Biggl[{1 \over m} \sum_{i = 1}^{m} x_i \Biggl ] \Biggl | \leq \epsilon \Biggl ] \geq 1 - 2exp \Biggl ({-2m^2 \epsilon^2 \over \sum_{i = 1}^{m} (b_i - a_i)^2} \Biggl ).
@@ -136,8 +136,27 @@ $$
 
 #### Proof of (3)
 
-Set $m \geq \bigg \lceil {log(2|H|/\delta) \over 2 \epsilon^2} \bigg \rceil$ in the previous step, then we have the failure probability is bounded by $\delta$ for any $h \in H$ i.e. $Pr[\forall h \in H, |\hat{L}(h) - L(h)| \leq \epsilon] \geq 1 - \delta$.
+Set $m \geq \bigg \lceil {\log(2|H|/\delta) \over 2 \epsilon^2} \bigg \rceil$ in the previous step, then we have the failure probability is bounded by $\delta$ for any $h \in H$ i.e. $Pr[\forall h \in H, |\hat{L}(h) - L(h)| \leq \epsilon] \geq 1 - \delta$.
 
 #### Proof of (4)
 
-In (3), we have shown that $H$ has the uniform convergence property, and thus by UC, we have $H$ is agnostic PAC learnable with $m \geq \bigg \lceil {log(2|H|/\delta) \over 2 \epsilon^2} \bigg \rceil$ samples.
+In (3), we have shown that $H$ has the uniform convergence property, and thus by UC, we have $H$ is agnostic PAC learnable with $m \geq \bigg \lceil {\log(2|H|/\delta) \over 2 \epsilon^2} \bigg \rceil$ samples.
+
+### Theorem (Bayes Classifier)
+
+Let $S$ be a finite set. $X$ has (discrete) distribution $\Pi$ over $S$. Then the best possible binary classifier is given by 
+$$
+\begin{gather*}
+g^*(x) = sign(\mathbb{E}(Y | X = x)). 
+\end{gather*}
+$$ 
+$y(x) = \mathbb{E}(Y | X = x), Y \in \{+1, -1\}$. $g^*(x)$ is known as Bayes Classifier.  
+I will skip the proof since it's too easy.
+
+### Bayes Risk
+
+$$
+\begin{gather*}
+L^* = L(g^*) = \sum_{x \in S} ({1-|y(x)| \over 2}) \Pi (x)
+\end{gather*}
+$$

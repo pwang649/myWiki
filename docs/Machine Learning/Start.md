@@ -27,8 +27,8 @@ sidebar_position: 1
 - Goal: preduct label $Y$ based on the observation $X$
 - The prediction rule is a function $g:S\mapsto\{-1, +1\}$
 - The quality of a prediction rule g is measured by the classification/generalization error $L(g) = P(Y \neq g(X))$
-- The training data is a sequence $(X_1, Y_1), (X_2, Y_2), ..., (X_n, Y_n)$ of i.i.d. pairs with distribution $P$
-- An algorithm takes training data as input and outputs $\hat{g_n} = \hat{g_n}((X_1, Y_1), ..., (X_n, Y_n))$
+- The training data is a sequence $(X_1, Y_1), (X_2, Y_2), \cdots, (X_n, Y_n)$ of i.i.d. pairs with distribution $P$
+- An algorithm takes training data as input and outputs $\hat{g_n} = \hat{g_n}((X_1, Y_1), \cdots, (X_n, Y_n))$
 - In general, we will consider 2 scenarios:
     1. "Realizable" learning: there exists $g \in G\:s.t.\:Y=g^{*}(x)$ with probability 1.
     2. "Agnostic" learning: there is no $g \in G\:s.t.\:Y=g^{*}(x)$ with probability 1.
