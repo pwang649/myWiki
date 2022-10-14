@@ -1,5 +1,5 @@
 ---
-id: Machine Learning - Bias-Complexity
+id: Machine Learning Theory - Bias-Complexity
 title: Bias-Complexity Trade-off
 sidebar_position: 4
 ---
@@ -16,16 +16,15 @@ Enlarging the hypothesis class will decrease the approximation error, but might 
 
 ### The No-Free-Lunch Theorem
 
-Let $A$ be any learning algorithm for binary classification over
-X and let $m \le |X|/2$. Then there exists a distribution D over $X \times \{0, 1\}$ such that:
+Let $A$ be any learning algorithm for binary classification over $X$ and let $m \le |X|/2$. Then there exists a distribution D over $X \times \{0, 1\}$ such that:
 1. There exists a function $f:X \to \{0, 1\} \: with \: L_D(f) = 0$
-2. With probability of at least 1/7 over the choice of $S \sim D^m$ we have that $L_D(A(S)) \ge 1/8$.
+2. With probability of at least $1/7$ over the choice of $S \sim D^m$ we have that $L_D(A(S)) \ge 1/8$.
 
 #### Proof
-Let the set $C$ of size $2m$ be given, where $C$ is a subset of the domain: $C \in X^{2n}$.  
+Let the set $C$ of size $2m$ be given, where $C$ is a subset of the domain: $C \in X^{2m}$.  
 Next, consider all possible $T = 2^{2m}$ labelling functions which map from $C \to \{0, 1\}$, where $|C| = 2m$.  
 For each $f_i$, define a distribution $D_i$ such that $D_i$
-is uniform over $C$, with labels given by $f_i$. Denote $D_i^m$ to be the distribution of $n$ i.i.d. samples from $D_i$.  
+is uniform over $C$, with labels given by $f_i$. Denote $D_i^m$ to be the distribution of $m$ i.i.d. samples from $D_i$.  
 Clearly, $L_{D_i}(f_i)=0$.  
 Next, we want to show:
 $$
@@ -62,7 +61,7 @@ $$
 & \ge \min_{j\in [k]} {1\over T}\sum_{i=1}^T L_{D_i}(A(S_j^i)).
 \end{align*}
 $$
-Next, fix any $S_j$ of size $n$. Then there are $p \ge n$ samples $v_1, \cdots, v_p \in C$ that do not appear in $S$. Clearly, $p\ge m$. Therefore, we have
+Next, fix any $S_j$ of size $m$. Then there are $p \ge m$ samples $v_1, \cdots, v_p \in C$ that do not appear in $S$. Clearly, $p\ge m$. Therefore, we have
 $$
 \begin{align*}
 L_{D_i}(h) & = {1\over 2m}\sum_{x\in C} \mathbb{1} [h(x) \ne f_i(x)] \\

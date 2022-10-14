@@ -1,8 +1,12 @@
 ---
-id: Machine Learning - Start
+id: Machine Learning Theory - Start
 title: Gentle Start
 sidebar_position: 1
 ---
+
+### Book
+
+- Understanding Machine Learning from Theory to Algorithm - Shai Shalev-Shwartz and Shai Ben David
 
 ### Intro
 

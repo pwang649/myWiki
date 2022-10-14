@@ -1,5 +1,5 @@
 ---
-id: Machine Learning - PAC
+id: Machine Learning Thoery - PAC
 title: PAC Learning
 sidebar_position: 3
 ---
@@ -8,7 +8,7 @@ sidebar_position: 3
 
 A hypothesis class $H$ is PAC-learnable if there exists a learning
 algorithm with the following property: For every $\epsilon, \delta \in (0, 1)$, every distribution $D$ over $X$, and
-every $h \in H$, when the algorithm is given $n(\epsilon, \delta)$ samples drawn from $D$ and labeled by $h$, then
+every $h \in H$, when the algorithm is given $m(\epsilon, \delta)$ samples drawn from $D$ and labeled by $h$, then
 the algorithm produces a hypothesis $\hat{h}$ such that with probability $1 - \delta, L(\hat{h}) \leq \epsilon$. (Note that the
 probability is over randomness in the training set as well as any internal algorithmic randomness).
 
@@ -19,12 +19,12 @@ $|H|$. Then $H$ is PAC-learnable with
 
 $$
 \begin{gather*}
-n(\epsilon, \delta) = O({\log(|H|/\delta) \over \epsilon})
+m(\epsilon, \delta) = O({\log(|H|/\delta) \over \epsilon})
 \end{gather*}
 $$
 
 The proof is shown in the previous note.  
-We can solve for n and say that if $n \geq {\log(|H|/\delta) \over \epsilon}$, the probability of failure in PAC learning is at most $\delta$, and hence we succeed w.p. $1 − \delta$.
+We can solve for n and say that if $m \geq {\log(|H|/\delta) \over \epsilon}$, the probability of failure in PAC learning is at most $\delta$, and hence we succeed w.p. $1 − \delta$.
 
 ### Agnostic PAC-Learning
 
@@ -70,7 +70,12 @@ L_D(h_S) & \leq L_S(h_S) + \epsilon/2 \\
 $$
 
 ### Definition (Uniform Convergence)
-Did we talk about that in class?
+
+We say that a hypothesis class $H$ has the *uniform convergence property* (w.r.t. a domain $Z$ and a loss function $l$) if there exists a function $m_H^{UC}:(0, 1)^2 \to \mathbb{N}$ such that for every $\epsilon, \delta \in (0, 1)$ and for every probability distribution $D$ over $Z$, if $S$ is a sample of $m \ge m_H^{UC}(\epsilon, \delta)$ examples drawn i.i.d. according to $D$, then, with probability of at least $1-\delta$, $S$ is $\epsilon$-representative.
+
+#### Corollary
+
+If a class $H$ has the uniform convergence property with a function $m_H^{UC}$ then the class is agnostically PAC learnable with the sample complexity $m_H(\epsilon, \delta) \le m_H^{UC}(\epsilon / 2, \delta)$. Furthermore, in that case, the $ERM_H$ paradigm is a successful agnostic PAC learner for $H$.
 
 ### Finite Classes are Agnostic PAC Learnable
 
