@@ -1,6 +1,7 @@
 ---
-id: Communication Protocol - Serial
+id: Communication Protocols - Serial
 title: Serial Communication
+sidebar_position: 1
 ---
 
 ### UART vs USART

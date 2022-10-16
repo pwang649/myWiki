@@ -1,5 +1,5 @@
 ---
-id: Machine Learning Thoery - PAC
+id: Machine Learning Theory - PAC
 title: PAC Learning
 sidebar_position: 3
 ---

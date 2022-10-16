@@ -1,5 +1,5 @@
 ---
-id: Reinforement Learning - DP
+id: Reinforcement Learning - DP
 title: Dyanamic Programming
 sidebar_position: 4
 ---

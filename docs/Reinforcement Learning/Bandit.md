@@ -1,5 +1,5 @@
 ---
-id: Reinforement Learning - 
+id: Reinforcement Learning - Bandit
 title: Multi-armed Bandits
 sidebar_position: 2
 ---

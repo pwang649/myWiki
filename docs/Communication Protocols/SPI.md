@@ -1,6 +1,7 @@
 ---
-id: Communication Protocol - SPI
+id: Communication Protocols - SPI
 title: SPI
+sidebar_position: 3
 ---
 
 Serial Peripheral Interface or SPI is a synchronous serial communication protocol that provides full – duplex communication at very high speeds. Serial Peripheral Interface (SPI) is a master – slave type protocol that provides a simple and low cost interface between a microcontroller and its peripherals.

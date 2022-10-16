@@ -1,6 +1,7 @@
 ---
-id: Communication Protocol - I2C
+id: Communication Protocols - I2C
 title: I2C
+sidebar_position: 2
 ---
 
 I2C stands for Inter-Integrated Circuit. It is a bus interface connection protocol incorporated into devices for serial communication. It was originally designed by Philips Semiconductor in 1982. Recently, it is a widely used protocol for short-distance communication. It is also known as Two Wired Interface(TWI).

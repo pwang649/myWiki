@@ -1,5 +1,5 @@
 ---
-id: Reinforement Learning - Overview
+id: Reinforcement Learning - Overview
 title: Overview
 sidebar_position: 1
 ---

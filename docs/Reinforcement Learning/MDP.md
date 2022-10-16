@@ -1,5 +1,5 @@
 ---
-id: Reinforement Learning - MDP
+id: Reinforcement Learning - MDP
 title: Markov Decision Process
 sidebar_position: 3
 ---

@@ -1,5 +1,5 @@
 ---
-id: Reinforement Learning - MC
+id: Reinforcement Learning - MC
 title: Monte Carlo Methods
 sidebar_position: 5
 ---

@@ -1,5 +1,5 @@
 ---
-id: Machine Learning - ERM
+id: Machine Learning Theory - ERM
 title: Empirical Risk Minimization
 sidebar_position: 2
 ---

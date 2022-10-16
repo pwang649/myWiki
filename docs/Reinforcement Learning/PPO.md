@@ -1,5 +1,5 @@
 ---
-id: Reinforement Learning - PPO
+id: Reinforcement Learning - PPO
 title: Proximal Policy Optimization Algorithms
 sidebar_position: 10
 ---
