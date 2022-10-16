@@ -3,6 +3,9 @@ id: Reinforcement Learning - DP
 title: Dyanamic Programming
 sidebar_position: 4
 ---
+
+Dynamic Programming (DP) refers to the collection of algorithms that can be used to compute optimal policies given a perfect model of the environment as an MDP. DP can rarely be used in practice because of their great cost, but are nonetheless important theoretically as all other approaches to computing the value function are, in effect, approximations of DP. DP algorithms are obtained by turning the Bellman equations into assignments, that is, into update rules for improving approximations of the desired value functions.
+
 ### Planning by Dynamic Programming
 
 - **Dynamic:** Problems that have sequantial or temporal component, step-by-step changes 
@@ -11,171 +14,83 @@ sidebar_position: 4
     - breaking the problem into subproblems 
     - then combining solutions to subproblems
 - Dynamic programming is a **tool** by which we can solve MDPs and find the optimal policies
-- Dynamics programming is a very general solution methods for problems which have two main properties
-    - Optimal substructure
-        - Principle of optimality applies
-        - Which allows breaking of the whole problem into pieces, solving each of them and the optimal solution of each pieces tells how the optimal solution of the whole problem is
-        - Example is the shortest path, can be broken down to shortest path to the mid point and then the shortest path from mid point to the end
-        - Optimal solution can be decomposed into subproblems
-    - Overlapping subproblems
-        - Subproblems recur many times
-        - Solutions can be cached and resued which
-    - MDPs satisfy both the properties
-        - Bellman equation gives recursive decomposition i.e. optimal behaviour for one step followed by optimal behaviour from one step
-        - Value function is kinda cache which stores and resuses solutions of all the information related to the MDP
 
-- Dynamic programming assumes full knowledge of the MDPs. Planning is not exactly a full RL problem but a different one which uses the full knowledge of MDPs
-- It is used for planning in an MDP
-- For prediction:
-    - Given an MDP $<S,A,P,R,\gamma>$ as input and given a policy $\pi$ what is the reward one can get in such an environment
-    - Also, given MRP $<S,A,P^{\pi},R^{\pi},\gamma>$
-    - The output is the value function $v_{\pi}$ which tells you how much reward you get from any state of the MDP given the policy $\pi$
-- For control:
-    - This is the case of planning which is the full optimization where we are trying to figure out the best things to do in an MDP
-    - Given an MDP $<S,A,P,R,\gamma>$ as input 
-    - Output is to know the optimal policy $\pi_{*}$ that gives the optimal value function $v_{*}$
-- This is how we proceed with the planning, start with the prediction problem assuming a policy $\pi$ and figure out what is the reward we can get. This will be used as an inner loop to do control
-- Dynamic programming is not limited to the planning problem in MDPs but is also used to solve many other problems, e.g.
-    - Scheduling algorithms
-    - String algorithms e.g. sequence alignment
-    - Graph algorithms e.g. shortest path algorithms
-    - Graphical models e.g. Vitebri algorithm
-    - Bioinformations e.g. lattice models
+### Policy Evaluation (Prediction)
 
-### Policy Evaluation
+First we consider how to compute the state-value function $v_\pi$ for an arbitrary policy $\pi$. This is called *policy evaluation* in the DP literature. We also refer to it as the *prediction problem*. Recall from MDP that, for all $s \in S$,
+$$
+\begin{gather*}
+v_{\pi}(s) = \sum_a \pi(a|s)\sum_{s',r} p(s',r|s,a)\Big [r+\gamma v_\pi(s')\Big ].
+\end{gather*}
+$$
+If the dynamics are known perfectly, this becomes a system of $|S|$ simultaneous linear equations in $|S|$ unknowns, where the unknowns are $v_\pi(s), s \in S$. If we consider an iterative sequence of value function approximations $v_0, v_1, v_2, \cdots,$ with initial approximation $v_0$ chosen arbitrarily e.g. $v_k(s) = 0 \; \forall s$ (ensuring terminal state = 0). We can update it using the Bellman equation:
+$$
+\begin{gather*}
+v_{k+1}(s) = \sum_a \pi(a|s)\sum_{s',r} p(s',r|s,a)\Big [r+\gamma v_k(s')\Big ], \forall s \in S.
+\end{gather*}
+$$
+Eventually this update will converge when $v_k = v_\pi$ after infinite sweeps of the state-space, the value function for our policy. This algorithm is called *iterative policy evaluation*. We call this update an *expected update* because it is based on the expectation over all possible next states, rather than a sample of reward/value from the next state. We think of the updates occurring through *sweeps* of state space.
 
-- Problem: Evaluate a given policy $\pi$
-- Solution: Iterative application of Bellman expectation backup
-- We used the bellman expectation equation for policy evaluation and we use bellman optimality equation to do control later
-- $v_1 \rightarrow v_2 \rightarrow ... \rightarrow v_{\pi}$
-- Iteratively we end up with the actual true value function $v_{\pi}$
-- Using synchronous backups, consider 
-    - At each iteration $k+1$ consider all states of MDPs
-    - For all states $s \in S$
-    - Update $v_{k+1}(s)$ from $v_k(s^{'})$
-    - Where $s^{'}$ is a successor state of $s$
-- Value function helps us figure out better policies
+#### Pseudocode
+
+![](/img/iterative_policy_eval.png)
+
+#### My code
+
+Working on it!
+
+### Policy Improvement
+
+We can obtain a value function for an arbitrary policy $\pi$ as per the policy evaluation algorithm discussed above. We may then want to know if there is a policy $\pi'$ that is better than our current policy. A way of evaluating this is by taking a new action $a$ in state $s$ that is not in our current policy, running our policy thereafter and seeing how the value function changes. Formally that looks like:
+$$
+\begin{gather*}
+q_\pi(s, a) \doteq \sum_{s',r} p(s',r|s,a)[r+\gamma v_\pi(s')].
+\end{gather*}
+$$
+Note the mixing of action-value and state-value functions. If taking this new action in state $s$ produces a value function that is greater than or equal to the previous value function for all states then we say the policy $\pi'$ is an improvement over $\pi$:
+$$
+\begin{gather*}
+v_{\pi'}(s) \ge v_\pi(s),\forall s \in S.
+\end{gather*}
+$$
+This is known as the *policy improvement theorem*. Critically, the value function must be greater than the previous value function for all states. One way of choosing new actions for policy improvement is by acting greedily w.r.t the value function. Acting greedily will always produce a new policy $\pi' \ge \pi$, but it is not necessarily the optimal policy immediately.
 
 ### Policy Iteration
 
-- Given a policy $\pi$ how can we get a better policy
-    - Evalutate the policy $\pi$
-        $$
-        \begin{gather*}
-        v_{\pi}(s) = \mathrm{E}[R_{t+1} + \gamma R_{t+1} + \gamma R_{t+2} | S_t = s]
-        \end{gather*}
-        $$
-    - Improve the policy by acting greedily with respect to $v_{\pi}$
-        - $\pi^{'} = greedy(v_{\pi})$
-- In the case of small grid world improved policy was optimal $\pi^{'} = \pi^{*}$
-- In general, we need more iterations of improvement/evaluation
-- But this process of policy iteration always converges to optimal policy $\pi^{*}$
-- The process can be summerised as
-    - We start with some random value function $v$ and policy $\pi$
-    - Policy evaluation estimate $v_{\pi}$ - iterative policy evaluation
-    - Policy improvement generate $\pi^{'} \ge \pi$ - greedy policy improvement
-    - We converge to optimal policy $\pi^{*}$ and optimal value function $v^{*}$
+Once a policy, $\pi$, has been improved using $v_\pi$ to yield a better policy, $\pi'$, we can then compute $v_{\pi'}$ and improve it again to yield an even better $\pi''$. We can thus obtain a sequence of monotonically improving policies and value functions:
+$$
+\begin{gather*}
+\pi_0 \xrightarrow{E} v_{\pi_0} \xrightarrow{I} \pi_1 \xrightarrow{E} v_{\pi_1} \xrightarrow{I} \pi_2 \xrightarrow{E} \cdots \xrightarrow{I} \pi_* \xrightarrow{E} v_*,
+\end{gather*}
+$$
+where $\xrightarrow{E}$ denotes a policy *evaluation* and $\xrightarrow{I}$ denotes a policy *improvement*.
 
-- Toy example
-    - States: two locations, maximum of 20 cars at each
-    - Actions: move up to 5 cars between locations overnight
-    - Reward: $10 for each car rented, must be available
-    - Transitions: cars returned and requested randomly
-        - Poisson distribution, $n$ returns/requests with probability $\frac{\lambda^n}{n!}e^{-\lambda}$
-        - 1st location: average requests =3, average returns = 3
-        - 2nd location: average requests = 4, average returns = 2
-    - Problem: What is the optimal policy of shifting cars around to maximize your profit?
+#### Pseudocode
 
-#### Formal proof of policy improvement
+![](\img\policy_iteration.png)
 
-- Consider a deterministic policy, $a = \pi(s)$ with which we started and on which we proceed to be greedy
-- Now, we define acting greedily as
-    $$
-    \begin{gather*}
-    \pi^{'} = argmax_{a \in A} q_{\pi}(s,a)
-    \end{gather*}
-    $$
-- We look at the value of being in a state and taking an action and following the policy after that i.e., the action-value. So, we pick the action value that gives the maximum action value. thats why argmax. $q_{\pi}$ is the immediate reward plus state value function of where you end up
-- Now, we see that the greedy policy atleast improves the value from any state $s$ over one step
-    $$
-    \begin{gather*}
-    q_{\pi}(s,\pi^{'}(s)) = max_{a \in A} q_{\pi}(s,a) \ge q_{\pi}(s,\pi(s)) = v_{\pi}(s)
-    \end{gather*}
-    $$
-    - If we were to take our new greedy policy $\pi^{'}(s)$ for one step and follow $\pi$ afterwards we get more or equal value than following the original policy $\pi$
-- It therefore improves the value function, $v_{\pi^{'}}(s) \ge v_{\pi}(s)$
-    $$
-    \begin{align*}
-    v_{\pi}(s) & \le q_{\pi}(s,\pi^{'}(s)) = \mathrm{E}_{\pi^{'}}[R_{t+1}+\gamma v_{\pi}(S_{t+1})|S_t =s] \\
-    & \le \mathrm{E}_{\pi^{'}}[R_{t+1}+\gamma q_{\pi}(S_{t+1},\pi^{'}(S_{t+1}))|S_t =s] \\
-    & \le \mathrm{E}_{\pi^{'}}[R_{t+1}+\gamma R_{t+2}+\gamma^2 q_{\pi}(S_{t+2},\pi^{'}(S_{t+2}))|S_t =s] \\
-    & \le \mathrm{E}_{\pi^{'}}[R_{t+1}+\gamma R_{t+2}+....|S_t =s] = v_{\pi^{'}}(s)
-    \end{align*}
-    $$
-- We have shown so far, if we pick the greedy policy the total amount of reward is atleast as much as before we _greedified_ the policy. So we make things better, but we haven't shown if this will go to optimal policy yet
-- We have two cases, either it keeps getting better or it sops at certain point
-    - if the improvement stops,
-        $$
-        \begin{gather*}
-        q_{\pi}(s,\pi^{'}(s)) = max_{a \in A} q_{\pi}(s,a) = q_{\pi}(s,\pi(s)) = v_{\pi}(s)
-        \end{gather*}
-        $$
-    - Then the bellman optimality equation has been satisfied
-        $$
-        \begin{gather*}
-        v_{\pi}(s) = max_{a \in A} \ q_{\pi}(s,a)
-        \end{gather*}
-        $$
-    - Therefore we reached optimal value function, $v_{\pi}(s) = v_{*}(s) \ \forall s \in S$
-- By the greedy definition of the policy we defined the _partial ordering_ of the policies by comparing the value functions
+#### My Code
 
-#### Modified Policy Iteration
-
-- Does the policy evaluation need to converge to the corresponding value function $v_{\pi}$ ? or this inner loop can be ignored to certain level after a number of iterations
-    - This can be achieved by introducing a stopping condition for the value function
-        - e.g. a threshold of $\epsilon$ over the convergence of value function 
-    - Or simply stop after $k$ iterations of iterative policy evalution can also be used
-        - e.g. in the small grid world $k = 3$ is sufficient to achieve optimal policy
-    - An extreme case of this is if we stop after $k = 1$ i.e. we look at the bellman equation once, update the value function and act greedy with respect to that value function
-        - This extreme case is actually equivalent to value iteration, which is a most popular method of dynamic programming
-
-### Principle of Optimality
-
-- It is the basic principle of dynamic programming
-- An optiman policy can be subdivided into two components
-    - An optimal first action $A_{*}$
-    - Followed by an optimal policy from the successor state $S^{'}$
-    - This is the principle of optimality applied to policies
-- Theorem
-    - A policy $\pi(a|s)$ achieves the optimal value from state $s$, $v_{\pi}(s) = v_{*}(s)$, if and only if
-        - For any state $s^{'}$ reachable from $s$
-        - $\pi$ achieves the optimal value from state $s^{'}$, $v_{\pi}(s^{'}) = v_{*}(s^{'})$
+Working on it!
 
 ### Value Iteration
 
-- If we know the solution to the subproblems $v_{*}(s^{'})$
-- The solution $v_{*}(s)$ can be found by one-step lookahead using bellman optimality equation
-    $$
-    \begin{gather*}
-    v_{*}(s) \leftarrow max_{a \in A} \ R_s^a \gamma \sum_{s^{'} \in S} P^a_{ss^{'}} v_{*}(s^{'})
-    \end{gather*}
-    $$
-    - We start with the inductive premise that we know the optimal soltion of the leaves $v_{*}(s^{'})$
-- The idea of value iteration is to apply these updates iterative to the value function, starting with some random values which we assume are optimal
-- Intuition: Start with final rewards and work backwards. We do not do this by finding the goal and  working backwards but looping over entire state space
-- Still works with loopy, stochastic MDPs
+Above, we discussed policy iteration which requires full policy evaluation at each iteration step, an often expensive process which (formally) requires infinite sweeps of the state space to approach the true value function. In value iteration, the policy evaluation is stopped after one visit to each $s \in S$, or one sweep of the state space. Value iteration is achieved by turning the Bellman optimality equation into an update rule:
+$$
+\begin{align*}
+v_{k+1}(s) & \doteq \max_{a} \mathbb{E}[R_{t+1}+\gamma v_k(S_{t+1})|S_t=s,A_t=a] \\
+& = \max_{a} \sum_{s',r}p(s',r|s,a)[r+\gamma v_k(s')],\forall s \in S.
+\end{align*}
+$$
+Value iteration effectively combines, in each of its sweeps, one sweep of policy evaluation and one sweep of policy improvement.
 
-#### Summary
-- Problem: find the optimal policy $\pi_{*}$ of a given MDP
-- Solution: iterative application of bellman optimality backup equation
-- $v_1 \rightarrow v_2 \rightarrow ... \rightarrow v_{*}$
-- Using synchronous backups
-    - At each iteration $k+1$
-    - For all states $s \in S$
-    - Update $v_{k+1}(s)$ from $v_{k}(s^{'})$
-- Unline policy iteration, we are not bulding an explicit policy but building new value functions
-- Intermediate value functions may not correspond to any policy
-- This is exactly equal to the modified policy iteration with $k = 1$
+#### Pseudocode
+
+![](/img/value_iteration.png)
+
+#### My Code
+
+Working on it!
 
 ### Synchronous Dynamic Programming Algorithms Summary
 
@@ -206,7 +121,7 @@ sidebar_position: 4
 - Synchronous value iteration stores two copies of value function,old of the leaves and the new of the root state, for all $s \in S$
     $$
     \begin{gather*}
-    v_{new}(s) \leftarrow max_{a \in A} (R_s^a + \gamma \sum_{s^{'} \in S} P^a_{ss^{'}} v_{old}(s^{'})) \\
+    v_{new}(s) \leftarrow \max_{a \in A} (R_s^a + \gamma \sum_{s' \in S} P^a_{ss^{'}} v_{old}(s^{'})) \\
     v_{old} \leftarrow v_{new}
     \end{gather*}
     $$
@@ -214,7 +129,7 @@ sidebar_position: 4
 - In-place value iteration only stores one copy of the value function, for all $s \in S$
     $$
     \begin{gather*}
-    v(s) \leftarrow max_{a \in A} (R_s^a + \gamma \sum_{s^{'} \in S} P^a_{ss^{'}} v(s^{'}))
+    v(s) \leftarrow \max_{a \in A} (R_s^a + \gamma \sum_{s' \in S} P^a_{ss'} v(s'))
     \end{gather*}
     $$
     - We are going to plugin the latest value 
@@ -236,7 +151,14 @@ sidebar_position: 4
 - Backup the state $S_t$  
     $$
     \begin{gather*}
-    v(S_t) \leftarrow max_{a \in A} (R_{S_t}^a + \gamma \sum_{s^{'} \in S} P^a_{S_ts^{'}}v(s^{'}))
+    v(S_t) \leftarrow \max_{a \in A} (R_{S_t}^a + \gamma \sum_{s' \in S} P^a_{S_ts'}v(s'))
     \end{gather*}
     $$
     ms in the field of reinforcement learning.
+
+
+### Generalized Policy Iteration
+
+We use the term generalized policy iteration (GPI) to refer to the general idea of letting policy-evaluation and policy-improvement processes interact, independent of the granularity and other details of the two processes. Almost all reinforcement learning methods are well described as GPI. That is, all have identifiable policies and value functions, with the policy always being improved with respect to the value function and the value function always being driven toward the value function for the policy, as suggested by the diagram to the right. If both the evaluation process and the improvement process stabilize, that is, no longer produce changes, then the value function and policy must be optimal. The value function stabilizes only when it is consistent with the current policy, and the policy stabilizes only when it is greedy with respect to the current value function. Thus, both processes stabilize only when a policy has been found that is greedy with respect to its own evaluation function. This implies that the Bellman optimality equation holds, and thus that the policy and the value function are optimal.
+
+![](/img/GPI.png)
