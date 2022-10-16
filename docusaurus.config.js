@@ -9,7 +9,7 @@ const katex = require('rehype-katex');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Home',
-  tagline: 'Dinosaurs are cool',
+  tagline: 'Peter\'s Wiki',
   url: 'https://pwang649.github.io',
   baseUrl: '/myWiki/',
   onBrokenLinks: 'throw',
