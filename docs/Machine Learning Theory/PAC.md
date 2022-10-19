@@ -6,16 +6,11 @@ sidebar_position: 3
 
 ### Definition (PAC-learnability)
 
-A hypothesis class $H$ is PAC-learnable if there exists a learning
-algorithm with the following property: For every $\epsilon, \delta \in (0, 1)$, every distribution $D$ over $X$, and
-every $h \in H$, when the algorithm is given $m(\epsilon, \delta)$ samples drawn from $D$ and labeled by $h$, then
-the algorithm produces a hypothesis $\hat{h}$ such that with probability $1 - \delta, L(\hat{h}) \leq \epsilon$. (Note that the
-probability is over randomness in the training set as well as any internal algorithmic randomness).
+A hypothesis class $H$ is PAC-learnable if there exists a learning algorithm with the following property: For every $\epsilon, \delta \in (0, 1)$, every distribution $D$ over $X$, and every $h \in H$, when the algorithm is given $m(\epsilon, \delta)$ samples drawn from $D$ and labeled by $h$, then the algorithm produces a hypothesis $\hat{h}$ such that with probability $1 - \delta, L(\hat{h}) \leq \epsilon$. (Note that the probability is over randomness in the training set as well as any internal algorithmic randomness).
 
 ### Theorem 1 (PAC bound for finite hypothesis class)
 
-Let $H$ be a hypothesis class with finite size
-$|H|$. Then $H$ is PAC-learnable with
+Let $H$ be a hypothesis class with finite size $|H|$. Then $H$ is PAC-learnable with
 
 $$
 \begin{gather*}
@@ -24,7 +19,7 @@ m(\epsilon, \delta) = O({\log(|H|/\delta) \over \epsilon})
 $$
 
 The proof is shown in the previous note.  
-We can solve for n and say that if $m \geq {\log(|H|/\delta) \over \epsilon}$, the probability of failure in PAC learning is at most $\delta$, and hence we succeed w.p. $1 − \delta$.
+We can solve for m and say that if $m \geq {\log(|H|/\delta) \over \epsilon}$, the probability of failure in PAC learning is at most $\delta$, and hence we succeed w.p. $1 − \delta$.
 
 ### Agnostic PAC-Learning
 

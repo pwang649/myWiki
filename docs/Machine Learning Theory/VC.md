@@ -10,7 +10,7 @@ A hypothesis class $H$ shatters a finite set $C \subset X$ if the restriction of
 
 ### Corollary
 
-*Let $H$ be a hypothesis class of functions $X to \{0, 1\}$. Let m be a training set size. Assume that there exists a set $C \subset X$ of size 2m that is shattered by $H$. Then, for any learning algorithm, A, there exist a distribution $D$ over$X \times \{0, 1\}$ and a predictor $h \in H$ such that $L_D(h) = 0$ but with probability of at least $1/7$ over the choice of $S \sim D^m$ we have that $L_D(A(S)) \ge 1/8$*  
+*Let $H$ be a hypothesis class of functions $X \to \{0, 1\}$. Let m be a training set size. Assume that there exists a set $C \subset X$ of size $2m$ that is shattered by $H$. Then, for any learning algorithm, $A$, there exist a distribution $D$ over $X \times \{0, 1\}$ and a predictor $h \in H$ such that $L_D(h) = 0$ but with probability of at least $1/7$ over the choice of $S \sim D^m$ we have that $L_D(A(S)) \ge 1/8$*  
 *Philosophically, if someone can explain every phenomoenon, his explanations are worthless*
 
 ### Definition (VC Dimension)
@@ -77,7 +77,7 @@ $$
 |L_D(h) - L_S(h)| \le {4+\sqrt{\log{(\tau_H(2m))}} \over \delta\sqrt{2m}}
 \end{gather*}
 $$
-For simplicity assume that $sqrt{d\log{(2em/d)}} \ge 4$; hence,
+For simplicity assume that $\sqrt{d\log{(2em/d)}} \ge 4$; hence,
 $$
 \begin{gather*}
 |L_D(h) - L_S(h)| \le {1 \over \delta} \sqrt{{2d\log{(2em/d)} \over m}}
