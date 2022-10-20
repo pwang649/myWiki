@@ -128,13 +128,13 @@ If $x^*$ is an interior point, then all directions are feasible. The result then
 #### Theorem of Second-Order Sufficient Condition (SOSC), Interior Case
 
 Let $f \in C^2$ be defined on a region in which $x^*$ is an interior point. Suppose that
-1. $\nabla f(x^*) = 0.
-2. F(x^*) > 0.
+1. $\nabla f(x^*) = 0$.
+2. $F(x^*) > 0$.
 Then, $x^*$ is a _strict local minimizer_ of $f$.
 
 #### Proof
 
-Because $f\in C^2$, we have $F(x^*)=F^T(x^*)$. Using assumption 2 and Rayleigh's inequality it follows that if $d\ne 0$, then $0<\lambda_{min}(F(x^*))\|d\|^2\le f^TF(x^*)d$. By Taylor's theorem and assumption 1,
+Because $f\in C^2$, we have $F(x^*)=F^T(x^*)$. Using assumption 2 and Rayleigh's inequality it follows that if $d\ne 0$, then $0<\lambda_{min}(F(x^*))\|d\|^2\le d^TF(x^*)d$. By Taylor's theorem and assumption 1,
 $$
 \begin{gather*}
 f(x^*+d)-f(x^*)={1\over 2} d^TF(x^*)d + o(\|d\|^2)\ge {\lambda_{min}(F(x^*)) \over 2}\|d\|^2+o(\|d\|^2).
