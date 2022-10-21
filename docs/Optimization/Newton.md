@@ -1,7 +1,7 @@
 ---
 id: Optimization - Newton
 title: Newton's Method
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 ### Multi-Dimensional Newton's Method
@@ -216,7 +216,8 @@ We summarize the above development in the following algorithm.
 3. Compute
 $$
 \begin{aligned}
-\alpha_k &=\underset{\alpha \geq 0}{\arg \min } f\left(\boldsymbol{x}^{(k)}+\alpha \boldsymbol{d}^{(k)}\right), \\
+\alpha_k &=\underset{\alpha \geq 0}{\arg \min } f\left(\boldsymbol{x}^{(k)}+\alpha \boldsymbol{d}^{(k)}\right) \\
+&=-{\boldsymbol{g}^{(k)T}\boldsymbol{d}^{(k)}\over \boldsymbol{d}^{(k)T}\boldsymbol{Q}\boldsymbol{d}^{(k)}}\text{  when $f$ is quadratic, } \\
 \boldsymbol{x}^{(k+1)} &=\boldsymbol{x}^{(k)}+\alpha_k \boldsymbol{d}^{(k)}
 \end{aligned}
 $$
@@ -243,7 +244,9 @@ It turns out that the above is, in fact, true automatically, as stated in the fo
 
 For the rank one algorithm applied to the quadratic with Hes$\operatorname{sian} \boldsymbol{Q}=\boldsymbol{Q}^{\top}$, we have $\boldsymbol{H}_{k+1} \Delta \boldsymbol{g}^{(i)}=\Delta \boldsymbol{x}^{(i)}, 0 \leq i \leq k$.
 
-Proof. We prove the result by induction. From the discussion before the theorem, it is clear that the claim is true for $k=0$. Suppose now that the theorem is true for $k-1 \geq 0$; that is, $\boldsymbol{H}_k \Delta \boldsymbol{g}^{(i)}=\Delta \boldsymbol{x}^{(i)}, i<k$. We now show that the theorem is true for $k$. Our construction of the correction term ensures that
+#### Proof
+
+We prove the result by induction. From the discussion before the theorem, it is clear that the claim is true for $k=0$. Suppose now that the theorem is true for $k-1 \geq 0$; that is, $\boldsymbol{H}_k \Delta \boldsymbol{g}^{(i)}=\Delta \boldsymbol{x}^{(i)}, i<k$. We now show that the theorem is true for $k$. Our construction of the correction term ensures that
 $$
 \boldsymbol{H}_{k+1} \Delta \boldsymbol{g}^{(k)}=\Delta \boldsymbol{x}^{(k)} .
 $$
@@ -283,7 +286,8 @@ $$
 \alpha_k &=\underset{\alpha \geq 0}{\arg \min } f\left(\boldsymbol{x}^{(k)}+\alpha \boldsymbol{d}^{(k)}\right), \\
 \boldsymbol{x}^{(k+1)} &=\boldsymbol{x}^{(k)}+\alpha_k \boldsymbol{d}^{(k)} .
 \end{aligned}
-$$4. Compute
+$$
+4. Compute
 $$
 \begin{aligned}
 \Delta \boldsymbol{x}^{(k)} &=\alpha_k \boldsymbol{d}^{(k)}, \\
@@ -332,4 +336,4 @@ $$
 \boldsymbol{H}_{k+1} \Delta \boldsymbol{g}^{(i)}=\Delta \boldsymbol{x}^{(i)}
 $$
 which completes the proof.
-We also conclude that the DFP algorithm is a conjugate direction algorithm.
+We conclude that the DFP algorithm is a conjugate direction algorithm.

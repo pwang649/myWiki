@@ -25,7 +25,7 @@ A vector $d \in \mathbb{R}^n, d \ne 0$, is a *feasible direction* at $x \in \Ome
 
 ![](/img/Optimization/feasible_direction.png)
 
-#### Theorem of First-Order Necessary Condition (FONC)
+### Theorem of First-Order Necessary Condition (FONC)
 
 *Let $\Omega$ be a subset of $\mathbb{R}^n$ and $f\in C^1$ a real-valued function on $\Omega$. If *$x^*$* is a local minimizer of $f$ over $\Omega$, then for any feaible direction $d$ at *$x^*$*, we have*
 $$
@@ -69,7 +69,7 @@ $$
 
 Suppose that $f$ has a local minimizer $x^*$ that is an interior point of $\Omega$. Because $x^*$ is an interior point of $\Omega$, the set of feasible dierctions at $x^*$ is the whole of $\mathbb{R}^n$. This, for any $d\in \mathbb{R}^n$, which implies that $\nabla f(x^*)=0$.
 
-#### Theorem of Second-Order Necessary Condition (SONC)
+### Theorem of Second-Order Necessary Condition (SONC)
 
 _Let $\Omega \subset \mathbb{R}^n, f \in C^2$ a function on $\Omega, x^*$ a local minimizer of $f$ over $\Omega$, and $d$ a feasible direction at $x^*$. If $d^T\nabla f(x^*)=0$, then_
 $$
@@ -125,7 +125,7 @@ $$
 
 If $x^*$ is an interior point, then all directions are feasible. The result then follows from the previous corollary and SONC.
 
-#### Theorem of Second-Order Sufficient Condition (SOSC), Interior Case
+### Theorem of Second-Order Sufficient Condition (SOSC), Interior Case
 
 Let $f \in C^2$ be defined on a region in which $x^*$ is an interior point. Suppose that
 1. $\nabla f(x^*) = 0$.
