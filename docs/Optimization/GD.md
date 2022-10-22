@@ -78,6 +78,67 @@ which completes the proof.
 
 ### Analysis of Gradient Methods
 
+Let us now see what the method of steepest descent does with a quadratic function of the form
+$$
+f(\boldsymbol{x})=\frac{1}{2} \boldsymbol{x}^{\top} \boldsymbol{Q} \boldsymbol{x}-\boldsymbol{b}^{\top} \boldsymbol{x},
+$$
+where $\boldsymbol{Q} \in \mathbb{R}^{n \times n}$ is a symmetric positive definite matrix, $\boldsymbol{b} \in \mathbb{R}^n$, and $\boldsymbol{x} \in \mathbb{R}^n$. The unique minimizer of $f$ can be found by setting the gradient of $f$ to zero, where
+$$
+\nabla f(\boldsymbol{x})=\boldsymbol{Q} \boldsymbol{x}-\boldsymbol{b},
+$$
+because $D\left(\boldsymbol{x}^{\top} \boldsymbol{Q} \boldsymbol{x}\right)=\boldsymbol{x}^{\top}\left(\boldsymbol{Q}+\boldsymbol{Q}^{\top}\right)=2 \boldsymbol{x}^{\top} \boldsymbol{Q}$, and $D\left(\boldsymbol{b}^{\top} \boldsymbol{x}\right)=\boldsymbol{b}^{\top}$. There is no loss of generality in assuming $Q$ to be a symmetric matrix. For if we are given a quadratic form $\boldsymbol{x}^{\top} \boldsymbol{A} \boldsymbol{x}$ and $\boldsymbol{A} \neq \boldsymbol{A}^{\top}$, then because the transposition of a scalar equals itself, we obtain
+$$
+\left(\boldsymbol{x}^{\top} \boldsymbol{A} \boldsymbol{x}\right)^{\top}=\boldsymbol{x}^{\top} \boldsymbol{A}^{\top} \boldsymbol{x}=\boldsymbol{x}^{\top} \boldsymbol{A} \boldsymbol{x} .
+$$
+Hence,
+$$
+\begin{aligned}
+\boldsymbol{x}^{\top} \boldsymbol{A} \boldsymbol{x} &=\frac{1}{2} \boldsymbol{x}^{\top} \boldsymbol{A} \boldsymbol{x}+\frac{1}{2} \boldsymbol{x}^{\top} \boldsymbol{A}^{\top}\boldsymbol{x} \\
+&=\frac{1}{2} \boldsymbol{x}^{\top}\left(\boldsymbol{A}+\boldsymbol{A}^{\top}\right) \boldsymbol{x} \\
+& \triangleq \frac{1}{2} \boldsymbol{x}^{\top} \boldsymbol{Q} \boldsymbol{x} .
+\end{aligned}
+$$
+Note that
+$$
+\left(\boldsymbol{A}+\boldsymbol{A}^{\top}\right)^{\top}=\boldsymbol{Q}^{\top}=\boldsymbol{A}+\boldsymbol{A}^{\top}=\boldsymbol{Q} .
+$$
+The Hessian of $f$ is $\boldsymbol{F}(\boldsymbol{x})=\boldsymbol{Q}=\boldsymbol{Q}^{\top}>0$. To simplify the notation we write $\boldsymbol{g}^{(k)}=\nabla f\left(\boldsymbol{x}^{(k)}\right)$. Then, the steepest descent algorithm for the quadratic function can be represented as
+$$
+\boldsymbol{x}^{(k+1)}=\boldsymbol{x}^{(k)}-\alpha_k \boldsymbol{g}^{(k)},
+$$
+where
+$$
+\begin{aligned}
+\alpha_k &=\underset{\alpha \geq 0}{\arg \min } f\left(\boldsymbol{x}^{(k)}-\alpha \boldsymbol{g}^{(k)}\right) \\
+&=\underset{\alpha \geq 0}{\arg \min }\left(\frac{1}{2}\left(\boldsymbol{x}^{(k)}-\alpha \boldsymbol{g}^{(k)}\right)^{\top} \boldsymbol{Q}\left(\boldsymbol{x}^{(k)}-\alpha \boldsymbol{g}^{(k)}\right)-\left(\boldsymbol{x}^{(k)}-\alpha \boldsymbol{g}^{(k)}\right)^{\top} \boldsymbol{b}\right) .
+\end{aligned}
+$$
+
+![](/img/Optimization/steepest_descent2.png)
+
+In the quadratic case, we can find an explicit formula for $\alpha_k$. We proceed as follows. Assume that $\boldsymbol{g}^{(k)} \neq \mathbf{0}$, for if $\boldsymbol{g}^{(k)}=\mathbf{0}$, then $\boldsymbol{x}^{(k)}=\boldsymbol{x}^*$ and the algorithm stops. Because $\alpha_k \geq 0$ is a minimizer of $\phi_k(\alpha)=f\left(\boldsymbol{x}^{(k)}-\alpha \boldsymbol{g}^{(k)}\right)$, we apply the FONC to $\phi_k(\alpha)$ to obtain
+$$
+\phi_k^{\prime}(\alpha)=\left(\boldsymbol{x}^{(k)}-\alpha \boldsymbol{g}^{(k)}\right)^{\top} \boldsymbol{Q}\left(-\boldsymbol{g}^{(k)}\right)-\boldsymbol{b}^{\top}\left(-\boldsymbol{g}^{(k)}\right) .
+$$
+Therefore, $\phi_k^{\prime}(\alpha)=0$ if $\alpha \boldsymbol{g}^{(k) \top} \boldsymbol{Q} \boldsymbol{g}^{(k)}=\left(\boldsymbol{x}^{(k) \top} \boldsymbol{Q}-\boldsymbol{b}^{\top}\right) \boldsymbol{g}^{(k)}$. But
+$$
+\boldsymbol{x}^{(k) \top} \boldsymbol{Q}-\boldsymbol{b}^{\top}=\boldsymbol{g}^{(k) \top} .
+$$
+Hence,
+$$
+\alpha_k=\frac{\boldsymbol{g}^{(k) \top} \boldsymbol{g}^{(k)}}{\boldsymbol{g}^{(k) \top} \boldsymbol{Q} \boldsymbol{g}^{(k)}} .
+$$
+In summary, the method of steepest descent for the quadratic takes the form
+$$
+\boldsymbol{x}^{(k+1)}=\boldsymbol{x}^{(k)}-\frac{\boldsymbol{g}^{(k) \top} \boldsymbol{g}^{(k)}}{\boldsymbol{g}^{(k) \top} \boldsymbol{Q} \boldsymbol{g}^{(k)}} \boldsymbol{g}^{(k)},
+$$
+where
+$$
+\boldsymbol{g}^{(k)}=\nabla f\left(\boldsymbol{x}^{(k)}\right)=\boldsymbol{Q} \boldsymbol{x}^{(k)}-\boldsymbol{b} .
+$$
+
+#### Convergence
+
 We can investigate important convergence characteristics of a gradient method by applying the method to quadratic problems. The convergence anaylysis is more convenient if instead of working with $f$ we deal with
 $$
 V(\boldsymbol{x})=f(\boldsymbol{x})+\frac{1}{2} \boldsymbol{x}^{* \top} \boldsymbol{Q} \boldsymbol{x}^*=\frac{1}{2}\left(\boldsymbol{x}-\boldsymbol{x}^*\right)^{\top} \boldsymbol{Q}\left(\boldsymbol{x}-\boldsymbol{x}^*\right),
@@ -180,7 +241,7 @@ We are now ready to establish the convergence of the steepest descent method.
 
 #### Theorem 2
 
-*In the steepest descent algorithm, we have $\boldsymbol{x}^{(k)} \rightarrow \boldsymbol{x}^*$ for any $\boldsymbol{x}^{(0)}$.*
+_In the steepest descent algorithm, we have $\boldsymbol{x}^{(k)} \rightarrow \boldsymbol{x}^*$ for any $\boldsymbol{x}^{(0)}$._
 
 #### Proof
 

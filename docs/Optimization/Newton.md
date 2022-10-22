@@ -1,7 +1,7 @@
 ---
 id: Optimization - Newton
 title: Newton's Method
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 ### Multi-Dimensional Newton's Method
