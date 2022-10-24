@@ -4,6 +4,10 @@ title: Basics
 sidebar_position: 1
 ---
 
+### Book
+
+_An Introduction to Optimization, 4th Edition_ - Edwin Chong and Stanislaw Zak
+
 In this section we consider the optimization problem
 $$
 \begin{gather*}

@@ -4,4 +4,4 @@ title: Gentle Start
 sidebar_position: 1
 ---
 
-### Comming soom
+### Comming soon
