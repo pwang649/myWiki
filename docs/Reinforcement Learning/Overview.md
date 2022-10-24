@@ -5,7 +5,7 @@ sidebar_position: 1
 ---
 
 ### Book
-- An introduction to Reinforcement Learning, Sutton and Barto, Second Edition, 400 Pages
+- _An introduction to Reinforcement Learning_, Sutton and Barto, Second Edition, 400 Pages
 
 ### Introduction to Reinforcement Learning
 

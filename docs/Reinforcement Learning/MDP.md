@@ -6,7 +6,7 @@ sidebar_position: 3
 
 ### The Agent–Environment Interface
 
-![](/img/mdp.png)
+![](/img/RL/mdp.png)
 
 - At each timestep the agent implements a mapping from states to probabilities of selecting a possible action. The mapping is called the agents *policy*, denoted $\pi$, where $\pi (a|s)$ is the probability of the agent selecting actions a in states.
 

@@ -68,7 +68,7 @@ $$
 
 ### Pseudocode
 
-![](/img/bandit.png)
+![](/img/RL/bandit.png)
 
 ### My Code
 
