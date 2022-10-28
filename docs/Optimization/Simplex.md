@@ -10,3 +10,4 @@ sidebar_position: 7
 
 The **minimization** problem is explained [here](https://college.cengage.com/mathematics/larson/elementary_linear/5e/students/ch08-10/chap_9_4.pdf).
 
+### Duality
