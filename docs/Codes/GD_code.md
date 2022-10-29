@@ -4,7 +4,7 @@ title: Gradient Descent Code
 sidebar_position: 1
 ---
 
-All the code is written in matlab.
+All the code is written in matlab. Please visits [here](https://github.com/pwang649/coding_practice/tree/main/GD) for a complete version of my code. The neural network code base is in reference to [Dr. Chunming Wang](https://dornsife.usc.edu/cf/faculty-and-staff/faculty.cfm?pid=1003805)'s MATH467 project code.
 
 ### Fixed Gradient Descent Implementation
 

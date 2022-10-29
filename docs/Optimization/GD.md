@@ -4,6 +4,12 @@ title: Gradient Descent
 sidebar_position: 3
 ---
 
+### Code
+
+Please visit [this page](/docs/Codes/Codes%20-%20GD) for a code implementation of the fixed step size gradiant method and [this page](/docs/Codes/Codes%20-%20GD#steepest-gradiant-descent) for a code implementation of the steepest gradiant method.
+
+### Gradiant Descent
+
 Suppose that we are given a point $\boldsymbol{x}^{(k)}$. To find the next point $\boldsymbol{x}^{(k+1)}$, we start at $\boldsymbol{x}^{(k)}$ and move by an amount $-\alpha_k \nabla f\left(\boldsymbol{x}^{(k)}\right)$, where $\alpha_k$ is a positive scalar called the step size. This procedure leads to the following iterative algorithm:
 $$
 \boldsymbol{x}^{(k+1)}=\boldsymbol{x}^{(k)}-\alpha_k \nabla f\left(\boldsymbol{x}^{(k)}\right) .

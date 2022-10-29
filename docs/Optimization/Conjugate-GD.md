@@ -4,6 +4,12 @@ title: Conjugate Direction Methods
 sidebar_position: 4
 ---
 
+### Code
+
+Please visit [this page](/docs/Codes/Codes%20-%20GD#conjugate-gradiant-descent) for a code implementation of the conjugate gradiant method.
+
+### Conjugate Direction Methods
+
 The class of conjugate direction methods can be viewed as being intermediate between the method of steepest descent and Newton's method. The conjugate direction methods have the following properties:
 1. Solve quadratics of $n$ variables in $n$ steps.
 2. The usual implementation, the conjugate gradient algorithm, requires no Hessian matrix evaluations.
