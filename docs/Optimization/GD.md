@@ -6,7 +6,7 @@ sidebar_position: 3
 
 ### Code
 
-Please visit [this page](/docs/Codes/Codes%20-%20GD) for a code implementation of the fixed step size gradiant method and [this page](/docs/Codes/Codes%20-%20GD#steepest-gradiant-descent) for a code implementation of the steepest gradiant method.
+Please visit [this page](/docs/Code/Code%20-%20GD) for a code implementation of the fixed step size gradiant method and [this page](/docs/Code/Code%20-%20GD#steepest-gradiant-descent) for a code implementation of the steepest gradiant method.
 
 ### Gradiant Descent
 

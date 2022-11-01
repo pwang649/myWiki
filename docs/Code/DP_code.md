@@ -1,5 +1,5 @@
 ---
-id: Codes - DP
+id: Code - DP
 title: RL DP Code
 sidebar_position: 1
 ---

@@ -1,5 +1,5 @@
 ---
-id: Codes - GD
+id: Code - GD
 title: Gradient Descent Code
 sidebar_position: 1
 ---

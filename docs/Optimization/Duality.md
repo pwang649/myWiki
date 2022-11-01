@@ -33,7 +33,7 @@ Suppose that $\boldsymbol{x}$ and $\boldsymbol{\lambda}$ are feasible solutions 
 #### Proof
 
 We prove this lemma only for the asymmetric form of duality. The proof for the symmetric form involves only a slight modification.
-Because $\boldsymbol{x}$ and $\boldsymbol{\lambda}$ are feasible, we have $\boldsymbol{A x}=\boldsymbol{b}, \boldsymbol{x} \geq \boldsymbol{0}$, and $\boldsymbol{\lambda}^{\top} \boldsymbol{A} \leq \boldsymbol{c}^{\top}$. Postmultiplying both sides of the inequality $\boldsymbol{\lambda}^{\top} A \leq \boldsymbol{c}^{\top}$ by $\boldsymbol{x} \geq \boldsymbol{0}$ yields $\boldsymbol{\lambda}^{\top} \boldsymbol{A x} \leq \boldsymbol{c}^{\top}$ $\boldsymbol{x}$. But $\boldsymbol{A x}=\boldsymbol{b}$, hence $\boldsymbol{\lambda}^{\top} \boldsymbol{b} \leq \boldsymbol{c}^{\top} \boldsymbol{x}$.
+Because $\boldsymbol{x}$ and $\boldsymbol{\lambda}$ are feasible, we have $\boldsymbol{A x}=\boldsymbol{b}, \boldsymbol{x} \geq \boldsymbol{0}$, and $\boldsymbol{\lambda}^{\top} \boldsymbol{A} \leq \boldsymbol{c}^{\top}$. Postmultiplying both sides of the inequality $\boldsymbol{\lambda}^{\top} \boldsymbol{A} \leq \boldsymbol{c}^{\top}$ by $\boldsymbol{x} \geq \boldsymbol{0}$ yields $\boldsymbol{\lambda}^{\top} \boldsymbol{A x} \leq \boldsymbol{c}^{\top}$ $\boldsymbol{x}$. But $\boldsymbol{A x}=\boldsymbol{b}$, hence $\boldsymbol{\lambda}^{\top} \boldsymbol{b} \leq \boldsymbol{c}^{\top} \boldsymbol{x}$.
 The weak duality lemma states that a feasible solution to either problem yields a bound on the optimal cost of the other problem. The cost in the dual is never above the cost in the primal. In particular, the optimal cost of the dual is less than or equal to the optimal cost of the primal, that is, "maximum $\leq$ minimum." Hence, if the cost of one of the problems is unbounded, then the other problem has no feasible solution. In other words, if "minimum $=-\infty$ " or "maximum $=$ $+\infty$," then the feasible set in the other problem must be empty.
 
 #### Theorem 1
@@ -42,7 +42,7 @@ Suppose that $\boldsymbol{x}_0$ and $\boldsymbol{\lambda}_0$ are feasible soluti
 
 #### Proof
 
-Let $\boldsymbol{x}$ be an arbitrary feasible solution to the primal problem. Because $\boldsymbol{\lambda}_0$ is a feasible solution to the dual, by the weak duality lemma, $\boldsymbol{c}^{\top} x \geq \boldsymbol{\lambda}_0^{\top} \boldsymbol{b}$. So, if $\boldsymbol{c}^{\top} x_0=\boldsymbol{\lambda}_0^{\top} \boldsymbol{b}$, then $c^{\top} \boldsymbol{x}_0=\boldsymbol{\lambda}_0^{\top} \boldsymbol{b} \leq \boldsymbol{c}^{\top} \boldsymbol{x}$. Hence, $\boldsymbol{x}_0$ is optimal for the primal.
+Let $\boldsymbol{x}$ be an arbitrary feasible solution to the primal problem. Because $\boldsymbol{\lambda}_0$ is a feasible solution to the dual, by the weak duality lemma, $\boldsymbol{c}^{\top} \boldsymbol{x} \geq \boldsymbol{\lambda}_0^{\top} \boldsymbol{b}$. So, if $\boldsymbol{c}^{\top}\boldsymbol{x}_0=\boldsymbol{\lambda}_0^{\top} \boldsymbol{b}$, then $c^{\top} \boldsymbol{x}_0=\boldsymbol{\lambda}_0^{\top} \boldsymbol{b} \leq \boldsymbol{c}^{\top} \boldsymbol{x}$. Hence, $\boldsymbol{x}_0$ is optimal for the primal.
 
 On the other hand, let $\boldsymbol{\lambda}$ be an arbitrary feasible solution to the dual problem. Because $\boldsymbol{x}_0$ is a feasible solution to the primal, by the weak duality lemma, $\boldsymbol{c}^{\top} \boldsymbol{x}_0 \geq \boldsymbol{\lambda}^{\top} \boldsymbol{b}$. Therefore, if $\boldsymbol{c}^{\top} \boldsymbol{x}_0=\boldsymbol{\lambda}_0^{\top} \boldsymbol{b}$, then $\boldsymbol{\lambda}^{\top} \boldsymbol{b} \leq \boldsymbol{c}^{\top} \boldsymbol{x}_0=\boldsymbol{\lambda}_0^{\top} \boldsymbol{b}$. Hence, $\boldsymbol{\lambda}_0$ is optimal for the dual.
 
@@ -126,7 +126,7 @@ We now prove the result for the symmetric case.
 $\Rightarrow$ We first show condition 1. If the two solutions are optimal, then by Theorem 2, $\boldsymbol{c}^{\top} \boldsymbol{x}=\boldsymbol{\lambda}^{\top} \boldsymbol{b}$. Because $\boldsymbol{A x} \geq \boldsymbol{b}$ and $\boldsymbol{\lambda} \geq \boldsymbol{0}$, we have 
 $$
 \begin{align*}
-\left(\boldsymbol{c}^{\top}-\boldsymbol{\lambda}^{\top} A\right) \boldsymbol{x} & =\boldsymbol{c}^{\top} \boldsymbol{x}-\boldsymbol{\lambda}^{\top} \boldsymbol{A} \boldsymbol{x} \\
+\left(\boldsymbol{c}^{\top}-\boldsymbol{\lambda}^{\top} \boldsymbol{A}\right) \boldsymbol{x} & =\boldsymbol{c}^{\top} \boldsymbol{x}-\boldsymbol{\lambda}^{\top} \boldsymbol{A} \boldsymbol{x} \\
 & = \boldsymbol{\lambda}^{\top} \boldsymbol{b}-\boldsymbol{\lambda}^{\top} \boldsymbol{A} \boldsymbol{x} \\
 & = \boldsymbol{\lambda}^{\top}(\boldsymbol{b}-\boldsymbol{A} \boldsymbol{x}) \leq 0.
 \end{align*}
