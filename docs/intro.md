@@ -14,12 +14,12 @@ Feel free to navigate through~
     - [Gentle Start](Machine%20Learning%20Theory/Machine%20Learning%20Theory%20-%20Start)
     - [Empirical Risk Minimization](Machine%20Learning%20Theory/Machine%20Learning%20Theory%20-%20ERM)
     - [PAC Learning](Machine%20Learning%20Theory/Machine%20Learning%20Theory%20-%20PAC)
-    - [Bias-Conplexity Tradeoff](Machine%20Learning%20Theory/Machine%20Learning%20Theory%20-%20Bias-Complexity)
+    - [Bias-Complexity Tradeoff](Machine%20Learning%20Theory/Machine%20Learning%20Theory%20-%20Bias-Complexity)
     - [VC-Dimension](Machine%20Learning%20Theory/Machine%20Learning%20Theory%20-%20VC)
     - [Conclusion](Machine%20Learning%20Theory/Machine%20Learning%20Theory%20-%20Conclusion)
 - **Machine Learning Algorithms**
-    - [Intro](Machine%20Learning%20Algorithms/Machine%20Learning%20Algorithm%20-%20Start)
-    - [Linear Predictors](Machine%20Learning%20Algorithms/Machine%20Learning%20Algorithm%20-%20Linear%20Predictors)
+    - [Intro](Machine%20Learning%20Algorithms/Machine%20Learning%20Algorithms%20-%20Start)
+    - [Linear Predictors](Machine%20Learning%20Algorithms/Machine%20Learning%20Algorithms%20-%20Linear%20Predictors)
 - **Reinforcement Learning**
     - [Overview](Reinforcement%20Learning/Reinforcement%20Learning%20-%20Overview)
     - [Multi-armed Bandits](Reinforcement%20Learning/Reinforcement%20Learning%20-%20Bandit)
