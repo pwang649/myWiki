@@ -1,7 +1,7 @@
 ---
 id: Reinforcement Learning - Concurrent-QL
 title: Concurrent Q-Learning
-sidebar_position: 7
+sidebar_position: 9
 ---
 
 ### Concurrent Q-learning Algorithm
