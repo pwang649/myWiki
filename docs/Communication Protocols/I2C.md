@@ -16,7 +16,7 @@ I2C stands for Inter-Integrated Circuit. It is a bus interface connection protoc
 ### I2C Address
 
 - **Address Frame**: 7 address bits + 1 Read/Write bit + 1 ACK/NACK.
-- **Data Frames**: 8 data bits + 1 ACK/NACK following the seccussful transmission of the address frame.
+- **Data Frames**: 8 data bits + 1 ACK/NACK following the successful transmission of the address frame.
 
 ![](https://cdn.sparkfun.com/assets/learn_tutorials/8/2/I2C_Basic_Address_and_Data_Frames.jpg)
 
