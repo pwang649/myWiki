@@ -2,7 +2,7 @@
 sidebar_position: 0
 ---
 
-# Intro
+### Intro
 
 Welcome to my knowledge bank, the place where you will find scrambling class notes and Shi Shan codes.
 
