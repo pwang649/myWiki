@@ -13,3 +13,7 @@ This page contains all the handwritten notes that I've taken while reading resea
         - [Source](https://ieeexplore.ieee.org/document/4209604)
     - [Legibility and Predictability of Robot Motion](/files/Notes/Legibility_and_Predictability.pdf)
         - [Source](https://www.ri.cmu.edu/pub_files/2013/3/legiilitypredictabilityIEEE.pdf)
+
+- **Reinforcement Learning**
+    - [Apprenticeship Learning via Inverse Reinforcement Learning](/files/Notes/Inverse_RL.pdf)
+        - [Source](https://ai.stanford.edu/~ang/papers/icml04-apprentice.pdf)
