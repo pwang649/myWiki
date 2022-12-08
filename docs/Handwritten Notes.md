@@ -2,7 +2,12 @@
 sidebar_position: 15
 ---
 
-This page contains all the handwritten notes that I've taken while reading research papers. They are not necessarily comprehensive (I usually skip the intro and the conclusion).
+This page contains all the handwritten notes that I've taken while reading research papers and taking classes. They are not necessarily comprehensive.
+
+### USC Class Notes
+
+- [MATH467: Theory and Computational Methods for Optimization](/files/Notes/MATH467_Notes.pdf)
+- [MATH447: Theory and Mathematics of Machine Learning](/files/Notes/MATH447_Notes.pdf)
 
 ### Content
 

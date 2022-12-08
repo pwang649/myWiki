@@ -1,48 +1,10 @@
 ---
-id: Optimization - Constrained_Op
-title: Nonlinear Constrained Optimization
+id: Optimization - Constrained_Op_Equality
+title: Nonlinear Constrained Optimization - Equality
 sidebar_position: 9
 ---
 
-In this part we discuss methods for solving a class of nonlinear constrained optimization problems that can be formulated as
-
-$$
-\begin{aligned}
-\operatorname{minimize} & f(\boldsymbol{x}) \\
-\text { subject to } & h_{i}(\boldsymbol{x})=0, \quad i=1, \ldots, m \\
-& g_{j}(\boldsymbol{x}) \leq 0, \quad j=1, \ldots, p,
-\end{aligned}
-$$
-
-where $\boldsymbol{x} \in \mathbb{R}^{n}, f: \mathbb{R}^{n} \rightarrow \mathbb{R}, h_{i}: \mathbb{R}^{n} \rightarrow \mathbb{R}, g_{j}: \mathbb{R}^{n} \rightarrow \mathbb{R}$, and $m \leq n$. In vector notation, the problem above can be represented in the following standard form:
-
-$$
-\begin{aligned}
-\operatorname{minimize} & f(\boldsymbol{x}) \\
-\text { subject to } & \boldsymbol{h}(\boldsymbol{x})=\mathbf{0} \\
-& \boldsymbol{g}(\boldsymbol{x}) \leq \mathbf{0},
-\end{aligned}
-$$
-
-where $\boldsymbol{h}: \mathbb{R}^{n} \rightarrow \mathbb{R}^{m}$ and $\boldsymbol{g}: \mathbb{R}^{n} \rightarrow \mathbb{R}^{p}$. As usual, we adopt the following terminology.
-
-#### Definition
-
-Any point satisfying the constraints is called a feasible point. The set of all feasible points,
-
-$$
-\left\{x \in \mathbb{R}^{n}: \boldsymbol{h}(\boldsymbol{x})=\mathbf{0}, \boldsymbol{g}(\boldsymbol{x}) \leq \mathbf{0}\right\},
-$$
-
-is called a feasible set.
-
-$$
-\text { maximize } f(x)=\text { minimize }-f(x) .
-$$
-
-We illustrate the problems we study in this part by considering the following simple numerical example.
-
-### Problem Formulation
+### Problems with Equality Constraints
 
 The class of optimization problems we analyze here is
 

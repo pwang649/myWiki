@@ -8,6 +8,10 @@ sidebar_position: 1
 
 - Understanding Machine Learning from Theory to Algorithm - Shai Shalev-Shwartz and Shai Ben David
 
+### Complete Handwritten Notes
+
+[MATH447_Notes.pdf](/files/Notes/MATH447_Notes.pdf) (A small portion of the notes is taken by Flora Jia.)
+
 ### Intro
 
 - **Machine Learning** is the study of algorithms that can learn from data, gradually imporoving their performamce.

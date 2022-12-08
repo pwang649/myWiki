@@ -8,6 +8,12 @@ sidebar_position: 1
 
 _An Introduction to Optimization, 4th Edition_ - Edwin Chong and Stanislaw Zak
 
+### Complete Handwritten Notes
+
+[MATH467_Notes.pdf](/files/Notes/MATH467_Notes.pdf)
+
+### Intro
+
 In this section we consider the optimization problem
 $$
 \begin{gather*}
