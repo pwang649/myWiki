@@ -16,11 +16,10 @@ Unlike other sections, I will try to make this section more intriguing. Perhaps 
 - Basic Physics and Trignometry
 - Coding
 - A Good Understanding of How Things Work
-- Abstract Algebra (JK LOL)
 
 ### Books
 
-- *Sebastian Thrun,, Wolfram Burgard, and Dieter Fox. Probabilistic robotics. MIT press, 2005.*
+- *Sebastian Thrun, Wolfram Burgard, and Dieter Fox. Probabilistic robotics. MIT press, 2005.*
 - *Bruno Siciliano, Lorenzo Sciavicco, Luigi Villani, and Giuseppe Oriolo. Robotics: Modelling, Planning and Control.*
 - More to come...
 

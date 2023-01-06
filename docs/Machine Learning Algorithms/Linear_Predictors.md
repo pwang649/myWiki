@@ -51,7 +51,7 @@ Hence, the update of the Perceptron guides the solution to be "more correct" on 
 
 #### Theorem (Perceptron convergence)
 
-The Perceptron Learning Algorithm makes at most $\frac{R^2}{\gamma^2}$ updates (after which it returns a separating hyperplane).
+The Perceptron Learning Algorithm makes at most $\frac{R^2}{\gamma^2}$ updates (after which it returns a separating hyperplane), where $R$ is the largest norm of $X_j^{\prime}$ 's and $\gamma=\min Y_j\left\langle w^*, X_j\right\rangle$ where $\left\|w^*\right\|_2=1$.
 
 #### Proof
 

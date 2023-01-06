@@ -65,8 +65,10 @@ Initialize $w_j^{(0)}=\frac{1}{n}, j=1, \ldots, n$. For $t=0, \ldots, T$ do
 - Output $f_t$ such that $e_{n, w^{(0)}}\left(f_t\right) \leq \frac{1}{2}$
 - Update the weights $w_j^{(t+1)}=\frac{w_j^{(t)} \exp \left(-Y_j \alpha_t f_t\left(X_j\right)\right)}{Z_t}, j=1 \ldots n$, where $Z_t=\sum_{j=1}^n w_j^{(t)} \exp \left(-Y_j \alpha_t f_t(\cdot)\right)$ is the "normalizing factor."
 - Output: $\widehat{g}_T(\cdot)=\operatorname{sign}\left(\sum_{j=1}^T \alpha_t f_t(\cdot)\right)$.
-Exercise. If $f_t$ classifies $X_j$ correctly, then $w_j^{(t+1)} \leq w_j^{(t)}$. If $f_t$ classifies $X_j$ incorrectly, then $w_j^{(t+1)} \geq w_j^{(t)}$.
-Theorem 1. Assume that at each step, WL outputs $f_t$ such that
+
+### Theorem
+
+Assume that at each step, WL outputs $f_t$ such that
 $$
 e_{n, w^{(t)}}\left(f_t\right)=\sum_{j=1}^n w_j^{(t)} I\left\{Y_j \neq f_t\left(X_j\right)\right\} \leq \frac{1}{2}-\gamma
 $$
@@ -74,7 +76,9 @@ for some $\gamma>0$. Then the training error corresponding to the classifier $\h
 $$
 \frac{1}{n} \sum_{j=1}^n I\left\{Y_j \neq \widehat{g}_T\left(X_j\right)\right\} \leq \exp \left(-2 T \gamma^2\right) .
 $$
-Proof (optional).
+
+#### Proof
+
 a) Note that $w_j^{(T+1)}=\frac{1}{n} \frac{e^{-Y_j \sum_{t=1}^T \alpha_t f_t\left(X_j\right)}}{\prod_{t=1}^T Z_t}$; this is easy to show by induction and the details will be filled in during the lecture.
 b) We have that
 $$

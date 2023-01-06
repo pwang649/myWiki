@@ -10,7 +10,7 @@ sidebar_position: 1
 
 ### Complete Handwritten Notes
 
-[MATH447_Notes.pdf](/files/Notes/MATH447_Notes.pdf) (A small portion of the notes is taken by Flora Jia.)
+- [MATH447_Notes.pdf](/files/Notes/MATH447_Notes.pdf) (A small portion of the notes is taken by Flora Jia.)
 
 ### Intro
 

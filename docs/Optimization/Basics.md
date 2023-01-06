@@ -6,11 +6,11 @@ sidebar_position: 1
 
 ### Book
 
-_An Introduction to Optimization, 4th Edition_ - Edwin Chong and Stanislaw Zak
+- _An Introduction to Optimization, 4th Edition_ - Edwin Chong and Stanislaw Zak
 
 ### Complete Handwritten Notes
 
-[MATH467_Notes.pdf](/files/Notes/MATH467_Notes.pdf)
+- [MATH467_Notes.pdf](/files/Notes/MATH467_Notes.pdf)
 
 ### Intro
 
