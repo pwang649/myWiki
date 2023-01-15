@@ -6,7 +6,7 @@ sidebar_position: 1
 
 ### Introduction
 
-- The current method useed to find a desirable placement for an object is to use an approach similar to the CNN with 16 different rotational degrees and 160 x 89 descretization of the workspace.
+- The current method used to find a desirable placement for an object is to use an approach similar to the CNN with 16 different rotational degrees and 160 x 89 descretization of the workspace.
 
 - Using this method, the results show significant improvement over those using the method of uniform sampling.
 
