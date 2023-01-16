@@ -1,7 +1,7 @@
 ---
 id: Code - LP
 title: Linear Programming Code
-sidebar_position: 3
+sidebar_position: 2
 ---
 
 All the code is written in matlab. Please visits [here](https://github.com/pwang649/coding_practice/tree/main/LP) for a complete version of my code. The code base is in reference to [Dr. Chunming Wang](https://dornsife.usc.edu/cf/faculty-and-staff/faculty.cfm?pid=1003805)'s MATH467 project code.
