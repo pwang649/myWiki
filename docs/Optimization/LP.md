@@ -4,6 +4,10 @@ title: Linear Programming
 sidebar_position: 6
 ---
 
+### Code
+
+Please visit [this page](/docs/Code/Optimization/Code%20-%20LP) for the code implementation of the LP method.
+
 Formally, a linear program is an optimization problem of the form
 $$
 \begin{aligned}

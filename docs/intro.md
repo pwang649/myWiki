@@ -47,8 +47,8 @@ Feel free to navigate through~
     - [Convex Optimization](Optimization/Optimization%20-%20Convex)
 - **Code**
     - [RL DP Code](Code/Code%20-%20DP)
-    - [Gradiant Descent Code](Code/Code%20-%20GD)
-    - [Linear Programming Code](Code/Code%20-%20LP)
+    - [Gradiant Descent Code](Code/Optimization/Code%20-%20GD)
+    - [Linear Programming Code](Code/Optimization/Code%20-%20LP)
     - [2048 Verilog](Code/Code%20-%202048)
 - **Communication Protocols**
     - [Serial Communication](Communication%20Protocols/Communication%20Protocols%20-%20Serial)

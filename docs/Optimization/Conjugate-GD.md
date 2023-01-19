@@ -6,7 +6,7 @@ sidebar_position: 4
 
 ### Code
 
-Please visit [this page](/docs/Code/Code%20-%20GD#conjugate-gradiant-descent) for a code implementation of the conjugate gradiant method.
+Please visit [this page](/docs/Code/Optimization/Code%20-%20GD#conjugate-gradiant-descent) for a code implementation of the conjugate gradiant method.
 
 ### Conjugate Direction Methods
 

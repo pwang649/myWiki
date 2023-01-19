@@ -21,5 +21,8 @@ Unlike other sections, I will try to make this section more intriguing. Perhaps 
 
 - *Sebastian Thrun, Wolfram Burgard, and Dieter Fox. Probabilistic robotics. MIT press, 2005.*
 - *Bruno Siciliano, Lorenzo Sciavicco, Luigi Villani, and Giuseppe Oriolo. Robotics: Modelling, Planning and Control.*
+- *Dynamic Non-cooperative Game Theory, T. Basar and G. J. Olsder, SIAM Series in Classics in Applied Mathematics Philadelphia,1999.*
+- *Reinforcement Learning and Optimal Control, D. P. Bertsekas, Athena Scientific, 2019.*
+- *Control System Design: An Introduction to State-Space Methods, B. Friedland, 1986.*
 - More to come...
 
