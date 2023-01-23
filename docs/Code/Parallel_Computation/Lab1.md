@@ -138,7 +138,7 @@ if (count < 30)
     goto step_two;
 
 for (i = 0; i < h * w; i++) {
-    output[i] = ((int) means[class[i]]) + '0';
+    output[i] = (int) means[class[i]];
 }
 ```
 
