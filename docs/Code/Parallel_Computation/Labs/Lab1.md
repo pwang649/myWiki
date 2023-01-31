@@ -1,5 +1,5 @@
 ---
-id: Code - Parallel_Computation - Lab 1
+id: Code - Parallel_Computation - Labs - Lab 1
 title: Lab 1
 sidebar_position: 1
 ---

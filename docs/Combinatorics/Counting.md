@@ -117,3 +117,7 @@ $$
 
 1. We set up a bijection $f$ from the set of all $k$-element subsets of $[n]$ onto that of all $n-k$-element subsets of $n$. This $f$ will be simplicity itself: it will map any given $k$-element subset $S \subseteq[n]$ into its complement $S^c$. Then for any $n-k$-element subset $T \subseteq[n]$, there is exactly one $S$ so that $f(S)=T$, namely $S=T^c$. So $f$ is indeed a bijection, proving that the number of $k$-element subsets of $[n]$ is the same as that of $n-k$-element subsets of $[n]$, which, by definition, means that $\left(\begin{array}{l}n \\ k\end{array}\right)=\left(\begin{array}{c}n \\ n-k\end{array}\right)$.
 2. The first equality is a special case of the claim of part 1 , with $k=0$. To see that $\left(\begin{array}{l}n \\ 0\end{array}\right)=1$, note that the only 0 -element subset of $[n]$ is the empty set.
+
+### Summary
+
+![](/img/Combinatorics/counting.png)
