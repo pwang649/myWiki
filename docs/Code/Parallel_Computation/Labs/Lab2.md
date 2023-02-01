@@ -109,3 +109,17 @@ sidebar_position: 2
 
 #### Results
 
+1. Run time for p = 1:
+    ```
+    Execution time = 0.502734 sec.
+    ```
+
+2. Run time for p = 4:
+    ```
+    Execution time = 0.341998 sec.
+    ```
+
+3. Run time for p = 8:
+    ```
+    Execution time = 0.322975 sec.
+    ```
