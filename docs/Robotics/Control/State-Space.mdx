@@ -1,0 +1,309 @@
+---
+id: Robotics - Control - State Space
+title: State-Space Representation
+sidebar_position: 1
+
+---
+
+The notion of the state of a dynamic system is a fundamental notion in physics. The basic premise of newtonian dynamics is that the future evolution of a dynamic process is entirely determined by its present state, following this abstract definition:
+    The state of a dynamic system is a set of physical quantities, the specification of which (in the absence of external excitation) completely determines the evolution of the system.
+
+## Basics of Control Theory
+
+System and control theory provides a set of powerful frameworks that allow us to specify complex system behaviors with simple mathematical functions. One such feamewack that is particularly conducive for describing robotic systems is state-space representation.
+
+In the state space representation, the system has a:
+
+### State
+
+- $x(t) \in \mathbb{R}^{h}$ (often whiten compactly as $x$)
+
+- State describes the characteristics of interest about a system.
+
+- **Ex**: it could be the 2D positions speed, and orientation for a ground wheeled robot or the joint configuration for a manipulator.
+
+### Control/Action
+
+- $u(t) \in \mathbb{R}^{m}$ inputs that we can choose at each instance in time
+
+- **Ex**: Accelecation/deceleration and stewing for a ground robot or motor torques for a robot mainpulater.
+
+### Output/Observation
+
+- $y(t) \in \mathbb{R}^{L}$ outputs that are actually measurable (typically through some sensors) Ex: Speed through a speedometer, position through a GPS etc.
+
+- For now, we will assume that $y=x$, but it is often not the case, especially for modern, perception-driven robotic systems.
+
+### System Dynamics
+
+How the system state evolves over time.
+
+#### Continuous-time
+
+$$
+\begin{array}{cc}
+t \in \mathbb{R} \\
+\frac{d x(t)}{d t}=\dot{x}(t)=f(x(t), u(t))
+\end{array}
+$$
+More common in control theory and system theory.
+
+#### Discrete-time
+
+$$
+\begin{array}{cc}
+t \in \mathbb{Z} \\
+x_{t+1}=f\left(x_{t,} u_{t}\right)
+\end{array}
+$$
+More common in RL, robotics these days because of the ease of compute and optimization.
+
+It is also common practice to obtain a discrete apbeoscimation of continuous-time dynamics:
+
+$$
+x_{t+1}=x_{t}+\Delta T \cdot f(x, u) \leftarrow \text { Forward Euler discetization Accurate for small $\triangle T$.}
+$$
+
+### Example: Longitudinal quadrotor motion
+
+$$
+x=\left[\begin{array}{l}
+p_{z} \\
+v_{z}
+\end{array}\right]
+$$
+$$
+\dot{x}=\left[\begin{array}{l}
+\dot{p}_{z} \\
+\dot{v}_{z}
+\end{array}\right]=\left[\begin{array}{c}
+v_{z} \\
+k_T{u} + g + k_0 \\
+\end{array}\right].
+$$
+
+### Trajectary Notation
+
+Note that state, control are all functions of time. To make the time dependence explicit, we use the trajectory notation.
+
+![](/img/Robotics/trajectory.png)
+
+The trajectary over an entire time interval is also referred to as $x(\cdot)$. Similarly, control function oven the time interval is compactly written as $u(\cdot)$. 
+
+## Need for Safety Analysis
+
+Before he move any futther, let's beriefly discuss why do he even need to do a safety analysis. I mean if he know ous failure set, isn't that enough? For instance, in machine leaening, we often use a "grid-world" model of the would where the agent can move left, right, up, and down and we just need to avoid unsafe blocks. Why is the real-world more complicated?
+
+![](https://cdn.mathpix.com/cropped/2023_02_02_57f8623088739c370bc6g-05.jpg?height=572&width=1244&top_left_y=920&top_left_x=560)
+
+### Reason 1: Inevitable Collision
+
+![](/img/Robotics/inevitable_collision.png)
+
+There may exist states from which you will reach the failure set even if you apply your optimal safe contiol.
+
+For example, in this case, if the drone is moving at a vey high speed towards the ceiling then it can't avoid a collision with the ceiling despite the best effort. 
+
+In fact, if we look at the unsafe set in this case, it looks as follows:
+
+![](https://cdn.mathpix.com/cropped/2023_02_02_57f8623088739c370bc6g-06.jpg?height=695&width=734&top_left_y=400&top_left_x=378)
+
+The yellow region is unsafe because the drone is to close to the ceiling and moving at a high speed towards it.
+
+### Reason 2: Uncertainty
+
+Even though we represent the actual system with a mathematical model, a model will never be fully accurate and only partially represent the actual system.
+
+As George Box famously said, "All models are wrong (but some are useful)." As an example, consider our longitudinal quadrotor model.
+
+#### Our simple model
+
+$$
+\begin{aligned}
+& x=\left[\begin{array}{l}p_{z} \\v_{z}\end{array}\right] \\
+& \dot{p}_{z}=V_{z} \\
+& \dot{v}_{z}=g+k_{T} u+k_{0} \\
+& u: \text{Normalized thrust}
+\end{aligned}
+$$
+
+#### Advanced model
+
+$$
+\begin{aligned}
+& x=\left[\begin{array}{l}p_{z} \\v_{z} \\ \phi \\ w_x\end{array}\right] \\
+& \dot{p}_{z}=v_{z} \\
+& \dot{v}_{z}=g+k \cos{\phi} (F_1 + F_2) \\
+& \dot{\phi} = w \\
+& \dot{w}=k(F_1-F_2)
+\end{aligned}
+$$
+
+![](https://cdn.mathpix.com/cropped/2023_02_02_57f8623088739c370bc6g-06.jpg?height=176&width=220&top_left_y=2149&top_left_x=1154)
+
+The model is still not perfect though!
+
+This tension b/w the sophistication of a model and the tractability of analysis is fundamental in robotics and control.
+
+In other words, all models have a reality gap which we need to take into account ding the safety analysis if we hope to ensue safety of the actual system. In fact, accounting for this uncertainty is so fundamental that $g$ feel like this is often a key distinction between the capabilities of various safety analysis methods (as we will see later in this course). For now, let's dive deeper into various types of uncertainties that might be present in an autonomous system.
+
+## Uncertainty Representation
+
+Uncertainty in a dynamical system can be classified by its nature and its representation. For example, uncertainty can ve represented non-deterministically or probabilistically. Similarly, uncertainty can be structured or unstructured.
+
+### Pobabilistic
+
+- Uncertainty is modeled to have a distribution. The uncevainty belongs to a set, disteibution. $\quad$ i.e., $d_{t} \in \varepsilon_{t} \leftarrow$ some set in $\mathbb{R}^{m}$.
+
+- In discrete time, we have:
+
+  $$
+  \begin{aligned}
+  & x_{t+1}=f\left(x_{t}, u_{t,} d_{t}\right)
+  \end{aligned}
+  $$
+
+  $d_t$ represents uncertainty that follows some distribution. Thus, $x_{t+1}$ is a random variable where $x_{t+1} \sim P\left(x_{t+1} \mid x_{t_{s}} u_{t}\right)$.
+
+- Similarly, continuous time dynamics can be written with probabilistic dynamics.
+
+  $$
+  \dot{x}(t)=f\left(x(t), u(t), d(t)\right)
+  $$
+
+### Non-deterministic
+
+- The uncertainty belongs to a set, i.e. $d_t \in \epsilon_t \leftarrow$ some set in $\mathbb{R}^{m}$.
+
+- In discrete time, we have:
+
+  $$
+  \begin{aligned}
+  & x_{t+1}=f\left(x_{t}, u_{t}, d_{t}\right) \\
+  & x_{t+1} \in F(x_t,u_t) \subseteq \mathbb{R}^{n} \\
+  & F: \text{some set (not a point)}
+  \end{aligned}
+  $$
+
+  Thus, $x_{t+1}$ is a set of states and not a point in $\mathbb{R}^{n}$ anymore.
+
+- Similarly, in continuous time
+  $$
+  \dot{x} \in F(x, u) \subseteq \mathbb{R}^{n}
+  $$
+
+
+Pictorially:
+
+![](/img/Robotics/uncertainty.png)
+
+
+### Example 2
+
+Suppose we are modeling a walking human. It is often modeled as a 2D particle moving in a 2D plane:
+
+$$
+x=\left[\begin{array}{l}
+b_{x} \\
+b_{y}
+\end{array}\right] \quad \begin{aligned}
+& \dot{p}_{x}=v \cos \theta \\
+& \dot{p}_{y}=v \sin \theta
+\end{aligned}
+$$
+
+These are the dynamics of a particle moving at a constant speed $v$. However, there is uncertainty in the direction of human motion (i.e., theta is uncertain and represents disturbance). In this case, a probabilistic uncertain model will assign different probabilities with different directions. Consequently, the future states of the human will look as follows:
+
+![](https://cdn.mathpix.com/cropped/2023_02_02_57f8623088739c370bc6g-09.jpg?height=529&width=1181&top_left_y=1071&top_left_x=430)
+
+Whereas a non-deteministic uncertainty model will assume that $\theta$ belongs to some set and consequently will give a set of the possible future states of the human.
+
+![](https://cdn.mathpix.com/cropped/2023_02_02_57f8623088739c370bc6g-09.jpg?height=339&width=1360&top_left_y=1937&top_left_x=406)
+
+
+
+### Cons
+
+#### Probabilistic Uncertainty
+
+- Simple tractable distributions (e.g. Gaussian) often have unbounded support for the next state.
+
+- Distribution propagation through non-linear dynamics can be quite challenging.
+
+- Multimodality of $d_{t}$ or dynamics will lead to mixture models. 
+
+#### Non-deteministic uncetainty
+
+- Sets can quickly g2ow in size resulting in a conservative plans, making open-loop plans intractable $\longrightarrow$ will need closed-loop policies.
+
+- Set propagation can be quite challenging $\longrightarrow$ Level set methods .
+
+## Types of Uncertainty
+
+Uncertainty in a dynamical system can le classified as structued or unstructured uncertainty. In this section, we will study these two types of uncertainties.
+
+### Unstructured Uncertainty
+
+Uncertainty is not charactrized and modeled in an informed fashion. Typically, this type of uncertainty is used to account for unmodeled dynamics, high frequency modes in the system, etc. Unstructured uncertainty models are often simpler to set up but are often made conservative.
+
+A common choice is to model the uncertainty as an additive uncertainty, i.e.,
+
+$$
+\begin{aligned}
+& x_{t+1}=f_{D}\left(x_{t,} u_{t}\right)+d_{t} \\
+& \text { Qunsteuctued uncectainty }
+\end{aligned}
+$$
+
+As lefore, the unceatainty, $d_{t s}$ can le eepuesented probabilistically or non-deteministially.
+
+Peobabilistic
+
+Non-deteministic
+
+$d_{t}$ - Represented as a disteibution
+
+$x_{t+1}$ in this case is a random variable.
+
+![](https://cdn.mathpix.com/cropped/2023_02_02_57f8623088739c370bc6g-11.jpg?height=179&width=638&top_left_y=2199&top_left_x=219)
+
+$d_{t}$ - often replesented as a werst-cane inclusion
+
+$x_{t+1}$ in this care is a set and not a point.
+
+![](https://cdn.mathpix.com/cropped/2023_02_02_57f8623088739c370bc6g-11.jpg?height=163&width=532&top_left_y=2256&top_left_x=1124)
+
+![](https://cdn.mathpix.com/cropped/2023_02_02_57f8623088739c370bc6g-11.jpg?height=160&width=1111&top_left_y=1302&top_left_x=585)
+
+Gx1: In our quadeotor example, $\underline{e x}: d_{t} \in[-\alpha, \alpha]$ suppose that $d_{t} \sim N(0, \sigma)$
+![](https://cdn.mathpix.com/cropped/2023_02_02_57f8623088739c370bc6g-12.jpg?height=684&width=1520&top_left_y=333&top_left_x=400)
+
+* Structured (parametric) Uncertainty: Uncertainty enters dynamics in an winfoumed ms manes, often as uncertain parameters. Compared to unstructured uncertainty, in structured uncertainty he often know the "functional form" of uncertainty.
+
+For example, Consider our longitudinal quadrates motion example. we might not know howe exactly the motor torques are convected into upward theist of the quadeotor. In other words, he might have uncertainty in the $K_{T}$ parameter in the dynamics:
+
+$$
+\begin{aligned}
+& \dot{b}_{z}=v_{z} \\
+& \dot{v}_{2}=g+\underbrace{}_{\tau} u+k_{0}
+\end{aligned}
+$$
+
+* Let's summaize one discuussion with the help of uncectainty mateix.
+
+Peobabilistic
+
+Non-deteministic
+
+- Type of guarantees: krobabilistic Robust or thoust-case"
+
+- Optimize expected costr peyoimance worst case cost/beyoumance
+
+- Peobability bounds on failure failure imporsibility conditions
+
+Unsteuctued
+steuctued
+
+![](https://cdn.mathpix.com/cropped/2023_02_02_57f8623088739c370bc6g-13.jpg?height=675&width=1428&top_left_y=957&top_left_x=487)
+
+More peaked disteibution / narrower sets when the uncectainty is steuctued.
