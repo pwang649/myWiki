@@ -123,3 +123,7 @@ sidebar_position: 2
     ```
     Execution time = 0.322975 sec.
     ```
+
+4. Output Image:
+
+    ![](/img/code_img/Parallel/k-means2.png)

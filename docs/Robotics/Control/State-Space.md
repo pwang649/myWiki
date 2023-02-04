@@ -2,11 +2,10 @@
 id: Robotics - Control - State Space
 title: State-Space Representation
 sidebar_position: 1
-
 ---
 
-The notion of the state of a dynamic system is a fundamental notion in physics. The basic premise of newtonian dynamics is that the future evolution of a dynamic process is entirely determined by its present state, following this abstract definition:
-    The state of a dynamic system is a set of physical quantities, the specification of which (in the absence of external excitation) completely determines the evolution of the system.
+The notion of the state of a dynamic system is a fundamental notion in physics. The basic premise of Newtonian dynamics is that the future evolution of a dynamic process is entirely determined by its present state, following this abstract definition:
+  > The state of a dynamic system is a set of physical quantities, the specification of which (in the absence of external excitation) completely determines the evolution of the system.
 
 ## Basics of Control Theory
 
@@ -16,7 +15,7 @@ In the state space representation, the system has a:
 
 ### State
 
-- $x(t) \in \mathbb{R}^{n}$ (often whiten compactly as $x$)
+- $x(t) \in \mathbb{R}^{n}$ (often written compactly as $x$)
 
 - State describes the characteristics of interest about a system.
 
@@ -68,7 +67,7 @@ k_T{u} + g + k_0 \\
 \end{array}\right].
 $$
 
-### Trajectary Notation
+### Trajectory Notation
 
 Note that state, control are all functions of time. To make the time dependence explicit, we use the trajectory notation.
 
@@ -100,7 +99,11 @@ The yellow region is unsafe because the drone is to close to the ceiling and mov
 
 Even though we represent the actual system with a mathematical model, a model will never be fully accurate and only partially represent the actual system.
 
-As George Box famously said, "All models are wrong (but some are useful)". As an example, consider our longitudinal quadrotor model.
+> All models are wrong (but some are useful).
+>
+> — George Box
+
+As an example, consider our longitudinal quadrotor model.
 
 #### Our simple model
 
@@ -137,7 +140,7 @@ In other words, all models have a reality gap which we need to take into account
 
 Uncertainty in a dynamical system can be classified by its nature and its representation. For example, uncertainty can ve represented non-deterministically or probabilistically. Similarly, uncertainty can be structured or unstructured.
 
-### Pobabilistic
+### Probabilistic
 
 - Uncertainty is modeled to have a distribution.
 

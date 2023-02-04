@@ -18,7 +18,7 @@ const config = {
   organizationName: 'pwang649', // Usually your GitHub org/user name.
   projectName: 'myWiki', // Usually your repo name.
   trailingSlash: false,
-
+  //themes: ['@docusaurus/theme-search-algolia'],
   presets: [
     [
       'classic',
