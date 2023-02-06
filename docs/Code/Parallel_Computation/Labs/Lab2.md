@@ -100,7 +100,9 @@ sidebar_position: 2
 
   ![](/img/code_img/Parallel/parallel_matrix_result2.png)
 
-- From this plot, we see all the results perform better.
+#### Analysis
+
+From this plot, we see all the results perform better using the shared output variables method. For using threads 4, 16, 64, the execution time shrinks to one third of method one's time. For threads = 256, the time taken is very similar to (even a bit higher) that of threads = 64. This is perhaps reaching the best performance we can achieve and increasing # of threads after 64 will not enhance the speed.
 
 ## Problem 2
 
@@ -127,3 +129,7 @@ sidebar_position: 2
 4. Output Image:
 
     ![](/img/code_img/Parallel/k-means2.png)
+
+#### Analysis
+
+Both p = 4 and p = 8 are significantly faster than p = 1, (about 1.5 times faster). The speedup factor isn't proportional to the number of threads because we are only parallelizing one step of the program, and there are other steps in the algorithm that we are not parallizing, resulting in some overheads. Therefore, we shouldn't anticipate a linear speedup.

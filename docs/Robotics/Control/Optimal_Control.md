@@ -29,7 +29,7 @@ $$
 & \quad \text { other constraints }\left\{\begin{array}{r}
 \text { Control bounds } \\
 \text { Obstacles } \\
-\text { State constraints }  nj 
+\text { State constraints }
 \end{array}\right.
 \end{aligned}
 $$
