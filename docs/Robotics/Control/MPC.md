@@ -42,7 +42,7 @@ $$
 Your brain is really good at solving this optimal control problem and you came up with the following control commands to follow the red trajectory:
 
 1. 4 step forward
-2. 5 step light
+2. 5 step right
 3. 3 step left
 4. 10 step right ... so on
 

@@ -77,7 +77,7 @@ The trajectory over an entire time interval is also referred to as $x(\cdot)$. S
 
 ## Need for Safety Analysis
 
-Before he move any further, let's briefly discuss why do he even need to do a safety analysis. I mean if we know our failure set, isn't that enough? For instance, in machine learning, we often use a "grid-world" model of the would where the agent can move left, right, up, and down and we just need to avoid unsafe blocks. Why is the real-world more complicated?
+Before we move any further, let's briefly discuss why do he even need to do a safety analysis. I mean if we know our failure set, isn't that enough? For instance, in machine learning, we often use a "grid-world" model of the would where the agent can move left, right, up, and down and we just need to avoid unsafe blocks. Why is the real-world more complicated?
 
 ![](https://cdn.mathpix.com/cropped/2023_02_02_57f8623088739c370bc6g-05.jpg?height=572&width=1244&top_left_y=920&top_left_x=560)
 
@@ -134,7 +134,7 @@ The model is still not perfect though!
 
 This tension b/w the sophistication of a model and the tractability of analysis is fundamental in robotics and control.
 
-In other words, all models have a reality gap which we need to take into account ding the safety analysis if we hope to ensue safety of the actual system. In fact, accounting for this uncertainty is so fundamental that $g$ feel like this is often a key distinction between the capabilities of various safety analysis methods (as we will see later in this course). For now, let's dive deeper into various types of uncertainties that might be present in an autonomous system.
+In other words, all models have a reality gap which we need to take into account during the safety analysis if we hope to ensure safety of the actual system. In fact, accounting for this uncertainty is so fundamental that I feel like this is often a key distinction between the capabilities of various safety analysis methods (as we will see later in this course). For now, let's dive deeper into various types of uncertainties that might be present in an autonomous system.
 
 ## Uncertainty Representation
 
@@ -162,7 +162,7 @@ Uncertainty in a dynamical system can be classified by its nature and its repres
 
 ### Non-deterministic
 
-- The uncertainty belongs to a set, i.e. $d_{t} \in \varepsilon_{t} \leftarrow$ some set in $\mathbb{R}^{m}$.
+- The uncertainty belongs to a set, i.e. $d_{t} \in \varepsilon_{t} \leftarrow$ some set in $\mathbb{R}^{n}$.
 
 - In discrete time, we have:
 
@@ -205,7 +205,7 @@ These are the dynamics of a particle moving at a constant speed $v$. However, th
 
 ![](https://cdn.mathpix.com/cropped/2023_02_02_57f8623088739c370bc6g-09.jpg?height=529&width=1181&top_left_y=1071&top_left_x=430)
 
-Whereas a non-deteministic uncertainty model will assume that $\theta$ belongs to some set and consequently will give a set of the possible future states of the human.
+Whereas a non-deterministic uncertainty model will assume that $\theta$ belongs to some set and consequently will give a set of the possible future states of the human.
 
 ![](https://cdn.mathpix.com/cropped/2023_02_02_57f8623088739c370bc6g-09.jpg?height=339&width=1360&top_left_y=1937&top_left_x=406)
 
