@@ -15,7 +15,7 @@ sidebar_position: 2
 
 ### The Local Output Variables Method
 
-- This method of parallelizing matrix multiplication is analogous to the block-based method. It partitions the output matrix into blocks based on the number of threads user wants, and then assign each block to a thread for independent computation.
+- This method of parallelizing matrix multiplication is analogous to the block-based method. It partitions the output matrix into blocks based on the number of threads the user wants and then assigns each block to a thread for independent computation.
 
 - $p \times p$ threads, each thread $(i,j)$ “owning” the computation of a $C(i,j)$ block, is responsible for calculating its matrix product of corresponding tile from $A$ and $B$ and write the results to $C(i,j)$.
 
@@ -61,7 +61,7 @@ sidebar_position: 2
 
 ### The Shared Output Variables Method
 
-- $p \times p$ threads, each thread $(i,j)$ “owning” the computation of an $A(i,j)$ block, is responsible for calculating its matrix product of corresponding tile from $B$ and write the (intermediate) results to $C(i,j)$.
+- $p \times p$ threads, each thread $(i,j)$ “owning” the computation of an $A(i,j)$ block, is responsible for calculating its matrix product of corresponding tile from $B$ and writing the (intermediate) results to $C(i,j)$.
 
 #### Results
 
@@ -102,7 +102,7 @@ sidebar_position: 2
 
 #### Analysis
 
-From this plot, we see all the results perform better using the shared output variables method. For using threads 4, 16, 64, the execution time shrinks to one third of method one's time. For threads = 256, the time taken is very similar to (even a bit higher) that of threads = 64. This is perhaps reaching the best performance we can achieve and increasing # of threads after 64 will not enhance the speed.
+From this plot, we see all the results perform better using the shared output variables method. For using threads 4, 16, and 64, the execution time shrinks to one-third of method one's time. For threads = 256, the time taken is very similar to (even a bit higher) that of threads = 64. This is perhaps reaching the best performance we can achieve and increasing # of threads after 64 will not enhance the speed.
 
 ## Problem 2
 
@@ -132,4 +132,4 @@ From this plot, we see all the results perform better using the shared output va
 
 #### Analysis
 
-Both p = 4 and p = 8 are significantly faster than p = 1, (about 1.5 times faster). The speedup factor isn't proportional to the number of threads because we are only parallelizing one step of the program, and there are other steps in the algorithm that we are not parallizing, resulting in some overheads. Therefore, we shouldn't anticipate a linear speedup.
+Both p = 4 and p = 8 are significantly faster than p = 1, (about 1.5 times faster). The speedup factor isn't proportional to the number of threads because we are only parallelizing one step of the program, and there are other steps in the algorithm that we are not parallelizing, resulting in some overheads. Therefore, we shouldn't anticipate a linear speedup.

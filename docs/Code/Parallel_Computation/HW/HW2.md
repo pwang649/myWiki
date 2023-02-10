@@ -18,9 +18,9 @@ Explain the following terms:
 
 #### 2.1
 
-First of all, the exection time without parallization is $2^{k+1}$.
+First of all, the execution time without parallelization is $2^{k+1}$.
 
-We have $2^k$ multiplications in total, and it's fair to divide them evenly among $w$ threads. Each thread is in charge of multiplying every element assigned and if more than one elements are assigned, the thread also need to sum up the results from multiplications. After all, each thread produces a value that is to be summed up to get the final result.
+We have $2^k$ multiplications in total, and it's fair to divide them evenly among $w$ threads. Each thread is in charge of multiplying every element assigned and if more than one element is assigned, the thread also needs to sum up the results from multiplications. After all, each thread produces a value that is to be summed up to get the final result.
 
 In each thread, there will be $2^k \over w$ elements assigned meaning there will be $2^k \over w$ multiplications and $\frac{2^k}{w} - 1$ additions (Simplified to $2^k \over w$). Overall, it does $2^{k+1} \over w$ computations.
 

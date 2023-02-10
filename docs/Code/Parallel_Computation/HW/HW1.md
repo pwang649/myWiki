@@ -36,7 +36,7 @@ Explain the following terms:
 
 ### Question 3
 
-Assume each word fetched from the cache take 1 momery cycle.
+Assume each word fetched from the cache takes 1 memory cycle.
 
 - Fetch 4 words of matrix A in 1 memory cycle $\rightarrow$ 100 ns
 - Fetch 4 words of the vector in from cache 1 memory cycle $\rightarrow$ 4 ns
@@ -59,7 +59,7 @@ If can fetch any position:
 
 ### Question 5
 
-Assume cache read one word per memory cycle. And each word read from DRAM takes 200ns.
+Assume the cache reads one word per memory cycle. And each word read from DRAM takes 200ns.
 
 The total execution time will be $n / k * w * 200$ ns $+ w * (n − n/k) * 1$ ns $+ n$ ns, where $n/k$ is the number of $w$ words read from DRAM, $n − n/k$ is the number of $w$ words read from the cache.
 
@@ -73,4 +73,4 @@ The total execution time will be $n / k * w * 200$ ns $+ w * (n − n/k) * 1$ ns
 6. a[5] hit, a[6] miss, load a[6] and a[7]
 7. a[6] hit, a[7] hit
 
-Besides the first read operation, the two consecutive operations after have 3 hits and 1 miss. We can approximate the hit ratio as 75%.
+Besides the first read operation, the two consecutive operations after having 3 hits and 1 miss. We can approximate the hit ratio as 75%.

@@ -31,7 +31,7 @@ This algorithm avoids race condition and takes a total of **$\boldsymbol{n}$ cyc
 
 ### Question 3
 
-The output will most likely be different because the it uses **dynamic** scheduling which will cause the inner for loop not follow the original order. And the operation depends on the prior computation. Therefore, the order does matter in this matter, and a different order will make the result different.
+The output will most likely be different because it uses **dynamic** scheduling which will cause the inner for loop not follow the original order. And the operation depends on the prior computation. Therefore, the order does matter in this matter, and a different order will make the result different.
 
 ### Question 4
 
@@ -45,7 +45,7 @@ The output will most likely be different because the it uses **dynamic** schedul
 
 ### Question 5
 
-The diamter of a network is the maximum edges between two nodes. In mesh tree case, the maximum occurs between two diagnal corners, which means we have to traverse through the entire binary tree twice (row and column). It takes $\sqrt{p}$ steps to traverse from the two farthest nodes in one binary tree, thus making the overall steps $\boldsymbol{2 \cdot \sqrt{p}}$, which is diameter of the $\sqrt{p} \times \sqrt{p}$ mesh tree.
+The diameter of a network is the maximum edges between two nodes. In the mesh tree case, the maximum occurs between two diagonal corners, which means we have to traverse through the entire binary tree twice (row and column). It takes $\sqrt{p}$ steps to traverse from the two farthest nodes in one binary tree, thus making the overall steps $\boldsymbol{2 \cdot \sqrt{p}}$, which is the diameter of the $\sqrt{p} \times \sqrt{p}$ mesh tree.
 
 ### Question 6
 
@@ -81,4 +81,4 @@ Overall, we have $3 \times \sqrt{n}$ of such crossbar switches, making $3\times 
 
 **Total delay:**
 
-Total delay is equivalent to the total number of stages in the network. Therefore, it has $3 \times 2 \times (\log_2{\sqrt{n}} - 1) = 6 \times (\log_2{\sqrt{n}} - 1)$ units of delay. (Times 3 due to there're 3 stages in the CLOS network)
+Total delay is equivalent to the total number of stages in the network. Therefore, it has $3 \times 2 \times (\log_2{\sqrt{n}} - 1) = 6 \times (\log_2{\sqrt{n}} - 1)$ units of delay. (Times 3 due to there being 3 stages in the CLOS network)

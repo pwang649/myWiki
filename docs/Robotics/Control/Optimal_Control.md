@@ -6,17 +6,17 @@ sidebar_position: 2
 
 ## Optimal Control Problem
 
-Optimal control problem is the problem of optimal decision making which arises naturally in a variety of autonomous systems. In fact, as we will see later in this course, even the safety problem can be casted as an optimal control problem. Even beyond safety, optimal decision making is a fundamental component of what makes an autonomous system autonomous. This section will be dedicated to understanding what an optimal control problem is and how to solve it.
+The optimal control problem is the problem of optimal decision making which arises naturally in a variety of autonomous systems. In fact, as we will see later in this course, even the safety problem can be cast as an optimal control problem. Even beyond safety, optimal decision-making is a fundamental component of what makes an autonomous system autonomous. This section will be dedicated to understanding what an optimal control problem is and how to solve it.
 
-#### Examples of optimal control problem:
+#### Examples of optimal control problems:
 
-- A robot need to navigate from point $A$ to point $B$ as quickly as possible without colliding with any obstacles.
+- A robot needs to navigate from point $A$ to point $B$ as quickly as possible without colliding with any obstacles.
 
   ![](https://cdn.mathpix.com/cropped/2023_02_02_4a8ceb357f8f06ad367cg-02.jpg?height=282&width=831&top_left_y=1192&top_left_x=434)
 
 - Finding minimum energy walking gait for a legged cobot.
 
-- Cloning an acrobatic maneuver on an autonomons helicopter.
+- Cloning an acrobatic maneuver on an autonomous helicopter.
 
 :::info Mathematically Speaking
 
@@ -42,13 +42,13 @@ To understand this, let's go back to the problem of navigating from point $A$ to
 
 - **Cost function** - Distance to the point $B$ and the fuel spent.
 
-- **System dynamics** - Physical Constraints that define the robot physics.
+- **System dynamics** - Physical Constraints that define robot physics.
 
-- **Constraints** - Stating position of the car. Power bounds / control bounds.
+- **Constraints** - Stating the position of the car. Power bounds/control bounds.
 
 ![](https://cdn.mathpix.com/cropped/2023_02_02_4a8ceb357f8f06ad367cg-03.jpg?height=840&width=1488&top_left_y=944&top_left_x=305)
 
-This particular problem above is an instance of trajectory planning problem in robotics and has several variants where additional constraints (e.g. avoiding obstacles) or alternative cost function (e.g. minimum time, minimum jerk, etc.) can be used. 
+This particular problem above is an instance of a trajectory planning problem in robotics and has several variants where additional constraints (e.g. avoiding obstacles) or alternative cost functions (e.g. minimum time, minimum jerk, etc.) can be used. 
 
 ### Definition
 
@@ -68,15 +68,15 @@ $$
 
 - $l\left(x_{T}\right)$ is called the terminal cost (since it only depends on the terminal state). What is the running and terminal cost in the example above?
 
-- There are dynamics constraints. Additionally, there might be control bounds on the system.
+- There are dynamic constraints. Additionally, there might be control bounds on the system.
 
-- Sometimes optimal control problems are posed in terms of rewards lather than cost, i.e.,
+- Sometimes optimal control problems are posed in terms of rewards rather than cost, i.e.,
 
   $$
   \max _{u_{t: T}} R\left(x_{t}, u_{t: T}, t\right)=\sum \cdots
   $$
 
-  Now, the control is chosen to **maximize** the reward. This formulation is particularly popular in Reinforcement Learning. However, the two formulations are equivalent because the negative of the cost function can always be treated as reward.
+  Now, the control is chosen to **maximize** the reward. This formulation is particularly popular in Reinforcement Learning. However, the two formulations are equivalent because the negative of the cost function can always be treated as a reward.
   
 :::note
 The same optimal control problem can also be posed in continuous time.
@@ -89,12 +89,12 @@ $$
 \end{aligned}
 $$
 
-The key question here is how to solve this optimal control problem? 
+The key question here is how to solve this optimal control problem.
 :::
 
 ### Methods to Solve Optimal Control Problems
 
-Given the popularity and ubiquity of optimal control problems in robotics, a variety of methods have leen developed to solve such problems:
+Given the popularity and ubiquity of optimal control problems in robotics, a variety of methods have been developed to solve such problems:
 
 1. **Calculus of Variations** $\rightarrow$ Treat it as an optimization problem
 
@@ -106,7 +106,7 @@ Given the popularity and ubiquity of optimal control problems in robotics, a var
 
 These different methods make trade-offs in terms of what they need to know about the robotic system and the optimality with which they solve the optimal control problem.
 
-Let's briefly chat about these methods. Finst of all, recall that the goal of an optimal control problem is to find the optimal control input that minimizes a performance criterion. Mathematically, we are interested in finding the optimal control sequence
+Let's briefly chat about these methods. First of all, recall that the goal of an optimal control problem is to find the optimal control input that minimizes a performance criterion. Mathematically, we are interested in finding the optimal control sequence
 
 $$
 \begin{aligned}
@@ -131,7 +131,7 @@ The calculus of variations is a field of mathematics concerned with minimizing (
 
 In calculus of variations, the optimal control problem is first converted into an unconstrained optimization problem with the help of Lagrange multipliers. Next, we find the first-order necessary conditions for the optimal solution of this unconstrained optimization problem. These first-order optimality conditions can be used to find a "locally optimal" solution to the optimal control problem.
 
-Mathematically, the beocens is a bit involved but 9 hare attempted to beovide a snapshot, alleit handwavey, of what it entails.
+Mathematically, the problem is a bit involved but I have attempted to provide a snapshot, albeit handwavey, of what it entails.
 
 The unconstrained optimization problem has the following objective (ignoring control bounds for brevity):
 

@@ -138,7 +138,7 @@ In other words, all models have a reality gap which we need to take into account
 
 ## Uncertainty Representation
 
-Uncertainty in a dynamical system can be classified by its nature and its representation. For example, uncertainty can be represented non-deterministically or probabilistically. Similarly, uncertainty can be structured or unstructured.
+Uncertainty in a dynamic system can be classified by its nature and its representation. For example, uncertainty can be represented non-deterministically or probabilistically. Similarly, uncertainty can be structured or unstructured.
 
 ### Probabilistic
 
@@ -221,11 +221,11 @@ Whereas a non-deterministic uncertainty model will assume that $\theta$ belongs 
 
 ## Types of Uncertainty
 
-Uncertainty in a dynamical system can le classified as structued or unstructured uncertainty. In this section, we will study these two types of uncertainties.
+Uncertainty in a dynamic system can be classified as structured or unstructured uncertainty. In this section, we will study these two types of uncertainties.
 
 ### Unstructured Uncertainty
 
-Uncertainty is not characterized and modeled in an informed fashion. Typically, this type of uncertainty is used to account for unmodeled dynamics, high frequency modes in the system, etc. Unstructured uncertainty models are often simpler to set up but are often made conservative.
+Uncertainty is not characterized and modeled in an informed fashion. Typically, this type of uncertainty is used to account for unmodeled dynamics, high-frequency modes in the system, etc. Unstructured uncertainty models are often simpler to set up but are often made conservative.
 
 A common choice is to model the uncertainty as an additive uncertainty, i.e.,
 
@@ -261,7 +261,7 @@ $x_{t+1}$ in this care is a set and not a point.
 
 ### Structured (Parametric) Uncertainty
 
-Uncertainty enters dynamics in an "informed" manner, often as uncertain parameters. Compared to unstructured uncertainty, in structured uncertainty we often know the "functional form" of uncertainty.
+Uncertainty enters dynamics in an "informed" manner, often as uncertain parameters. Compared to unstructured uncertainty, in structured uncertainty, we often know the "functional form" of uncertainty.
 
 For example, consider our longitudinal quadrotor motion example. We might not know how exactly the motor torques are converted into upward thrust of the quadrotor. In other words, we might have uncertainty in the $k_{T}$ parameter in the dynamics:
 
