@@ -138,7 +138,7 @@ In other words, all models have a reality gap which we need to take into account
 
 ## Uncertainty Representation
 
-Uncertainty in a dynamical system can be classified by its nature and its representation. For example, uncertainty can ve represented non-deterministically or probabilistically. Similarly, uncertainty can be structured or unstructured.
+Uncertainty in a dynamical system can be classified by its nature and its representation. For example, uncertainty can be represented non-deterministically or probabilistically. Similarly, uncertainty can be structured or unstructured.
 
 ### Probabilistic
 
