@@ -8,15 +8,15 @@ sidebar_position: 3
 
 ![](/img/RL/mdp.png)
 
-- At each timestep the agent implements a mapping from states to probabilities of selecting a possible action. The mapping is called the agents *policy*, denoted $\pi$, where $\pi (a|s)$ is the probability of the agent selecting actions a in states.
+- At each time step the agent implements a mapping from states to probabilities of selecting a possible action. The mapping is called the agent's *policy*, denoted $\pi$, where $\pi (a|s)$ is the probability of the agent selecting action $a$ in state $s$.
 
 - In general, actions can be any decision we want to learn how to make, and states can be any interpretation of the world that might inform those actions.
 
-- The boundary between agent and environment is much closer to the agent than is first intuitive. E.g. if we are controlling a robot, the voltages or stresses in its structure are part of the environment, not the agent. Indeed reward signals are part of the environment, despite very possibly being produced by the agent e.g. dopamine.
+- The boundary between the agent and environment is much closer to the agent than is first intuitive. E.g. if we are controlling a robot, the voltages or stresses in its structure are part of the environment, not the agent. Indeed reward signals are part of the environment, despite very possibly being produced by the agent e.g. dopamine.
 
 ### Markov Property 
 
-**Essence**: The future is independent of the past given the present.  
+> The future is independent of the past given the present.  
 
 - In contrast to normal causal processes, we would think that our expectation of the state and reward at the next timestep is a function of all previous states, rewards and actions, as follows:
 $$
@@ -24,7 +24,7 @@ $$
 Pr\{R_{t+1}=r, S_{t+1}=s'|S_0, A_0, R-1, \cdots, S_{t-1}, A_{t-1}, R_t, S_t, A_t\}
 \end{gather*}
 $$
-- If the state is Markov, however, then the state and reward right now completely characterizes the history, and the above can be reduced to:
+- If the state is Markov, however, then the state and reward right now completely characterize the history, and the above can be reduced to
 $$
 \begin{gather*}
 p(s', r|s, a) = Pr\{R_{t+1} = r, S_{t+1} = s'|S_t, A_t\}
@@ -57,11 +57,11 @@ $$
 
 #### Reward Hypothesis
 
-- *That all of what we mean by goals and purposes can be well thought of as the maximization of the expected value of the cumulative sum of a received scalar signal (called reward).*
+> That all of what we mean by goals and purposes can be well thought of as the maximization of the expected value of the cumulative sum of a received scalar signal (called reward).
 
 #### Return (Goal)
 
-- In general, we seek to maximize the expected return, where the return, denoted Gt, is defined as some specific function of the reward sequence. In the simplest case the return is the sum of the rewards:
+- In general, we seek to maximize the expected return, where the return, denoted Gt, is defined as some specific function of the reward sequence. In the simplest case, the return is the sum of the rewards:
     $$
     \begin{gather*}
     G_t \doteq R_{t+1}+R_{t+2}+R_{t+3}+\cdots +R_T,
@@ -69,11 +69,11 @@ $$
     $$
     where T is a final time step. 
 
-- This approach makes sense in applications that finish, or are periodic. That is, the agentenvironment interaction breaks into episodes.
-- We call these systems episodic tasks. e.g playing a board game, trips through a maze etc.
+- This approach makes sense in applications that finish or are periodic. That is, the agent environment interaction breaks into episodes.
+- We call these systems episodic tasks. e.g playing a board game and trips through a maze etc.
 - Notation for state space in an episodic task varies from the conventional case $(s \in S)$ to $(s \in S^+)$
 - The opposite, continuous applications are called continuing tasks.
-For these tasks we use discounted returns to avoid a sum of returns going to infinity.
+For these tasks, we use discounted returns to avoid a sum of returns going to infinity.
 $$
 \begin{gather*}
 G_t \doteq R_{t+1}+\gamma R_{t+2}+ \gamma^2R_{t+3}+\cdots = \sum_{k=0}^\infty \gamma^kR_{t+k+1}, 0 \le \gamma \le 1
@@ -131,7 +131,7 @@ $$
 
 #### Action Value Function
 
-Similarly, we define the value of taking action a in state $s$ under a policy $\pi$, denoted $q_\pi(s,a)$, as the expected return starting from $s$, taking the action $a$, and thereafter following policy $\pi$:
+Similarly, we define the value of taking action $a$ in state $s$ under a policy $\pi$, denoted $q_\pi(s,a)$, as the expected return starting from $s$, taking the action $a$, and thereafter following policy $\pi$:
 $$
 \begin{gather*}
 q_\pi(s, a) \doteq \mathbb{E}_\pi[G_t | S_t = s, A_t = a] = \mathbb{E}_\pi[\sum_{k=0}^\infty \gamma^kR_{t+k+1} | S_t = s, A_t = a].
@@ -141,7 +141,7 @@ We call $q_\pi$ the *action-value function for policy* \pi.
 
 ### Optimal Policies and Optimal Value Functions
 
-The main objective of an RL algorithm is the best behaviour an agent can take to maximize the goal.
+The main objective of an RL algorithm is the best behavior an agent can take to maximize the goal.
 
 - The optimal state-value function $v_{*}(s)$ is the maximum value function over all policies
 $$
@@ -156,7 +156,7 @@ q_{*}(s,a) \doteq \max_{\pi} \ q_{\pi}(s,a), \forall s\in S, a \in A(s).
 \end{gather*}
 $$
 
-- For the state–action pair $(s,a)$, this function gives the expected return for taking action a in state s and thereafter following an optimal policy. Thus, we can write $q_*$ in terms of $v_*$ as follows:
+- For the state–action pair $(s,a)$, this function gives the expected return for taking action $a$ in state $s$ and thereafter following an optimal policy. Thus, we can write $q_*$ in terms of $v_*$ as follows:
 
 $$
 \begin{gather*}

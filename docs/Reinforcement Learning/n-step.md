@@ -50,7 +50,7 @@ while the values of all other states remain unchanged: $Q_{t+n}(s, a)=Q_{t+n-1}(
 
 ### n-step Off-policy Learning
 
-In $n$-step methods, returns are constructed over $n$ steps, so we are interested in the relative probability of just those $n$ actions. For example, to make a simple off-policy version of $n$-step TD, the update for time $t$ (actually made at time $t+n$ ) can simply be weighted by $\rho_{t: t+n-1}$ :
+In $n$-step methods, returns are constructed over $n$ steps, so we are interested in the relative probability of just those $n$ actions. For example, to make a simple off-policy version of $n$-step TD, the update for time $t$ (actually made at time $t+n$ ) can simply be weighted by $\rho_{t: t+n-1}$:
 $$
 V_{t+n}\left(S_t\right) \doteq V_{t+n-1}\left(S_t\right)+\alpha \rho_{t: t+n-1}\left[G_{t: t+n}-V_{t+n-1}\left(S_t\right)\right], \quad 0 \leq t<T,
 $$
@@ -65,7 +65,7 @@ $$
 
 ### Off-policy Learning Without Importance Sampling: The n-step Tree Backup Algorithm
 
-In this tree backup update, the target now includes all rewards plus the estimated values of the dangling action nodes hanging off the sides, at all levels. It is an update from the entire tree of estimated action values. For each node in the tree backup diagram, we the estimated values of the non-selected actions are weighted by their probability of being selected under our policy $\pi\left(A_t \mid S_t\right)$. The value of the selected action does not contribute at all at this stage, instead its probability of being selected weights the instantaneous reward of the next state and each of the non-selected actions at the next state, which too are weighted by their probabilities of occurring as described previously. Formally, the one-step return is as follows:
+In this tree backup update, the target now includes all rewards plus the estimated values of the dangling action nodes hanging off the sides, at all levels. It is an update from the entire tree of estimated action values. For each node in the tree backup diagram, the estimated values of the non-selected actions are weighted by their probability of being selected under our policy $\pi\left(A_t \mid S_t\right)$. The value of the selected action does not contribute at all at this stage, instead its probability of being selected weights the instantaneous reward of the next state and each of the non-selected actions at the next state, which too are weighted by their probabilities of occurring as described previously. Formally, the one-step return is as follows:
 $$
 G_{t: t+1} \doteq R_{t+1}+\gamma \sum_a \pi\left(a \mid S_{t+1}\right) Q_t\left(S_{t+1}, a\right)
 $$

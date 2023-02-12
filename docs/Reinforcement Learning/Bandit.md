@@ -72,11 +72,11 @@ $$
 
 ### My Code
 
-Comming soon
+Coming soon
 
 ### Tracking a Nonstationary Problem
 
-As noted earlier, we often encounter reinforcement learning problems that are e↵ectively nonstationary. In such cases it makes sense to give more weight to recent rewards than to long-past rewards.
+As noted earlier, we often encounter reinforcement learning problems that are effectively nonstationary. In such cases, it makes sense to give more weight to recent rewards than to long-past rewards.
 $$
 \begin{align*}
 Q_{n+1} & \doteq Q_n + \alpha [R_n-Q_n], \alpha \in (0, 1] \\
@@ -87,20 +87,20 @@ Q_{n+1} & \doteq Q_n + \alpha [R_n-Q_n], \alpha \in (0, 1] \\
 & = (1-\alpha)^nQ_1+\sum_{i=1}^n \alpha(1-\alpha)^{n-i}R_i.
 \end{align*}
 $$
-The first term tells us that the contribution  $Q_1$ decreases exponentially with time. The second term tells us the rewards further back in time contribute exponentially less to the sum. Taken all together, we see that the influence of our initialization of $Q$ goes to zero with more and more data. The most recent rewards contribute most to our current estimate.
+The first term tells us that the contribution  $Q_1$ decreases exponentially with time. The second term tells us the rewards further back in time contribute exponentially less to the sum. Taken together, we see that the influence of our initialization of $Q$ goes to zero with more and more data. The most recent rewards contribute most to our current estimate.
 
 ### Optimistic Initial Values
 
-Previously the initial estimated values were assumed to be 0, which is not necessarily optimistic. If we set it to a higher value, by the property of greedy action, the intial reward may not be as big as the initial estimated value. Therefore, it will keep exploring at an early stage.  
+Previously the initial estimated values were assumed to be 0, which is not necessarily optimistic. If we set it to a higher value, by the property of greedy action, the initial reward may not be as big as the initial estimated value. Therefore, it will keep exploring at an early stage.  
 But, this method is not well-suited for non-stationary problems, and we may not know what the optimistic initial value should be.
 
 ### Upper-Confidence-Bound (UCB) Action Selection
 
-Exploration is needed because there is always uncertainty about the accuracy of the action-value estimates. It would be better to select among the non-greedy actions according to their potential for actually being optimal, taking into account both how close their estimates are to being maximal and the uncertainties in those estimates. One e↵ective way of doing this is to select actions according to
+Exploration is needed because there is always uncertainty about the accuracy of the action-value estimates. It would be better to select among the non-greedy actions according to their potential for actually being optimal, taking into account both how close their estimates are to being maximal and the uncertainties in those estimates. One effective way of doing this is to select actions according to
 $$
 \begin{gather*}
 A_t \doteq \argmax_a{\biggr [Q_t(a)+c\sqrt{\ln t \over N_t(a)}\biggr ]},
 \end{gather*}
 $$
-The idea is that the square-root term is a measure of the uncertainty or variance in the estimate of $a$’s value. The quantity being max’ed over is thus a sort of upper bound on the possible true value of action $a$, with $c$ determining the confidence level. Each time $a$ is selected the uncertainty is presumably reduced: $N_t(a)$ increments, and, as it appears in the denominator, the uncertainty term decreases. On the other hand, each time an action other than a is selected, $t$ increases but
+The idea is that the square-root term is a measure of the uncertainty or variance in the estimate of $a$’s value. The quantity being maxed over is thus a sort of upper bound on the possible true value of action $a$, with $c$ determining the confidence level. Each time $a$ is selected the uncertainty is presumably reduced: $N_t(a)$ increments, and, as it appears in the denominator, the uncertainty term decreases. On the other hand, each time an action other than a is selected, $t$ increases but
 $N_t(a)$ does not; because t appears in the numerator, the uncertainty estimate increases. The use of the natural logarithm means that the increases get smaller over time, but are unbounded; all actions will eventually be selected, but actions with lower value estimates, or that have already been selected frequently, will be selected with decreasing frequency over time.

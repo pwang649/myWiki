@@ -7,25 +7,25 @@ sidebar_position: 5
 ### What's Monte Carlo?
 
 The term **Monte Carlo** is often used more broadly for any **estimation method** that relies on repeated **random sampling**. In RL Monte Carlo methods allow us to **estimate values** directly from experience, from sequences of states, actions and rewards. Learning from experience is striking because the agent can accurately **estimate a value function without prior knowledge of the environment dynamics**.  
-To use a pure Dynamic Programming approach, the agent needs to know the environments **transition probabilities**.
-- In some problems we do not know the environment transition probabilities
+To use a pure Dynamic Programming approach, the agent needs to know the environment's **transition probabilities**.
+- In some problems, we do not know the environment's transition probabilities
 - The computation can be error-prone and tedious
-For example, imagine rolling a dice. With the help of Monte Carlo Methods, we can estimate values by
+For example, imagine rolling a die. With the help of Monte Carlo Methods, we can estimate values by
 averaging over a large number of random samples.
 
 ### Monte Carlo Prediction
 
-In particular, suppose we wish to estimate $v_\pi(s)$, the value of a state $s$ under policy $\pi$, given a set of episodes obtained by following $\pi$ and passing through $s$. Each occurrence of state $s$ in an episode is called a visit to $s$. Of course, $s$ may be visited multiple times in the same episode; let us call the first time it is visited in an episode the first visit to $s$. The first-visit $M C$ method estimates $v_\pi(s)$ as the average of the returns following first visits to $s$, whereas the every-visit $M C$ method averages the returns following all visits to $s$. We focus on _first-visit MC method_ here.
+In particular, suppose we wish to estimate $v_\pi(s)$, the value of a state $s$ under policy $\pi$, given a set of episodes obtained by following $\pi$ and passing through $s$. Each occurrence of state $s$ in an episode is called a visit to $s$. Of course, $s$ may be visited multiple times in the same episode; let us call the first time it is visited in an episode the first visit to $s$. The first-visit $M C$ method estimates $v_\pi(s)$ as the average of the returns following first visits to $s$, whereas the every-visit $M C$ method averages the returns following all visits to $s$. We focus on the _first-visit MC method_ here.
 
 ![](/img/RL/first-visit-MC.png)
 
 ### Monte Carlo Estimation of Action Values
 
-One serious complication arises when we do not visit every state, as can be the case if our policy is deterministic. If we do not visit states then we do not observe returns from these states and cannot estimate their value. We therefore need to *maintain exploration* of the state space. One way of doing so is stochastically selected a state-action pair to start an episode, giving every state-action pair a non-zero probability of being selected. In this case, we are said to be utilizing *exploring starts*.
+One serious complication arises when we do not visit every state, as can be the case if our policy is deterministic. If we do not visit states then we do not observe returns from these states and cannot estimate their value. We, therefore, need to *maintain exploration* of the state space. One way of doing so is stochastically selecting a state-action pair to start an episode, giving every state-action pair a non-zero probability of being selected. In this case, we are said to be utilizing *exploring starts*.
 
 ### Monte Carlo Control
 
-- Much like we did with value iteration, we do not need to fully evaluate the value function for a given policy in monte carlo control. Instead we can merely move the value toward the correct value and then switch to policy improvement thereafter. It is natural to do this episodically i.e. evaluate the policy using one episode of experience, then act greedily w.r.t the previous value function to improve the policy in the next episode.
+- Much like we did with value iteration, we do not need to fully evaluate the value function for a given policy in Monte Carlo control. Instead, we can merely move the value toward the correct value and then switch to policy improvement thereafter. It is natural to do this episodically i.e. evaluate the policy using one episode of experience, then act greedily w.r.t the previous value function to improve the policy in the next episode.
 - If we use a deterministic policy for control, we must use exploring starts to ensure sufficient exploration. This creates the *Monte Carlo ES* algorithm.
 
 ![](/img/RL/exploring_starts.png)
@@ -33,7 +33,7 @@ One serious complication arises when we do not visit every state, as can be the 
 ### Monte Carlo Control without Exploring Starts
 
 - The only general way to ensure that all actions are selected infinitely often is for the agent to continue to select them. There are two approaches to ensuring this, resulting in what we call *on-policy* methods and *off-policy* methods. On-policy methods attempt to evaluate or improve the policy that is used to make decisions, whereas off-policy methods evaluate or improve a policy different from that used to generate the data.
-- In on-policy control methods the policy is generally *soft*, meaning that $\pi(a|s) > 0$ for all $s \in S$ and all $a \in A(s)$, but gradually shifted closer and closer to a deterministic optimal policy.
+- In on-policy control methods, the policy is generally *soft*, meaning that $\pi(a|s) > 0$ for all $s \in S$ and all $a \in A(s)$, but gradually shifted closer and closer to a deterministic optimal policy.
 
 #### $\varepsilon$-soft policies
 
@@ -56,15 +56,15 @@ $$
 &=v_\pi(s)
 \end{aligned}
 $$
-Thus, by the policy improvement theorem, $\pi^{\prime} \geq \pi$ (i.e., $v_{\pi^{\prime}}(s) \geq v_\pi(s)$, for all $\left.s \in \mathcal{S}\right)$. We now prove that equality can hold only when both $\pi^{\prime}$ and $\pi$ are optimal among the $\varepsilon$-soft policies, that is, when they are better than or equal to all other $\varepsilon$-soft policies.
+Thus, by the policy improvement theorem, $\pi^{\prime} \geq \pi$ (i.e., $v_{\pi^{\prime}}(s) \geq v_\pi(s)$, for all $\left.s \in \mathcal{S}\right)$. We now prove that equality can hold only when both $\pi^{\prime}$ and $\pi$ are optimal among the $\varepsilon$-soft policies, that is when they are better than or equal to all other $\varepsilon$-soft policies.
 
 ### Off-policy Prediction via Importance Sampling
 
-All learning control methods face a dilemma: They seek to learn action values conditional on subsequent *optimal* behavior, but they need to behave non-optimally in order to explore all actions (to *find* the optimal actions). How can they learn about the optimal policy while behaving according to an exploratory policy? The on-policy approach in the preceding section is actually a compromise-it learns action values not for the optimal policy, but for a near-optimal policy that still explores. A more straightforward approach is to use two policies, one that is learned about and that becomes the optimal policy, and one that is more exploratory and is used to generate behavior. The policy being learned about is called the *target policy*, and the policy used to generate behavior is called the *behavior policy*. In this case we say that learning is from data "off" the target policy, and the overall process is termed *off-policy learning*.
+All learning control methods face a dilemma: They seek to learn action values conditional on subsequent *optimal* behavior, but they need to behave non-optimally in order to explore all actions (to *find* the optimal actions). How can they learn about the optimal policy while behaving according to an exploratory policy? The on-policy approach in the preceding section is actually a compromise-it learns action values not for the optimal policy, but for a near-optimal policy that still explores. A more straightforward approach is to use two policies, one that is learned about and that becomes the optimal policy, and one that is more exploratory and is used to generate behavior. The policy being learned about is called the *target policy*, and the policy used to generate behavior is called the *behavior policy*. In this case, we say that learning is from data "off" the target policy, and the overall process is termed *off-policy learning*.
 
-In this section we begin the study of off-policy methods by considering the prediction problem, in which both target and behavior policies are fixed. That is, suppose we wish to estimate $v_\pi$ or $q_\pi$, but all we have are episodes following another policy $b$, where $b \neq \pi$. In this case, $\pi$ is the target policy, $b$ is the behavior policy, and both policies are considered fixed and given.
+In this section, we begin the study of off-policy methods by considering the prediction problem, in which both target and behavior policies are fixed. That is, suppose we wish to estimate $v_\pi$ or $q_\pi$, but all we have are episodes following another policy $b$, where $b \neq \pi$. In this case, $\pi$ is the target policy, $b$ is the behavior policy, and both policies are considered fixed and given.
 
-In order to use episodes from $b$ to estimate values for $\pi$, we require that every action taken under $\pi$ is also taken, at least occasionally, under $b$. That is, we require that $\pi(a \mid s)>0$ implies $b(a \mid s)>0$. This is called the assumption of coverage. It follows from coverage that $b$ must be stochastic in states where it is not identical to $\pi$. The target policy $\pi$, on the other hand, may be deterministic, and, in fact, this is a case of particular interest in control applications. In control, the target policy is typically the deterministic greedy policy with respect to the current estimate of the action-value function. This policy becomes a deterministic optimal policy while the behavior policy remains stochastic and more exploratory, for example, an $\varepsilon$-greedy policy. In this section, however, we consider the prediction problem, in which $\pi$ is unchanging and given.
+In order to use episodes from $b$ to estimate values for $\pi$, we require that every action taken under $\pi$ is also taken, at least occasionally, under $b$. That is, we require that $\pi(a \mid s)>0$ implies $b(a \mid s)>0$. This is called the assumption of coverage. It follows from coverage that $b$ must be stochastic in states where it is not identical to $\pi$. The target policy $\pi$, on the other hand, maybe deterministic, and, in fact, this is a case of particular interest in control applications. In control, the target policy is typically the deterministic greedy policy with respect to the current estimate of the action-value function. This policy becomes a deterministic optimal policy while the behavior policy remains stochastic and more exploratory, for example, an $\varepsilon$-greedy policy. In this section, however, we consider the prediction problem, in which $\pi$ is unchanging and given.
 
 Almost all off-policy methods utilize *importance sampling*, a general technique for estimating expected values under one distribution given samples from another. We apply importance sampling to off-policy learning by weighting returns according to the relative probability of their trajectories occurring under the target and behavior policies, called the *importance-sampling ratio*. Given a starting state $S_t$, the probability of the subsequent state-action trajectory, $A_t, S_{t+1}, A_{t+1}, \ldots, S_T$, occurring under any policy $\pi$ is
 $$
@@ -78,7 +78,7 @@ where $p$ here is the state-transition probability function defined by (3.4). Th
 $$
 \rho_{t: T-1} \doteq \frac{\prod_{k=t}^{T-1} \pi\left(A_k \mid S_k\right) p\left(S_{k+1} \mid S_k, A_k\right)}{\prod_{k=t}^{T-1} b\left(A_k \mid S_k\right) p\left(S_{k+1} \mid S_k, A_k\right)}=\prod_{k=t}^{T-1} \frac{\pi\left(A_k \mid S_k\right)}{b\left(A_k \mid S_k\right)} .
 $$
-Although the trajectory probabilities depend on the MDP's transition probabilities, which are generally unknown, they appear identically in both the numerator and denominator, and thus cancel. The importance sampling ratio ends up depending only on the two policies and the sequence, not on the MDP.
+Although the trajectory probabilities depend on the MDP's transition probabilities, which are generally unknown, they appear identically in both the numerator and denominator and thus cancel. The importance sampling ratio ends up depending only on the two policies and the sequence, not on the MDP.
 
 Recall that we wish to estimate the expected returns (values) under the target policy, but all we have are returns $G_t$ due to the behavior policy. These returns have the wrong expectation $\mathbb{E}\left[G_t \mid S_t=s\right]=v_b(s)$ and so cannot be averaged to obtain $v_\pi$. This is where importance sampling comes in. The ratio $\rho_{t: T-1}$ transforms the returns to have the right expected value:
 $$
@@ -116,6 +116,6 @@ where $C_0 \doteq 0$ (and $V_1$ is arbitrary and thus need not be specified). Th
 
 ### Off-policy Monte Carlo Control
 
-Using incremental implementation (updates to the value function) and importance sampling we can now discuss *off-policy monte carlo control*-the algorithm for obtaining optimal policy $\pi_*$ by using rewards obtained through behaviour policy $b$. This works in much the same way as in previous sections; $b$ must be $\epsilon$-soft to ensure the entire state space is explored in the limit; updates are only made to our estimate for $q_\pi, Q$, if the sequence of states an actions produced by $b$ could have been produced by $\pi$. This algorithm is also based on GPI: we update our estimate of $Q$ using Equation 33, then update $\pi$ by acting greedily w.r.t to our value function. If this policy improvement changes our policy such that the trajectory we are in from $b$ no longer obeys our policy, then we exit the episode and start again.
+Using incremental implementation (updates to the value function) and importance sampling we can now discuss the *off-policy Monte Carlo control*-the algorithm for obtaining optimal policy $\pi_*$ by using rewards obtained through behavior policy $b$. This works in much the same way as in previous sections; $b$ must be $\epsilon$-soft to ensure the entire state space is explored in the limit; updates are only made to our estimate for $q_\pi, Q$ if the sequence of states an actions produced by $b$ could have been produced by $\pi$. This algorithm is also based on GPI: we update our estimate of $Q$ using Equation 33, then update $\pi$ by acting greedily w.r.t to our value function. If this policy improvement changes our policy such that the trajectory we are in from $b$ no longer obeys our policy, then we exit the episode and start again.
 
 ![](/img/RL/off-policy-control.png)

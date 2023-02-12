@@ -1,6 +1,6 @@
 ---
 id: Reinforcement Learning - DP
-title: Dyanamic Programming
+title: Dynamic Programming
 sidebar_position: 4
 ---
 
@@ -8,8 +8,8 @@ Dynamic Programming (DP) refers to the collection of algorithms that can be used
 
 ### Planning by Dynamic Programming
 
-- **Dynamic:** Problems that have sequantial or temporal component, step-by-step changes 
-- **Programming:** Optimizing a "program", i.e. a policy for the best behaviour of the agent
+- **Dynamic:** Problems that have sequential or temporal components, step-by-step changes 
+- **Programming:** Optimizing a "program", i.e. a policy for the best behavior of the agent
 - Dynamic programming lets us solve complex problems by
     - breaking the problem into subproblems 
     - then combining solutions to subproblems
@@ -17,7 +17,7 @@ Dynamic Programming (DP) refers to the collection of algorithms that can be used
 
 ### Policy Evaluation (Prediction)
 
-First we consider how to compute the state-value function $v_\pi$ for an arbitrary policy $\pi$. This is called *policy evaluation* in the DP literature. We also refer to it as the *prediction problem*. Recall from MDP that, for all $s \in S$,
+First, we consider how to compute the state-value function $v_\pi$ for an arbitrary policy $\pi$. This is called *policy evaluation* in the DP literature. We also refer to it as the *prediction problem*. Recall from MDP that, for all $s \in S$,
 $$
 \begin{gather*}
 v_{\pi}(s) = \sum_a \pi(a|s)\sum_{s',r} p(s',r|s,a)\Big [r+\gamma v_\pi(s')\Big ].
@@ -37,7 +37,7 @@ Eventually this update will converge when $v_k = v_\pi$ after infinite sweeps of
 
 #### My code
 
-- [Typed version of my Code](/docs/Code/Code%20-%20DP#section-1-policy-evaluation)
+- [A typed version of my Code](/docs/Code/Code%20-%20DP#section-1-policy-evaluation)
 - [View my Code on Github](https://github.com/pwang649/coding_practice/blob/main/Reinforcement_Learning/DP/DP.ipynb)
 
 ### Policy Improvement
@@ -72,7 +72,7 @@ where $\xrightarrow{E}$ denotes a policy *evaluation* and $\xrightarrow{I}$ deno
 
 #### My Code
 
-- [Typed version of my Code](/docs/Code/Code%20-%20DP#section-2-policy-iteration)
+- [A typed version of my Code](/docs/Code/Code%20-%20DP#section-2-policy-iteration)
 - [View my Code on Github](https://github.com/pwang649/coding_practice/blob/main/Reinforcement_Learning/DP/DP.ipynb)
 
 ### Value Iteration
@@ -92,7 +92,7 @@ Value iteration effectively combines, in each of its sweeps, one sweep of policy
 
 #### My Code
 
-- [Typed version of my Code](/docs/Code/Code%20-%20DP#section-3-value-iteration)
+- [A typed version of my Code](/docs/Code/Code%20-%20DP#section-3-value-iteration)
 - [View my Code on Github](https://github.com/pwang649/coding_practice/blob/main/Reinforcement_Learning/DP/DP.ipynb)
 
 ### Synchronous Dynamic Programming Algorithms Summary
@@ -113,15 +113,15 @@ Value iteration effectively combines, in each of its sweeps, one sweep of policy
 #### Asynchronous Dynamic Programming
 
 - Instead of backing up all states in parallel, we can pick any state to be the root of the backup and plugin the new value functions for the next iterations
-- Reduced computation and guanranteed convergence if all the states are selected at least sometimes
+- Reduced computation and guaranteed convergence if all the states are selected at least sometimes
 - Three simple ideas
     - In-place dynamic programming
-    - Prioritised sweeping
+    - Prioritized sweeping
     - Real-time dynamic programming
 
 ##### In-place dynamic programming
 
-- Synchronous value iteration stores two copies of value function,old of the leaves and the new of the root state, for all $s \in S$
+- Synchronous value iteration stores two copies of the value function, old of the leaves and the new of the root state, for all $s \in S$
     $$
     \begin{gather*}
     v_{new}(s) \leftarrow \max_{a \in A} (R_s^a + \gamma \sum_{s' \in S} P^a_{ss^{'}} v_{old}(s^{'})) \\
@@ -140,16 +140,16 @@ Value iteration effectively combines, in each of its sweeps, one sweep of policy
     - The ordering of the states really matters
 
 ##### Prioritized Sweeping
-- A measure to how important it is to update any state in the MDPs
+- A measure of how important it is to update any state in the MDPs
 - Keep a priority queue to look at which state it is better to be updated
-- Use magnitude of Bellman error to guide state selection
+- Use the magnitude of Bellman error to guide state selection
 - Backup the state with the largest remaining bellman error
 - Update the bellman error of the affected states after each backup
 - This requires knowledge of the reverse dynamics of the MDP i.e. predecessor states
 
 ##### Real-time Dynamic Programming
-- Idea: Select the states that the agent is actually visiting
-- Collect real samples from agent's experience to guide the selection of states and update around those samples
+- Idea: Select the states that the agent is visiting
+- Collect real samples from the agent's experience to guide the selection of states and update those samples
 - After each time-step $S_t, A_t, R_{t+1}$
 - Backup the state $S_t$  
     $$

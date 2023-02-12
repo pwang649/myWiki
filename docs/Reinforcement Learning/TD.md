@@ -4,7 +4,7 @@ title: Temporal-Difference Learning
 sidebar_position: 6
 ---
 
-TD learning is a combination of Monte Carlo ideas and dynamic programming (DP) ideas. Like Monte Carlo methods, TD methods can learn directly from raw experience without a model of the environment’s dynamics. Like DP, TD methods update estimates based in part on other learned estimates, without waiting for a final outcome (they bootstrap).
+TD learning is a combination of Monte Carlo ideas and dynamic programming (DP) ideas. Like Monte Carlo methods, TD methods can learn directly from raw experience without a model of the environment’s dynamics. Like DP, TD methods update estimates based in part on other learned estimates, without waiting for an outcome (they bootstrap).
 
 ### TD Prediction
 
@@ -20,7 +20,7 @@ Finally, note that the quantity in brackets in the $\operatorname{TD}(0)$ update
 $$
 \delta_t \doteq R_{t+1}+\gamma V\left(S_{t+1}\right)-V\left(S_t\right)
 $$
-Notice that the TD error at each time is the error in the estimate made at that time. Because the TD error depends on the next state and next reward, it is not actually available until one time step later. That is, $\delta_t$ is the error in $V\left(S_t\right)$, available at time $t+1$. Also note that if the array $V$ does not change during the episode (as it does not in Monte Carlo methods), then the Monte Carlo error can be written as a sum of TD errors:
+Notice that the TD error at each time is the error in the estimate made at that time. Because the TD error depends on the next state and next reward, it is not actually available until one time-step later. That is, $\delta_t$ is the error in $V\left(S_t\right)$, available at time $t+1$. Also note that if the array $V$ does not change during the episode (as it does not in Monte Carlo methods), then the Monte Carlo error can be written as a sum of TD errors:
 $$
 \begin{aligned}
 G_t-V\left(S_t\right) &=R_{t+1}+\gamma G_{t+1}-V\left(S_t\right)+\gamma V\left(S_{t+1}\right)-\gamma V\left(S_{t+1}\right) \\
@@ -36,12 +36,12 @@ This identity is not exact if $V$ is updated during the episode (as it is in $\o
 ### Advantages of TD Prediction Methods
 
 - TD methods generally converge faster than MC methods, although this has not been formally proven.
-- TD methods do converge on the value function with a sufficiently small step size parameter, or with a decreasing stepsize.
+- TD methods do converge on the value function with a sufficiently small step size parameter, or with a decreasing step size.
 - They are extremely useful for continuing tasks that cannot be broken down in episodes as required by MC methods.
 
 ### Sarsa: On-policy TD Control
 
-In the previous section we considered transitions from state to state and learned the values of states. Now we consider transitions from state-action pair to state-action pair, and learn the values of state-action pairs. Formally these cases are identical: they are both Markov chains with a reward process. The theorems assuring the convergence of state values under $\operatorname{TD}(0)$ also apply to the corresponding algorithm for action values:
+In the previous section, we considered transitions from state to state and learned the values of states. Now we consider transitions from state-action pair to state-action pair and learn the values of state-action pairs. Formally these cases are identical: they are both Markov chains with a reward process. The theorems assuring the convergence of state values under $\operatorname{TD}(0)$ also apply to the corresponding algorithm for action values:
 $$
 Q\left(S_t, A_t\right) \leftarrow Q\left(S_t, A_t\right)+\alpha\left[R_{t+1}+\gamma Q\left(S_{t+1}, A_{t+1}\right)-Q\left(S_t, A_t\right)\right]
 $$
@@ -65,7 +65,7 @@ In this case, the learned action-value function, $Q$, directly approximates $q_*
 
 ### Expected Sarsa
 
-Instead of updating our value function with the value maximising action at $S_{t+1}$ (as is the case with Q-learning) or with the action prescribes by our $\epsilon$-greedy policy (as is the case with SARSA), we could make updates based on the expected value of $Q$ at $S_{t+1}$. This is the premise of expected sarsa. Doing so reduces the variance induced by selecting random actions according to an $\epsilon$-greedy policy. It's update is described by:
+Instead of updating our value function with the value maximizing action at $S_{t+1}$ (as is the case with Q-learning) or with the action prescribes by our $\epsilon$-greedy policy (as is the case with SARSA), we could make updates based on the expected value of $Q$ at $S_{t+1}$. This is the premise of expected sarsa. Doing so reduces the variance induced by selecting random actions according to an $\epsilon$-greedy policy. Its update is described by:
 $$
 \begin{aligned}
 Q\left(S_t, A_t\right) & \leftarrow Q\left(S_t, A_t\right)+\alpha\left[R_{t+1}+\gamma \mathbb{E}_\pi Q\left(S_{t+1}, A_{t+1} \mid S_{t+1}\right)-Q\left(S_t, A_t\right)\right] \\
