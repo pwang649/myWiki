@@ -22,7 +22,7 @@ $$
 
 - The optimization variables are $\left\{u_{t}, u_{t+1 s}\cdots u_{T-1}\right\}$ (explicit) and $\left\{x_{t+1},\cdots x_{T}\right\}$ (implicit). So the total number of variables are $(T-1-t) \times\left(n_{x}+n_{u}\right)$ where $n_{x}$ and $n_{u}$ are the dimensions of the state and control respectively.
 
-- In general, the dynamics are non-linear and the cost is non-convex, making the above optimization problem non-convex. Modern MPC solvers often use a variety of methods to handle this non-convexity (e.g, sequential convex programming); however, more often than not, he can only expect to obtain a locally optimal solution.
+- In general, the dynamics are non-linear and the cost is non-convex, making the above optimization problem non-convex. Modern MPC solvers often use a variety of methods to handle this non-convexity (e.g, sequential convex programming); however, more often than not, we can only expect to obtain a locally optimal solution.
 
 ### Feedback control using MPC
 
@@ -37,7 +37,7 @@ $$
 \end{aligned}
 $$
 
-![](https://cdn.mathpix.com/cropped/2023_02_02_4a8ceb357f8f06ad367cg-12.jpg?height=351&width=700&top_left_y=324&top_left_x=486)
+![](/img/Robotics/MPC_1.png)
 
 Your brain is really good at solving this optimal control problem and you came up with the following control commands to follow the red trajectory:
 
@@ -52,13 +52,13 @@ Now, suppose you get to walk with your eyes open. Would you be able to follow th
 
 So why is that the case? Let's try to understand this from a control theory perspective. Here, the system is
 
-![](https://cdn.mathpix.com/cropped/2023_02_02_4a8ceb357f8f06ad367cg-12.jpg?height=158&width=760&top_left_y=1993&top_left_x=576)
+![](/img/Robotics/MPC_2.png)
 
 When we walk with our eyes closed, we are following a table of step commands, completely disregarding what our actual position (or output) is. These types of controllers are called open-loop controllers, where **the input of the system does not depend on the output**. The open-loop controllers completely ignore the fact that there is a reality gap between our model and our system, i.e., we have uncertainty in our system, so we won't quite end up where we think we would. Over time, these errors compound and we will end up in a completely different position.
 
 ![](/img/Robotics/MPC.png)
 
-Whereas when you walk with open eyes, your next step corrects for the errors you might make along the path. So for example, if I end up taking a big forward step, you might take only two more forward steps rather than 3. **This adaptability of the input based on the output is called a closed-loop controller**. This is precisely what we get by re-optimizing at the next time step in MPC -- depending on the **actual** next state of the robot, I get to adjust my control command to letter optimize my performance criterion. 
+Whereas when you walk with open eyes, your next step corrects the errors you might make along the path. So for example, if I end up taking a big forward step, you might take only two more forward steps rather than 3. **This adaptability of the input based on the output is called a closed-loop controller**. This is precisely what we get by re-optimizing at the next time step in MPC -- depending on the **actual** next state of the robot, I get to adjust my control command to letter optimize my performance criterion. 
 
 ![](/img/Robotics/closed-loop.png)
 

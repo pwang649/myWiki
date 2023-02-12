@@ -9,15 +9,15 @@ The notion of the state of a dynamic system is a fundamental notion in physics. 
 
 ## Basics of Control Theory
 
-System and control theory provides a set of powerful frameworks that allow us to specify complex system behaviors with simple mathematical functions. One such framework that is particularly conducive for describing robotic systems is state-space representation.
+System and control theory provides a set of powerful frameworks that allow us to specify complex system behaviors with simple mathematical functions. One such framework that is particularly conducive to describing robotic systems is state-space representation.
 
-In the state space representation, the system has a:
+In the state space representation, the system has:
 
 ### State
 
 - $x(t) \in \mathbb{R}^{n}$ (often written compactly as $x$)
 
-- State describes the characteristics of interest about a system.
+- State describes the characteristics of interest in a system.
 
 - **Ex**: it could be the 2D positions speed, and orientation for a ground wheeled robot or the joint configuration for a manipulator.
 
@@ -69,17 +69,17 @@ $$
 
 ### Trajectory Notation
 
-Note that state, control are all functions of time. To make the time dependence explicit, we use the trajectory notation.
+Note that state and control are all functions of time. To make the time dependence explicit, we use the trajectory notation.
 
 ![](/img/Robotics/trajectory.png)
 
-The trajectory over an entire time interval is also referred to as $x(\cdot)$. Similarly, control function over the time interval is compactly written as $u(\cdot)$. 
+The trajectory over an entire time interval is also referred to as $x(\cdot)$. Similarly, the control function over the time interval is compactly written as $u(\cdot)$. 
 
 ## Need for Safety Analysis
 
-Before we move any further, let's briefly discuss why do he even need to do a safety analysis. I mean if we know our failure set, isn't that enough? For instance, in machine learning, we often use a "grid-world" model of the would where the agent can move left, right, up, and down and we just need to avoid unsafe blocks. Why is the real-world more complicated?
+Before we move any further, let's briefly discuss why we even need to do a safety analysis. I mean if we know our failure set, isn't that enough? For instance, in machine learning, we often use a "grid-world" model of the world where the agent can move left, right, up, and down and we just need to avoid unsafe blocks. Why is the real world more complicated?
 
-![](https://cdn.mathpix.com/cropped/2023_02_02_57f8623088739c370bc6g-05.jpg?height=572&width=1244&top_left_y=920&top_left_x=560)
+![](/img/Robotics/SS_1.png)
 
 ### Reason 1: Inevitable Collision
 
@@ -87,13 +87,13 @@ Before we move any further, let's briefly discuss why do he even need to do a sa
 
 There may exist states from which you will reach the failure set even if you apply your optimal safe control.
 
-For example, in this case, if the drone is moving at a vey high speed towards the ceiling then it can't avoid a collision with the ceiling despite the best effort. 
+For example, in this case, if the drone is moving at a very high speed toward the ceiling then it can't avoid a collision with the ceiling despite the best effort. 
 
 In fact, if we look at the unsafe set in this case, it looks as follows:
 
-![](https://cdn.mathpix.com/cropped/2023_02_02_57f8623088739c370bc6g-06.jpg?height=695&width=734&top_left_y=400&top_left_x=378)
+![](/img/Robotics/SS_2.png)
 
-The yellow region is unsafe because the drone is to close to the ceiling and moving at a high speed towards it.
+The yellow region is unsafe because the drone is too close to the ceiling and moving at a high speed toward it.
 
 ### Reason 2: Uncertainty
 
@@ -128,13 +128,11 @@ $$
 \end{aligned}
 $$
 
-![](https://cdn.mathpix.com/cropped/2023_02_02_57f8623088739c370bc6g-06.jpg?height=176&width=220&top_left_y=2149&top_left_x=1154)
-
 The model is still not perfect though!
 
 This tension b/w the sophistication of a model and the tractability of analysis is fundamental in robotics and control.
 
-In other words, all models have a reality gap which we need to take into account during the safety analysis if we hope to ensure safety of the actual system. In fact, accounting for this uncertainty is so fundamental that I feel like this is often a key distinction between the capabilities of various safety analysis methods (as we will see later in this course). For now, let's dive deeper into various types of uncertainties that might be present in an autonomous system.
+In other words, all models have a reality gap which we need to take into account during the safety analysis if we hope to ensure the safeness of the actual system. In fact, accounting for this uncertainty is so fundamental that I feel like this is often a key distinction between the capabilities of various safety analysis methods (as we will see later in this course). For now, let's dive deeper into various types of uncertainties that might be present in an autonomous system.
 
 ## Uncertainty Representation
 
@@ -201,14 +199,13 @@ p_{y}
 \end{aligned}
 $$
 
-These are the dynamics of a particle moving at a constant speed $v$. However, there is uncertainty in the direction of human motion (i.e., theta is uncertain and represents disturbance). In this case, a probabilistic uncertain model will assign different probabilities with different directions. Consequently, the future states of the human will look as follows:
+These are the dynamics of a particle moving at a constant speed $v$. However, there is uncertainty in the direction of human motion (i.e., theta is uncertain and represents disturbance). In this case, a probabilistic uncertain model will assign different probabilities in different directions. Consequently, the future states of the human will look as follows:
 
-![](https://cdn.mathpix.com/cropped/2023_02_02_57f8623088739c370bc6g-09.jpg?height=529&width=1181&top_left_y=1071&top_left_x=430)
+![](/img/Robotics/SS_3.png)
 
 Whereas a non-deterministic uncertainty model will assume that $\theta$ belongs to some set and consequently will give a set of the possible future states of the human.
 
-![](https://cdn.mathpix.com/cropped/2023_02_02_57f8623088739c370bc6g-09.jpg?height=339&width=1360&top_left_y=1937&top_left_x=406)
-
+![](/img/Robotics/SS_4.png)
 
 
 ### Cons
@@ -241,7 +238,7 @@ As before, the uncertainty, $d_{t}$, can be represented probabilistically or non
 
 - $x_{t+1}$ in this case is a random variable.
 
-![](https://cdn.mathpix.com/cropped/2023_02_02_57f8623088739c370bc6g-11.jpg?height=179&width=638&top_left_y=2199&top_left_x=219)
+![](/img/Robotics/SS_5.png)
 
 **Ex**: In our quadrotor example, suppose that $d_{t} \sim N(0, \sigma)$
 
@@ -253,7 +250,7 @@ $d_{t}$ - often represented as a worst-case inclusion
 
 $x_{t+1}$ in this care is a set and not a point.
 
-![](https://cdn.mathpix.com/cropped/2023_02_02_57f8623088739c370bc6g-11.jpg?height=163&width=532&top_left_y=2256&top_left_x=1124)
+![](/img/Robotics/SS_6.png)
 
 **Ex**: $d_{t} \in[-\alpha, \alpha]$
 
@@ -263,7 +260,7 @@ $x_{t+1}$ in this care is a set and not a point.
 
 Uncertainty enters dynamics in an "informed" manner, often as uncertain parameters. Compared to unstructured uncertainty, in structured uncertainty, we often know the "functional form" of uncertainty.
 
-For example, consider our longitudinal quadrotor motion example. We might not know how exactly the motor torques are converted into upward thrust of the quadrotor. In other words, we might have uncertainty in the $k_{T}$ parameter in the dynamics:
+For example, consider our longitudinal quadrotor motion example. We might not know how exactly the motor torques are converted into the upward thrust of the quadrotor. In other words, we might have uncertainty in the $k_{T}$ parameter in the dynamics:
 
 $$
 \begin{aligned}
