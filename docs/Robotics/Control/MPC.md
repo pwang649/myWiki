@@ -20,13 +20,13 @@ $$
 $$
 :::
 
-- The optimization variables are $\left\{u_{t}, u_{t+1 s}\cdots u_{T-1}\right\}$ (explicit) and $\left\{x_{t+1},\cdots x_{T}\right\}$ (implicit). So the total number of variables are $(T-1-t) \times\left(n_{x}+n_{u}\right)$ where $n_{x}$ and $n_{u}$ are the dimensions of the state and control respectively.
+- The optimization variables are $\left\{u_{t}, u_{t+1}\cdots u_{T-1}\right\}$ (explicit) and $\left\{x_{t+1},\cdots x_{T}\right\}$ (implicit). So the total number of variables are $(T-1-t) \times\left(n_{x}+n_{u}\right)$ where $n_{x}$ and $n_{u}$ are the dimensions of the state and control respectively.
 
 - In general, the dynamics are non-linear and the cost is non-convex, making the above optimization problem non-convex. Modern MPC solvers often use a variety of methods to handle this non-convexity (e.g, sequential convex programming); however, more often than not, we can only expect to obtain a locally optimal solution.
 
 ### Feedback control using MPC
 
-Practical MPC approaches often solve the optimization problem above, apply the control input $u_{t}^{*} s$ and then re-solve the optimization problem at time $t+1$. This provides a closed-loop, feedback controller for the autonomous system (as opposed to an open-loop controller obtained by solving the optimization problem only once). To understand this, Consider the following situation:
+Practical MPC approaches often solve the optimization problem above, apply the control input $u_{t}^{*}$ and then re-solve the optimization problem at time $t+1$. This provides a closed-loop, feedback controller for the autonomous system (as opposed to an open-loop controller obtained by solving the optimization problem only once). To understand this, Consider the following situation:
 
 Suppose, you want to go from one corner of the room to another while following the red trajectory. Powered by the recent knowledge of optimal control, you set yourself an optimal control problem 
 $$

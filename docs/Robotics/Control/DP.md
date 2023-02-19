@@ -125,5 +125,168 @@ Note that the optimal control is state-dependent, i.e., it is a feedback control
 
 ### Example: Discrete-time LQR
 
-Please visit this page for more detailed information.
+Please visit [this page](Robotics%20-%20Control%20-%20LQR) for more detailed information.
 
+### Inclusion of Control Bounds and Computation of Control
+
+In dynamic programming, we can also easily include control bounds. Suppose $\underline{u} \leq u_t \leq \bar{u}$. In such a case, Bellman equation an re re-written as:
+
+$$
+V(x_t, t) = \min_{u_t\in [\underline{u}, \bar{u}]}\{\mathcal{L}\left(x_{t}, u_{t}\right)+V\left(x_{t+1}, t+1\right)\} \\
+\text{ with } \; V(x, T+1) = l(x)
+$$
+
+However, computation of the optimal control can be challenging even for simple systems. To see this, consider a simple case where $\alpha \equiv 0$ (i.e., there is no running cost) and $f_D(x, u)=f_1(x)+f_2(x) u$ (i.e., dynamics are control affine).
+
+Recall,
+$$
+\begin{aligned}
+u_t^* & =\argmin_{u_t} V\left(x_{t+1}, t+1\right) \\
+& =\argmin_{u_t} V\left(f_1(x)+f_2(x) u_t, t+1\right)
+\end{aligned}
+$$
+This is a complex optimization problem. For example, if $V$ is any non-linear function of $x$ (which is not atypical), the above is a non-convex problem and solving this problem can be quite challenging. This is one of the core reasons for why DQN is primarily for discrete actions (where this optimization becomes ewasier) as actor-critic methods are used in RL. However, as we will se later in this lecture, optimal control computation is a much easier problem in continuous time.
+
+## Continuous-time Optimal Control Problem
+
+One of the advantages of dynamic programming is that it can be used to solve both discrete and continuous-time OC problems. In continouous time, the principle of optimality reads:
+
+$$
+V(x, t)=\min _{u(\cdot)}\{\underbrace{\int_{s=t}^{t+\delta} L(x(s), u(s)) d s}_{\text{Cost from }[t, t+\delta]}+\underbrace{V(x(t+\delta), t+\delta)}_{\text{Optimal cost from }t+\delta\text { onwards}}\}
+$$
+Taking $\delta$ to be very smalls we can re-write the above euqation as:
+$$
+V(x, t)=\min _u\{L(x, u) \delta+V(x(t+\delta), t+\delta)\}
+$$
+Apply Taylor expansion:
+$$
+\begin{aligned}
+V(x(t+\delta), t+\delta) & =V(x(t), t)+\frac{\partial V}{\partial x} \cdot(x(t+\delta)-x(t)) +\frac{\partial V}{\partial t} \cdot(t+\delta-t)+h \cdot 0 \cdot t \\
+
+& =V(x, t)+\frac{\partial V}{\partial x} \cdot f(x, u) \delta+\frac{\partial V}{\partial t} \cdot \delta \\
+& \Rightarrow V\left(x, t\right)=\min _u\left\{L(x, u) \delta+V(x, t)+\frac{\partial V}{\partial x}\cdot f(x, u) \delta+\frac{\partial v}{\partial t} \delta\right\} \\
+& V(x, t)=V(x, t)+\frac{\partial V}{\partial t} \delta+\min _u\left\{L(x, u) \delta+\frac{\partial V}{\partial x} \cdot f(x, u) \delta\right\} \\
+& \Rightarrow \delta\left[\frac{\partial V}{\partial t}+\min _u\left\{L(x, u)+\frac{\partial V}{\partial x} \cdot f(x, u)\right\}\right]=0 \\
+&
+\end{aligned}
+$$
+This needs to hold for all $\delta>0$.
+
+:::info Hamilton-Jacobi Bellman PDE
+$$
+\frac{\partial V}{\partial t}+\min _u\left\{L(x, u)+\frac{\partial V}{\partial x} \cdot f(x, u)\right\}=0 \\
+V(x, T) = l(x) \leftarrow \text{Terminal condition}
+$$
+:::
+
+- HJB-PDE is a terminal-time PDE.
+- Continuous-time counterpart of Bellman equation.
+- $L(x, u)+\frac{\partial V}{\partial x} \cdot f(x, u)=H(x, u, v) \text { Also called Hamiltonian}$
+- If there is only terminal cost (i.e., there is no running cost), the HJB PDE reduces to:
+    $$
+    \frac{\partial v}{\partial t}+\min _u\left\{\frac{\partial v}{\partial x} \cdot f(x, u)\right\}=0
+    $$
+    This will be the PDE that we will solve for safety problems as we will see later.
+
+### Obtaining Optimal Control from the Value Function
+
+$$
+\begin{aligned}
+u^*(x, t)= & \argmin_u H(x, u, V, t) \\
+& =\argmin _u\left\{\frac{\partial V(x, t)}{\partial x} \cdot f(x, u)+L(x, u)\right\}
+\end{aligned}
+$$
+Once again, we have a feedback control policy.
+
+In the presence of control bounds, we have:
+$$
+u^*(x, t)=\argmin_{\underline{u} \leq u \leq \bar{u}}\left\{\frac{\partial V(x, t)}{\partial x} \cdot f\left(x, u\right)+L(x, u)\right\}
+$$
+
+Let's go back to the issue of actually computing the optimal control from the value function.
+Once again, consider the case where $\mathcal{L} \equiv 0$ and $f(x, u)=f_1(x)+f_2(x) u$.
+$$
+\begin{aligned}
+u^*(x, t) & =\argmin_u \left\{\frac{\partial V(x, t)}{\partial x} \cdot\left(f_1(x)+f_2(x) u\right)\right\} \\
+& =\argmin_u \left\{\frac{\partial V(x, t)}{\partial x} \cdot f_1(x)+\left(\frac{\partial V(x, t)}{\partial x} \cdot f_2(x)\right) u\right\}
+\end{aligned}
+$$
+This is a linear optimization in $u$ and can easily be solved in an analytical fashion. So one of the advantages of applying DP in continuous-time is that it significantly simplifies the computation of optimal control.
+
+This makes continuous-time dynamic programming a very promising tool for solving continuous control tasks. It is a different question that how important continuous control is over discrete control.
+
+## Methods to Compute Value Function - Discrete Time
+
+In discrete time, we are interested in solving the Bellman equation:
+$$
+V\left(x_t, t\right) =\min _{u_t}\left\{\mathcal{L}\left(x_{t,} u_t\right)+V\left(x_{t+1}, t+1\right)\right\} \\
+V\left(x, T+1\right) =l(x)
+$$
+### Closed-form Computation of $V$ :
+
+- Typically, solving $V$ in closed-form is not possible. But under rare conditions, e.g. LQR problems, $V$ can be computed in closed-form by recursively using the Bellman equation starting from the terminal time.
+
+### Tabular/Grid-based Methods to Compute $V$ :
+
+- These methods discretize the states to create a grid in the state space, as well as discretize the control input.
+- The value function is then computed over this grid starting from the terminal time.
+- These methods suffer from the curse of dimensionality (the number of grid points scal exponentially in the number of states); thus, it is limited to low-dimensional systems.
+
+#### Example: Grid-world
+
+![](/img/Robotics/DP_5.png)
+
+### Function-approximator Based Methods:
+
+- These methods try to approximate the value function through a parameterized function. That is,
+$$
+V(x, t) \equiv V\left(x, t ; \theta\right) \equiv V_\theta\left(x, t\right)
+$$
+- The parameters are then computed to satisfy the Bellman equation as closely as possible. We want to find $\theta$ such that:
+$$
+\theta^*=\argmin_{\theta} \| V_\theta(x, t)-\min _u \left\{L(x, u)+V_\theta\left(x_{t+1}, t+1\right) \right\}\|+ \lambda\left\|V_\theta(x, T+1)-l(x)\right\|,
+$$
+i.e., satisfy the Bellman equation and the boundary condition.
+- These function approximators include neural networks, quadratics/polynomials, linear combination of predefined basis functions, etc. The most popular these days are neural networks.
+- The above method is also called the fitted value iteration because we "fit" the value function that minimizes the Bellman error. When neural networks are used as the function approximator, the method is called neural fitted value iteration.
+- There are several variants of the fitted value iteration algorithm to make them work well in practice. This includes learn $Q$-function instead of value function (DQN), learn policy and value function simultaneously (actor-critic methods), and so on.
+
+## Methods to Compute Value Finction - Continuous Time
+
+In continuous time, we are interested in solving the Hamilton-Jacobi Bellman PDE to obtain the value function:
+$$
+\frac{\partial V}{\partial t}+\min _u\left\{L_C(x, u)+\frac{\partial V}{\partial x} \cdot f(x, u)\right\}=0 \\
+V(x, T)=l(x)
+$$
+Just like discrete time, we have three broad classes of methods to compute value function:
+
+### Closed-form Computation of $V$ :
+
+- Can be done far a very restrictive class of OC problems
+- Example, LQR problem
+
+### Mesh/Grid-based Methods
+
+They solve this PDE using numerical integration over a grid of state and time.
+$\frac{\partial V}{\partial t}$ and $\frac{\partial V}{\partial x}$ are numerically approximated on the grid.
+
+There are several toolboxes that you can download off the shelf for this:
+
+- LST/helper OC
+- BEACLS (c++)
+- OptimizedDP (python)
+
+These tools were primarily developed for reachability but they can easily handle any DP problem as well.
+
+Similar to discrete time, these methods are limited to fairly low-dimensional system (5D-5D systems max).
+
+### Function Approximation-baed Methods
+
+- Represent the value function as a parametrized function.
+- A variety of function approximators are available including linear programs, quadratics, polynomials (SoS beogramming), zonotopes, ellipsoids.
+- Very recently, neural network based function approximatons have also been used (inspired by physics-informed neural networks). Once such framework is DeepReach. DeepReach aims to solve the following problem:
+$$
+\theta^*=\argmin_{\theta}\left\|\frac{\partial V}{\partial t}+\min _u\left\{L(x, u)+\frac{\partial V}{\partial x}\cdot f(x, u)\right\}\right\|+\lambda\|V(x, T)-l(x)\|
+$$
+The value function is approximated as a neural network and $\theta$ is obtained by Stochastic Gradient Descent (SGD).
+- These methods are able to compute value function only approximately though.
