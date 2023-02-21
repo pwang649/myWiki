@@ -3,11 +3,12 @@ id: Code - Parallel_Computation - Labs - Lab 3
 title: Lab 3
 sidebar_position: 3
 ---
+---
 
 ### Test Platform
 
 - **Model Name:** MacBook Pro
-- **Chip:**	Apple M1 Pro
+- **Chip:** Apple M1 Pro
 - **Total Number of Cores:** 8 (6 performance and 2 efficiency)
 - **Memory:** 16 GB
 
@@ -66,29 +67,62 @@ omp_set_num_threads(2);
 ### Results
 
 1. Serial version:
+
     ```bash
-    Estimated pi is 3.141969, execution time = 0.261107 sec
+    Estimated pi is 3.141969, execution time = 0.209164 sec
     ```
+
 2. Version a:
+
     ```bash
-    Estimated pi is 3.141969, execution time = 0.067492 sec
+    Estimated pi is 3.141969, execution time = 0.156117 sec
     ```
+
 3. Version b:
+
     ```bash
-    Estimated pi is 3.141969, execution time = 0.139027 sec
+    Estimated pi is 3.141969, execution time = 0.222612 sec
     ```
+
+---
 
 ## Problem 2
 
+### Results
+
 1. Serial version:
+
     ```bash
     Execution time = 0.202061 sec
     ```
+
 2. m[i] = size − i version:
+
     ```bash
     Execution time = 0.162220 sec
     ```
+
 3. m[i] = rand() version:
+
     ```bash
     Execution time = 0.217134 sec
     ```
+
+### Analysis
+
+---
+
+## Problem 3
+
+### Comparison
+
+| # of threads | PHW2 | PHW3 |
+| :---: | :---: | :---: |
+| **1** | 0.502734 sec | 0.569594 sec |
+| **2** | 0.404511 sec | 0.366488 sec |
+| **4** | 0.341998 sec | 0.254956 sec |
+| **8** | 0.322975 sec | 0.249094 sec |
+
+### Analysis
+
+For the newer method, the execution time is down for threads of more than one. This is because we don't need to create new threads for each iteration and join all threads at the end of each iteration. Now we just need to create the threads once and inside each thread to perform the iterations, after all, join all threads once. This saves a lot of unnecessary overheads during the execution of threads creation and exit. The only exception is when we only have one thread.

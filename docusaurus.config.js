@@ -18,14 +18,17 @@ const config = {
   organizationName: 'pwang649', // Usually your GitHub org/user name.
   projectName: 'myWiki', // Usually your repo name.
   trailingSlash: false,
+  markdown: {
+    mermaid: true,
+  },
   themes:[
     ['docusaurus-live-brython',
     {
       brython_src: 'https://cdn.jsdelivr.net/npm/brython@3.11.0/brython.min.js', // default
       brython_stdlib_src: 'https://cdn.jsdelivr.net/npm/brython@3.11.0/brython_stdlib.js' // default
     }//['@docusaurus/theme-search-algolia'],
+    ], '@docusaurus/theme-mermaid', 
   ],
-],
   presets: [
     [
       'classic',

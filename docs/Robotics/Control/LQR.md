@@ -18,6 +18,7 @@ $$
 J\left(x_0, u_{0: N-1}\right)=\sum_{\tau=0}^{N-1}\left(q x_\tau^2+r u_\tau^2\right)+q_f x_N^2, \tag{2}
 $$
 where $q, r, q_f>0$ are cost penalties. In equation (2):
+
 - $N$ is called the time horizon;
 - $q x_\tau^2$ measures state deviation cost at $\tau=t$
 - $r u_\tau^2$ measures input authority cost at $\tau=t$
@@ -29,7 +30,7 @@ $$
 $$
 Since the cost is quadratic and dynamics are linear, the above optimal control problem is a convex optimization problem. This convexity allows us to use a variety of optimization tools to solve this problem exactly. In addition, this is one of the optimal control problems, where the optimal control can be obtained in closed form using dynamic programming. These are some of the key reasons for the popularity of LQR in control and robotics literature.
 
-### Clsoed-form Derivation
+### Closed-form Derivation
 
 $$
 \begin{aligned}
@@ -148,7 +149,7 @@ A higher $r$ makes our control more expensive, which results in a smaller magnit
 
 I'm not able to reach the destination exactly. I got $x_{N} = 0.11034658148808552$, which is close to 0, but not exactly 0. This is because the cost function is designed to measure the deviations of the state and control signals from their desired values, and it always assigns a non-zero cost to these deviations, no matter how small they are. As a result, even if the state and control signals converge to their desired values and the system is perfectly controlled, there will still be a non-zero cost associated with the deviations from the desired values.
 
-Therefore, the goal of the LQR controller is not to achieve a zero cost, but rather to minimize the cost function as much as possible, given the system dynamics and the design specifications. The optimal control input is the one that minimizes the cost function over the finite or infinite time horizon, subject to the constraints imposed by the system dynamics and the control design.
+Therefore, the goal of the LQR controller is not to achieve zero cost, but rather to minimize the cost function as much as possible, given the system dynamics and the design specifications. The optimal control input is the one that minimizes the cost function over the finite or infinite time horizon, subject to the constraints imposed by the system dynamics and the control design.
 
 #### An MPC Solution
 
@@ -257,6 +258,6 @@ In LQR, the control law is
 But,
 
 - Limited in its scope
-    - No constraints
-    - Linear dynamics
-    - Quadratic cost function
+  - No constraints
+  - Linear dynamics
+  - Quadratic cost function

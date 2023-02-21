@@ -3,6 +3,7 @@ id: Robotics - Control - State Space
 title: State-Space Representation
 sidebar_position: 1
 ---
+---
 
 The notion of the state of a dynamic system is a fundamental notion in physics. The basic premise of Newtonian dynamics is that the future evolution of a dynamic process is entirely determined by its present state, following this abstract definition:
   > The state of a dynamic system is a set of physical quantities, the specification of which (in the absence of external excitation) completely determines the evolution of the system.
@@ -73,7 +74,9 @@ Note that state and control are all functions of time. To make the time dependen
 
 ![](/img/Robotics/trajectory.png)
 
-The trajectory over an entire time interval is also referred to as $x(\cdot)$. Similarly, the control function over the time interval is compactly written as $u(\cdot)$. 
+The trajectory over an entire time interval is also referred to as $x(\cdot)$. Similarly, the control function over the time interval is compactly written as $u(\cdot)$.
+
+---
 
 ## Need for Safety Analysis
 
@@ -87,7 +90,7 @@ Before we move any further, let's briefly discuss why we even need to do a safet
 
 There may exist states from which you will reach the failure set even if you apply your optimal safe control.
 
-For example, in this case, if the drone is moving at a very high speed toward the ceiling then it can't avoid a collision with the ceiling despite the best effort. 
+For example, in this case, if the drone is moving at a very high speed toward the ceiling then it can't avoid a collision with the ceiling despite the best effort.
 
 In fact, if we look at the unsafe set in this case, it looks as follows:
 
@@ -134,6 +137,8 @@ This tension b/w the sophistication of a model and the tractability of analysis 
 
 In other words, all models have a reality gap which we need to take into account during the safety analysis if we hope to ensure the safeness of the actual system. In fact, accounting for this uncertainty is so fundamental that I feel like this is often a key distinction between the capabilities of various safety analysis methods (as we will see later in this course). For now, let's dive deeper into various types of uncertainties that might be present in an autonomous system.
 
+---
+
 ## Uncertainty Representation
 
 Uncertainty in a dynamic system can be classified by its nature and its representation. For example, uncertainty can be represented non-deterministically or probabilistically. Similarly, uncertainty can be structured or unstructured.
@@ -179,11 +184,9 @@ Uncertainty in a dynamic system can be classified by its nature and its represen
   \dot{x} \in F(x, u) \subseteq \mathbb{R}^{n}
   $$
 
-
 Pictorially:
 
 ![](/img/Robotics/uncertainty.png)
-
 
 ### Example 2
 
@@ -207,7 +210,6 @@ Whereas a non-deterministic uncertainty model will assume that $\theta$ belongs 
 
 ![](/img/Robotics/SS_4.png)
 
-
 ### Cons
 
 | Probabilistic uncertainty | Non-deterministic uncertainty |
@@ -215,6 +217,8 @@ Whereas a non-deterministic uncertainty model will assume that $\theta$ belongs 
 | Simple tractable distributions (e.g. Gaussian) often have unbounded support for the next state. | Sets can quickly g2ow in size resulting in a conservative plans, making open-loop plans intractable $\rightarrow$ will need closed-loop policies. |
 | Distribution propagation through non-linear dynamics can be quite challenging. | Set propagation can be quite challenging $\rightarrow$ Level set methods. |
 | Multimodality of $d_{t}$ or dynamics will lead to mixture models. |  |
+
+---
 
 ## Types of Uncertainty
 
