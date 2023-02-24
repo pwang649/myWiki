@@ -30,7 +30,7 @@ s \\
 s
 \end{array}\right)=1
 $$
-times. To see that the left-hand side of (7.2) is indeed 1 , subtract 1 from both sides, then multiply both sides by $-1$, to get
+times. To see that the left-hand side is indeed $1$, subtract $1$ from both sides, then multiply both sides by $-1$, to get
 $$
 1-s+\left(\begin{array}{l}
 s \\
