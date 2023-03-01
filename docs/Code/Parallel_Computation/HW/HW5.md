@@ -53,7 +53,7 @@ $t_s + t_w \times d \times \frac{m}{k} \times k = t_s + t_w \times d \times m$
 
 1. Each processor communicates $\sqrt{p} \times (\frac{n}{\sqrt{p}})^2$ for a total of $p \times \sqrt{p} \times (\frac{n}{\sqrt{p}})^2 = O(n^2 \sqrt{p})$
 
-2. Total (parallel) time is $\sqrt{p} \times 2(\frac{n}{\sqrt{p}})^2 = 2(\frac{n^2}{\sqrt{p}})$ because $p$ threads are in parallel.
+2. Total (parallel) time is $\sqrt{p} \times 2(\frac{n}{\sqrt{p}})^2 = 2(\frac{n^2}{\sqrt{p}})$ because $p$ threads are in parallel. We time 2 because we are communicating matrices A and B.
 
 3. Total computation time is $\sqrt{p} \cdot 2(\frac{n}{\sqrt{p}})^3 = 2(\frac{n^3}{p})$. Total execution time is $2(\frac{n^2}{\sqrt{p}}) + 2(\frac{n^3}{p})$
 
@@ -61,7 +61,7 @@ $t_s + t_w \times d \times \frac{m}{k} \times k = t_s + t_w \times d \times m$
 
 $f : (i, j) \rightarrow i, 0 \leq i < p, 0 \leq j < p-i$
 
-$g: ((i, p - 1 - i), (i + 1, p - i)) \rightarrow (i, i + 1), 0 \leq i < p - 1$
+$g: ((i, p - 1 - i), (i + 1, p - 2 - i)) \rightarrow (i, i + 1), 0 \leq i < p - 1$
 
 - Congestion: $p$
 - Dilation: $p-1$

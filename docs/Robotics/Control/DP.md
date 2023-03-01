@@ -285,7 +285,7 @@ There are several toolboxes that you can download off the shelf for this:
 
 These tools were primarily developed for reachability but they can easily handle any DP problem as well.
 
-Similar to discrete time, these methods are limited to a fairly low-dimensional system (5D-5D systems max).
+Similar to discrete time, these methods are limited to a fairly low-dimensional system (5D-6D systems max).
 
 ### Function Approximation-based Methods
 
