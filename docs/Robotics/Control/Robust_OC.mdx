@@ -102,7 +102,7 @@ Here, $u$ wants to reach G1 or G2 without being intercepted by $d$. On the other
 
 #### Open-loop Formulation
 
-1. $\min_{u(\cdot)} \max_{d(\cdot)} J(\cdot) \rightarrow$ some objective that combines distance to the goals while avoiding collision.
+1. $\min_{u(\cdot)} \max_{d(\cdot)} J(\cdot) \rightarrow$ an objective that combines distance to the goals while avoiding collision.
 
     <div style={{textAlign: 'center'}}>
 
@@ -110,7 +110,7 @@ Here, $u$ wants to reach G1 or G2 without being intercepted by $d$. On the other
 
     </div>
 
-    $u(\cdot)$ will declare its trajectory first. $d(\cdot)$ will then try to interscept this trajectory. $\rightarrow$ *Overly pessimistic*
+    $u(\cdot)$ will declare its trajectory first. $d(\cdot)$ will then try to intercept this trajectory. $\rightarrow$ *Overly pessimistic*
 
 2. $\max_{d(\cdot)} \min_{u(\cdot)} J(\cdot)$
 
@@ -124,7 +124,7 @@ Here, $u$ wants to reach G1 or G2 without being intercepted by $d$. On the other
 
 #### Closed-loop Formulation
 
-Above formulations are not suitable to describe most practical systems. Typically, at time $t$, we only have information upto time $t$. Such strategies are called non-anticipative strategies.
+The above formulations are not suitable to describe most practical systems. Typically, at time $t$, we only have information up to time $t$. Such strategies are called non-anticipative strategies.
 
 $$
 V(x, t)=\min _{u(\cdot) \in \Gamma_u} \max _{d(\cdot) \in \Gamma_d} J(x(t), u(\cdot), d(\cdot), t)
@@ -169,9 +169,9 @@ $$
 
 :::
 
-HJI equation looks very similar to HJB equation with min operator replaces by min-max operator.
+The HJI equation looks very similar to the HJB equation with the min operator replaced by the min-max operator.
 
-The tools that are available to solve HJB equation can also be used to solve the HJI equation (at least most of them can be used).
+The tools that are available to solve the HJB equation can also be used to solve the HJI equation (at least most of them can be used).
 
 ### Demo
 
