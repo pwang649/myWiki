@@ -164,10 +164,10 @@ $$
 Apply Taylor expansion:
 $$
 \begin{aligned}
-V(x(t+\delta), t+\delta) & =V(x(t), t)+\frac{\partial V}{\partial x} \cdot(x(t+\delta)-x(t)) +\frac{\partial V}{\partial t} \cdot(t+\delta-t)+h \cdot 0 \cdot t \\
+V(x(t+\delta), t+\delta) & =V(x(t), t)+\frac{\partial V}{\partial x} \cdot(x(t+\delta)-x(t)) +\frac{\partial V}{\partial t} \cdot(t+\delta-t)+h.o.t. \\
 
 & =V(x, t)+\frac{\partial V}{\partial x} \cdot f(x, u) \delta+\frac{\partial V}{\partial t} \cdot \delta \\
-& \Rightarrow V\left(x, t\right)=\min _u\left\{L(x, u) \delta+V(x, t)+\frac{\partial V}{\partial x}\cdot f(x, u) \delta+\frac{\partial v}{\partial t} \delta\right\} \\
+& \Rightarrow V\left(x, t\right)=\min _u\left\{L(x, u) \delta+V(x, t)+\frac{\partial V}{\partial x}\cdot f(x, u) \delta+\frac{\partial V}{\partial t} \delta\right\} \\
 & V(x, t)=V(x, t)+\frac{\partial V}{\partial t} \delta+\min _u\left\{L(x, u) \delta+\frac{\partial V}{\partial x} \cdot f(x, u) \delta\right\} \\
 & \Rightarrow \delta\left[\frac{\partial V}{\partial t}+\min _u\left\{L(x, u)+\frac{\partial V}{\partial x} \cdot f(x, u)\right\}\right]=0 \\
 &
@@ -184,10 +184,10 @@ $$
 
 - HJB-PDE is a terminal-time PDE.
 - The continuous-time counterpart of the Bellman equation.
-- $L(x, u)+\frac{\partial V}{\partial x} \cdot f(x, u)=H(x, u, v) \text { Also called Hamiltonian}$
+- $L(x, u)+\frac{\partial V}{\partial x} \cdot f(x, u)=H(x, u, V) \text { Also called Hamiltonian}$
 - If there is only terminal cost (i.e., there is no running cost), the HJB PDE reduces to:
     $$
-    \frac{\partial v}{\partial t}+\min _u\left\{\frac{\partial v}{\partial x} \cdot f(x, u)\right\}=0
+    \frac{\partial V}{\partial t}+\min _u\left\{\frac{\partial V}{\partial x} \cdot f(x, u)\right\}=0
     $$
     This will be the PDE that we will solve for safety problems as we will see later.
 

@@ -17,7 +17,7 @@ $$
 V(x, t)=\max _{u}\left\{L(x, u)+V\left(x_{+}, t+1\right)\right\}
 $$
 
-Here, the optimal controller at state $x$ at time $t$ is the one that indeed achieves the above maximums i.e., the input that satisfies the principle of optimality:
+Here, the optimal controller at state $x$ at time $t$ is one that indeed achieves the above maximums i.e., the input that satisfies the principle of optimality:
 
 $$
 u^{*}(x, t)=\argmax_{u}\left\{L(x, u)+V\left(x_{+}, t+1\right)\right\}
@@ -25,7 +25,7 @@ $$
 
 Indeed if I follow this optimal control sequence starting from state $x$ at time $t$, I will incur an overall optimal cost of $V(x, t)$.
 
-In other words, $u^{*}\left(x, \cdot\right)$ is the contest law that achieves the value $V(x, t)$.
+In other words, $u^{*}\left(x, \cdot\right)$ is the control law that achieves the value $V(x, t)$.
 
 Similarly, in continuous time, the Bellman equation is replaced by HJB PDE:
 
@@ -209,7 +209,7 @@ $$
 $$
 \begin{aligned}
 \Rightarrow u^{*}(x)= & \argmin_u \left\|u-u_{\text {norm}}\right\|_{2}^{2} \\
-& \text { s.t. } \V^{*}(x)+\delta \frac{\partial V^{x}}{\partial x} \cdot f(x, u) \geqslant 0
+& \text { s.t. } V^{*}(x)+\delta \frac{\partial V^{x}}{\partial x} \cdot f(x, u) \geqslant 0
 \end{aligned}
 $$
 

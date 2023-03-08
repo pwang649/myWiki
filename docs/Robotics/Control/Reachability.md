@@ -9,9 +9,9 @@ sidebar_position: 7
 
 We are now ready to look into the key part, i.e. how can we compute unsafe sets for an autonomous system and how can we design a safety-preserving controller?
 
-There are many ways to compute these unsafe sets but he will primarily look into the Hamilton-Jacobi Reachability method to compute unsafe sets and safety-preserving controllers. The reason to study HJ reachability is its ability to seamlessly consider control bounds, uncertainty, or even state constraints while computing unsafe sets. Moreover, the reachability method is applicable to general nonlinear systems.
+There are many ways to compute these unsafe sets but we will primarily look into the Hamilton-Jacobi Reachability method to compute unsafe sets and safety-preserving controllers. The reason to study HJ reachability is its ability to seamlessly consider control bounds, uncertainty, or even state constraints while computing unsafe sets. Moreover, the reachability method is applicable to general nonlinear systems.
 
-Let's start with looking into what the reachability problem is and then he will see how it is connected with the safety analysis of autonomous systems.
+Let's start by looking into what the reachability problem is and then we will see how it is connected with the safety analysis of autonomous systems.
 
 ### Reachability Problem
 
@@ -30,7 +30,7 @@ $\mathcal{L} \subseteq \mathbb{R}^{n}$ be the target set (typically failure set)
 $B R T(t) \subseteq \mathbb{R}^{n}$ be the BRT at time $t$ (typically unsafe set)
 
 $B R T(t)=\left\{x: \forall u(\cdot) \in \mathbb{U}_{t}^{T}, \exists d(\cdot) \in \mathbb{D}_{t}^{T}, \xi_{x, t}^{u, d}(s) \in \mathcal{L}\right.$ for
-some $s \in[t, T]\}$
+some $s \in[t, T]\right\}$
 
 Intuitively, $B R T(t)$ computes the set of all starting states from which no matter what control does, there exists a disturbance, that will drive the system inside the target set (or the failure set).
 
@@ -40,7 +40,7 @@ In other words, to compute the unsafe set we need to compute the BRT of the fail
 
 - A high turbulence region for an aircraft.
 
-- Ceilings, floor for an indoor autonomous drone.
+- Ceiling, floor for an indoor autonomous drone.
 
 - A no-go zone for a warehouse robot.
 
@@ -161,7 +161,7 @@ $$
 V\left(x, t\right)& =\min _{u(\cdot)} \max _{d(\cdot)} \min \left\{l(x), V(x, t)+\frac{\partial V}{\partial x} \cdot f(x, u, d) \delta+\frac{\partial V}{\partial t} \delta\right\} \\
 & =\min _{u(t)} \max _{d(t)} \min \left\{l(x), V(x, t)+\frac{\partial V}{\partial x} \cdot f(x, u, d) \delta+\frac{\partial V}{\partial t} \delta\right\} \\
 & =\min \left\{l(x), V(x, t)+\frac{\partial V}{\partial t} \delta+\min_{u} \max_d \frac{\partial V}{\partial x} \cdot f\left(x, u, d\right) \delta \right\} \\
-& \Rightarrow \min \left\{\ell(x)-V(x, t), \delta\left(\frac{\partial V}{\partial t}+\min _{u} \max _{d} \frac{\partial V}{\partial x} \cdot f(x, u, d)\right)\right\}=0
+& \Rightarrow \min \left\{l(x)-V(x, t), \delta\left(\frac{\partial V}{\partial t}+\min _{u} \max _{d} \frac{\partial V}{\partial x} \cdot f(x, u, d)\right)\right\}=0
 \end{aligned}
 $$
 
@@ -174,4 +174,4 @@ $$
 \end{aligned}
 $$
 
-This is called HJI Variational Inequality (HJI-VI). HJI-VI is very similar to HJI PDE with an additional term of $l(x)-V(x, t)$. But as he will see next, the set of tools for solving HJI PDE can also be used to solve HJI-VI.
+This is called HJI Variational Inequality (HJI-VI). HJI-VI is very similar to HJI PDE with an additional term of $l(x)-V(x, t)$. But as we will see next, the set of tools for solving HJI PDE can also be used to solve HJI-VI.
