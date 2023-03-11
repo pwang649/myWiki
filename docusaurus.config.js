@@ -56,7 +56,7 @@ const config = {
         appId: 'TXBBQ7HM4Y',
   
         // Public API key: it is safe to commit it
-        apiKey: '5c4ebd3f5b35e8ec626c7a71038ea9f0',
+        apiKey: 'ba45f07111aef2e0f56848b87c8b4f28',
   
         indexName: 'mywiki',
   

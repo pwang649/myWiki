@@ -35,31 +35,28 @@ Group 1             |  Group 2
 
 Each table begins with a survival time of zero, even though no subject actually failed at the start of follow-up. The reason for the zero is to allow for the possibility that some subjects might have been censored before the earliest failure time.
 
-We also have each table contains a column denoted as $n_f$ that gives the number of subjects in the risk set at the start of the interval. $n_f$ counts subjects at risk for failing instantaneously prior to time $t_{(f)}$.
+We also have each table contain a column denoted as $n_f$ that gives the number of subjects in the risk set at the start of the interval. $n_f$ counts subjects at risk for failing instantaneously prior to time $t_{(f)}$.
 
 Now let's talk about how to compute the KM curve for *group 2*.
 
-For group 2, because we don't have any censored subjects, the conputation of KM curve is straightforward.
+For group 2, because we don't have any censored subjects, the computation of the KM curve is straightforward.
 
-<center>
+|$t_{(f)}$ |$n_f$ |$m_f$ |$q_f$ |$\hat S(t_{(f)})$ |
+|:--------:|:----:|:-----:|:-----:|:-----------------:|
+|0|21|0|0|1|
+|1|21|2|0|19/21=0.90|
+|2|19|2|0|17/21=0.81|
+|3|17|1|0|16/21=0.76|
+|4|16|2|0|14/21=0.67|
+|5|14|2|0|12/21=0.57|
+|8|12|4|0|8/21=0.38|
+|11|8|2|0|6/21=0.29|
+|12|6|2|0|4/21=0.19|
+|15|4|1|0|3/21=0.14|
+|17|3|1|0|2/21=0.10|
+|22|2|1|0|1/21=0.05|
+|23|1|1|0|0/21=0.00|
 
-$t_{(f)}$ |$n_f$ |$m_f$ |$q_f$ |$\hat S(t_{(f)})$ |
-:--------:|:----:|:-----:|:-----:|:-----------------:
-0|21|0|0|1
-1|21|2|0|19/21=0.90
-2|19|2|0|17/21=0.81
-3|17|1|0|16/21=0.76
-4|16|2|0|14/21=0.67
-5|14|2|0|12/21=0.57
-8|12|4|0|8/21=0.38
-11|8|2|0|6/21=0.29
-12|6|2|0|4/21=0.19
-15|4|1|0|3/21=0.14
-17|3|1|0|2/21=0.10
-22|2|1|0|1/21=0.05
-23|1|1|0|0/21=0.00
-
-</center>
 
 Here, $\hat S(t_{(f)})$ is the **survival probability** at time $t_{(f)}$. The probability of surviving past the first ordered failure time of $1$ week is given by $19/21$ or $0.90$ because $2$ people failed at $1$ week, so that $19$ people from the original $21$ remain as survivors past $1$ week. Similarly, the next probability concerns subjects surviving past $2$ weeks, which is $17/21$ or $0.81$ because $2$ subjects failed at $1$ week and $2$ subjects failed at $2$ weeks leaving $17$ out of the original $21$ subjects surviving past $2$ weeks.
 
