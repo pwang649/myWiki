@@ -91,7 +91,7 @@ which implies $k<\frac{R^2}{\gamma^2}$. Our proof is done.
 
 #### Perceptron as the Pseudogradient Descent Method
 
-Check out my notes on [Gradient Descent](/docs/Optimization/Optimization%20-%20GD) for some in depth explanation.
+Check out my notes on [Gradient Descent](/Optimization/Optimization%20-%20GD) for some in depth explanation.
 
 ### Linear Regression
 

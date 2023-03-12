@@ -10,8 +10,8 @@ const katex = require('rehype-katex');
 const config = {
   title: 'Home',
   tagline: 'Peter\'s Wiki',
-  url: 'https://pwang649.github.io',
-  baseUrl: '/myWiki/',
+  url: 'https://pwang649.github.io/',
+  baseUrl: '/myWiki',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
@@ -22,12 +22,7 @@ const config = {
     mermaid: true,
   },
   themes:[
-    ['docusaurus-live-brython',
-    {
-      brython_src: 'https://cdn.jsdelivr.net/npm/brython@3.11.0/brython.min.js', // default
-      brython_stdlib_src: 'https://cdn.jsdelivr.net/npm/brython@3.11.0/brython_stdlib.js' // default
-    }//['@docusaurus/theme-search-algolia'],
-    ], '@docusaurus/theme-mermaid', 
+    '@docusaurus/theme-mermaid',
   ],
   presets: [
     [
@@ -35,11 +30,12 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          routeBasePath: '/',
           remarkPlugins: [math],
           rehypePlugins: [katex],
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
-          editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          editUrl: 'https://github.com/pwang649/myWiki/edit/master',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -50,18 +46,18 @@ const config = {
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
-    ({
+    {
       algolia: {
         // The application ID provided by Algolia
         appId: 'TXBBQ7HM4Y',
   
         // Public API key: it is safe to commit it
-        apiKey: 'ba45f07111aef2e0f56848b87c8b4f28',
+        apiKey: 'ebf46340f126116ffe7f28858e4c70bd',
   
         indexName: 'mywiki',
   
         // Optional: see doc section below
-        contextualSearch: true,
+        contextualSearch: false,
   
         //... other Algolia params
       },
@@ -90,7 +86,7 @@ const config = {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
-    }),
+    },
     stylesheets: [
       {
         href: 'https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css',

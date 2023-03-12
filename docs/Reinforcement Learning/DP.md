@@ -37,7 +37,7 @@ Eventually this update will converge when $v_k = v_\pi$ after infinite sweeps of
 
 #### My code
 
-- [A typed version of my Code](/docs/Code/Code%20-%20DP#section-1-policy-evaluation)
+- [A typed version of my Code](/Code/Code%20-%20DP#section-1-policy-evaluation)
 - [View my Code on Github](https://github.com/pwang649/coding_practice/blob/main/Reinforcement_Learning/DP/DP.ipynb)
 
 ### Policy Improvement
@@ -72,7 +72,7 @@ where $\xrightarrow{E}$ denotes a policy *evaluation* and $\xrightarrow{I}$ deno
 
 #### My Code
 
-- [A typed version of my Code](/docs/Code/Code%20-%20DP#section-2-policy-iteration)
+- [A typed version of my Code](/Code/Code%20-%20DP#section-2-policy-iteration)
 - [View my Code on Github](https://github.com/pwang649/coding_practice/blob/main/Reinforcement_Learning/DP/DP.ipynb)
 
 ### Value Iteration
@@ -92,7 +92,7 @@ Value iteration effectively combines, in each of its sweeps, one sweep of policy
 
 #### My Code
 
-- [A typed version of my Code](/docs/Code/Code%20-%20DP#section-3-value-iteration)
+- [A typed version of my Code](/Code/Code%20-%20DP#section-3-value-iteration)
 - [View my Code on Github](https://github.com/pwang649/coding_practice/blob/main/Reinforcement_Learning/DP/DP.ipynb)
 
 ### Synchronous Dynamic Programming Algorithms Summary
