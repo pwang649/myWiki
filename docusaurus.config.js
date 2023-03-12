@@ -35,7 +35,7 @@ const config = {
           rehypePlugins: [katex],
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
-          editUrl: 'https://github.com/pwang649/myWiki/edit/master',
+          editUrl: 'https://github.com/pwang649/myWiki/edit/main',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
