@@ -76,6 +76,12 @@ const config = {
           },
           {to: 'https://pwang649.github.io', label: 'About', position: 'left'},
           {
+            to: 'blog',
+            //docId: 'index',
+            position: 'left',
+            label: 'Blog',
+          },
+          {
             href: 'https://github.com/pwang649',
             label: 'GitHub',
             position: 'right',
