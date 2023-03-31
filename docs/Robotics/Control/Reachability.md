@@ -29,8 +29,7 @@ $\mathcal{L} \subseteq \mathbb{R}^{n}$ be the target set (typically failure set)
 
 $B R T(t) \subseteq \mathbb{R}^{n}$ be the BRT at time $t$ (typically unsafe set)
 
-$B R T(t)=\left\{x: \forall u(\cdot) \in \mathbb{U}_{t}^{T}, \exists d(\cdot) \in \mathbb{D}_{t}^{T}, \xi_{x, t}^{u, d}(s) \in \mathcal{L}\right.$ for
-some $s \in[t, T]\right\}$
+$B R T(t)=\left\{x: \forall u(\cdot) \in \mathbb{U}_{t}^{T}, \exists d(\cdot) \in \mathbb{D}_{t}^{T}, \xi_{x, t}^{u, d}(s) \in \mathcal{L} \text{ for some } s \in[t, T]\right\}$
 
 Intuitively, $B R T(t)$ computes the set of all starting states from which no matter what control does, there exists a disturbance, that will drive the system inside the target set (or the failure set).
 
