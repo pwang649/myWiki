@@ -54,7 +54,7 @@ By Theorem 2, the number of vertices exceeds that of edges by one in each connec
 
 #### Proof
 
-Proof. (of Theorem 10.7) Take all $A_n$ trees on $[n]$, and in each of them, choose two vertices, which do not have to be different, and call one of them Start, and the other one End. Do this in all possible $n^2$ ways for each tree. Call the $n^2 A_n$ objects obtained this way doubly rooted trees.
+Take all $A_n$ trees on $[n]$, and in each of them, choose two vertices, which do not have to be different, and call one of them Start, and the other one End. Do this in all possible $n^2$ ways for each tree. Call the $n^2 A_n$ objects obtained this way doubly rooted trees.
 
 We are going to show that the number of doubly rooted trees on $[n]$ is $n^n$ by constructing a bijection from the set of all functions from $[n]$ to $[n]$ to that of doubly rooted trees on $[n]$. This will prove our Theorem.
 
@@ -122,9 +122,13 @@ Let $G$ be an undirected graph on $n$ labeled vertices, and define an $n \times 
 
 :::
 
-Theorem 10.16. Let $G$ be a graph on labeled vertices, let $A$ be its adjacency matrix, and let $k$ be a positive integer. Then $A_{i, j}^k$ is equal to the number of walks from $i$ to $j$ that are of length $k$.
+### Theorem
 
-Proof. By induction on $k$. For $k=1$, the statement is true as a walk of length one is an edge. Now let us assume that the statement is true for $k$, and prove it for $k+1$. Let $z$ be any vertex of $G$. If there are $b_{i, z}$ walks of length $k$ from $i$ to $z$, and there are $a_{z, j}$ walks of length one (in other words, edges) from $z$ to $j$, then there are $b_{i, z} a_{z, j}$ walks of length $k+1$ from $i$ to $j$ whose next-to-last vertex is $z$. Therefore, the number of all walks of length $k+1$ from $i$ to $j$ is
+Let $G$ be a graph on labeled vertices, let $A$ be its adjacency matrix, and let $k$ be a positive integer. Then $A_{i, j}^k$ is equal to the number of walks from $i$ to $j$ that are of length $k$.
+
+#### Proof
+
+By induction on $k$. For $k=1$, the statement is true as a walk of length one is an edge. Now let us assume that the statement is true for $k$, and prove it for $k+1$. Let $z$ be any vertex of $G$. If there are $b_{i, z}$ walks of length $k$ from $i$ to $z$, and there are $a_{z, j}$ walks of length one (in other words, edges) from $z$ to $j$, then there are $b_{i, z} a_{z, j}$ walks of length $k+1$ from $i$ to $j$ whose next-to-last vertex is $z$. Therefore, the number of all walks of length $k+1$ from $i$ to $j$ is
 $$
 c(i, j)=\sum_{z \in G} b_{i, z} a_{z, j}
 $$
