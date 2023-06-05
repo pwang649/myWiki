@@ -50,7 +50,7 @@ By Theorem 2, the number of vertices exceeds that of edges by one in each connec
 
 ### Cayley's Formula
 
-*For any positive integer $n$, the number of all trees with vertex set $[n]$ is $A_n = n^{n-2}*.
+*For any positive integer $n$, the number of all trees with vertex set $[n]$ is $A_n = n^{n-2}$*.
 
 #### Proof
 

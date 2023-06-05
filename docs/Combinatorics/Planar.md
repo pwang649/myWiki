@@ -9,7 +9,7 @@ sidebar_position: 11
 
 :::note Definition
 
-Let $G$ be a graph that can be drawn on a plane surface so that no two of its edges intersect. THen $G$ is called a **planar** graph.
+Let $G$ be a graph that can be drawn on a plane surface so that no two of its edges intersect. Then $G$ is called a **planar** graph.
 
 :::
 
@@ -37,7 +37,7 @@ Let us suppose that $K_{3, 3}$ is planar. As it has nine edges and six vertices,
 
 *The graph $K_5$ is not planar.*
 
-Again, let us suppose that $K_5$ is planar. As it has five vertices and ten edges, it follows from Theorem 12.2 that it must have seven faces. As K5 is a complete graph, all its faces must be triangles. Seven triangles, however, would need 21 edges, which is impossible as each of the ten edges of $K_5$ is used in exactly two faces.
+Again, let us suppose that $K_5$ is planar. As it has five vertices and ten edges, it follows from Euler's Theorem that it must have seven faces. As $K_5$ is a complete graph, all its faces must be triangles. Seven triangles, however, would need 21 edges, which is impossible as each of the ten edges of $K_5$ is used in exactly two faces.
 
 ### Kuratowski's Theorem
 
@@ -49,7 +49,7 @@ Again, let us suppose that $K_5$ is planar. As it has five vertices and ten edge
 
 *Let $P$ be a convex polyhedron with $V$ vertices, $F$ faces, and $E$ edges. Then $V + F = E + 2$.*
 
-### Corollary
+#### Corollary
 
 *In any convex polyhedron with $F$ faces and $E$ edges, $3F \leq 2E$.*
 
@@ -71,14 +71,14 @@ As each vertex is contained in at least three faces, $c_i \geq 3$ for all $i$, s
 
 #### Proof
 
-We know from Corollary 12.7 that $F \leq \frac{2 E}{3}$. Comparing this to Euler's theorem, we get
+We know from the above corollary that $F \leq \frac{2 E}{3}$. Comparing this to Euler's theorem, we get
 $$
 \begin{gathered}
 E+2=F+V \leq \frac{2 E}{3}+V, \\
 \frac{E}{3} \leq V-2,
 \end{gathered}
 $$
-and the claim $E \leq 3 V-6$ follows by rearranging. Similarly, Proposition 12.8 implies $V \leq \frac{2 E}{3}$, and comparing this to Euler's theorem,
+and the claim $E \leq 3 V-6$ follows by rearranging. Similarly, the proposition above implies $V \leq \frac{2 E}{3}$, and comparing this to Euler's theorem,
 $$
 \begin{gathered}
 E+2=F+V \leq F+\frac{2 E}{3}, \\
@@ -93,7 +93,7 @@ and again, the claim $E \leq 3 F-6$ follows by rearranging.
 
 #### Proof
 
-We know from Lemma 12.9 that $E \leq 3 F-6$. Comparing this to $(12.2)$ we obtain
+We know from Lemma 1 that $E \leq 3 F-6$. Comparing this to Euler's Theorem we obtain
 $$
 \sum_{i=1}^F f_i=2 E \leq 6 F-12 .
 $$
@@ -130,6 +130,4 @@ This means, by duality, that all maps can be properly colored using six colors. 
 
 #### Proof
 
-Just as in proving the previous proposition, we use induction. The only case in which the previous proof does not work is when $A$ has five neighbors, and they are all of different colors. In this case, denote by $1,2,3,4$ and 5 the colors of the five neighbors $y_1, y_2, y_3, y_4, y_5$ of $A$ as they follow clockwise. Let $G^{\prime}$ be the graph obtained from $G$ by removing $A$ and all the edges adjacent to $A$. If $G^{\prime}$ has a proper 5-coloring in which $y_1$ and $y_3$ are the same color, then we are done. If not, then any proper 5-coloring of $G^{\prime}$ must contain a path from $y_1$ to $y_3$ along which the vertices
-
-are alternatingly colored 1 and 3 . By a similar argument, if $y_2$ and $y_4$ cannot be the same color, then any proper 5 -coloring of $G^{\prime}$ must contain a path from $y_2$ to $y_4$ along which the vertices are alternatingly colored 2 and 4. This, however, is a contradiction, as a path from $y_1$ to $y_3$ and a path from $y_2$ to $y_4$ must always intersect.
+Just as in proving the previous proposition, we use induction. The only case in which the previous proof does not work is when $A$ has five neighbors, and they are all of different colors. In this case, denote by $1,2,3,4$ and 5 the colors of the five neighbors $y_1, y_2, y_3, y_4, y_5$ of $A$ as they follow clockwise. Let $G^{\prime}$ be the graph obtained from $G$ by removing $A$ and all the edges adjacent to $A$. If $G^{\prime}$ has a proper 5-coloring in which $y_1$ and $y_3$ are the same color, then we are done. If not, then any proper 5-coloring of $G^{\prime}$ must contain a path from $y_1$ to $y_3$ along which the vertices are alternatingly colored 1 and 3 . By a similar argument, if $y_2$ and $y_4$ cannot be the same color, then any proper 5 -coloring of $G^{\prime}$ must contain a path from $y_2$ to $y_4$ along which the vertices are alternatingly colored 2 and 4. This, however, is a contradiction, as a path from $y_1$ to $y_3$ and a path from $y_2$ to $y_4$ must always intersect.

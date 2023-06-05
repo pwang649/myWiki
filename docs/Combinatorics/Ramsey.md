@@ -24,7 +24,7 @@ R(k, \ell) \leq R(k, \ell-1)+R(k-1, \ell)
 $$
 Indeed, take a complete graph with $R(k, \ell-1)+R(k-1, \ell)$ vertices. Take one of its vertices, and call it $V$. As $V$ has degree $R(k, \ell-1)+R(k-1, \ell)-1$, it has either at least $R(k, \ell-1)$ blue edges adjacent to it, or it has at least $R(k-1, \ell)$ red edges adjacent to it.
 
-In the first case, let $b$ denote the $R(k, \ell-1)$-element set of the other endpoints of these blue edges. Then, by the definition of $R(k, \ell-1)$, the set $b$ either contains a monochromatic red $K_k$ and we are done, or a monochromatic blue $K_{\ell-1}$, which can be completed to a monochromatic blue $K \ell$ by adding the vertex $V$, and we are done.
+In the first case, let $b$ denote the $R(k, \ell-1)$-element set of the other endpoints of these blue edges. Then, by the definition of $R(k, \ell-1)$, the set $b$ either contains a monochromatic red $K_k$ and we are done, or a monochromatic blue $K_{\ell-1}$, which can be completed to a monochromatic blue $K_{\ell}$ by adding the vertex $V$, and we are done.
 
 In the second case, let $r$ denote the $R(k-1, \ell)$-element set of the other endpoints of these red edges. Then again, $r$ either contains a monochromatic blue $K_{\ell}$ and we are done, or a monochromatic red $K_{k-1}$, which can be completed to a monochromatic red $K_k$ by adding the vertex $V$, and we are done again.
 
@@ -62,6 +62,6 @@ By the definition of $R\left(n_1-1, n_2, \cdots, n_k\right)$ either there exists
 
 We claim that $R_3(n, n)$ will always be such a positive integer (not necessarily the minimal one). Take the complete graph whose vertices are our $R_3(n, n)$ points in the plane. Color its triangles red or blue according to the following rule. Number the points from 1 to $R_3(n, n)$, and color a triangle red if the path from the smallest number via the middle one to the largest one is clockwise. Color a triangle blue if that path is counterclockwise.
 
-As our graph has $R_3(n, n)$ vertices, there will be a $K_n$ subgraph with monochromatic triangles. We claim that the vertices of this $K_n$ subgraph form a convex $n$-gon. To see this, it suffices to show that there are no four vertices in this subgraph so that one is within the triangle spanned by the other three. In other words, we need to show that the configuration shown in Figure 13.2 does not occur.
+As our graph has $R_3(n, n)$ vertices, there will be a $K_n$ subgraph with monochromatic triangles. We claim that the vertices of this $K_n$ subgraph form a convex $n$-gon. To see this, it suffices to show that there are no four vertices in this subgraph so that one is within the triangle spanned by the other three.
 
 Let us assume without loss of generality that $A<B<C$, and that all triangles of our $K_4$ at hand are red. Then the fact that triangle $A D B$ is red forces $D<A<B$. (Indeed, $A<D<B$ would mean that the triangle $A D B$ is blue, and $A<B<D$ would mean that either the triangle $B C D$ is blue, or $D>C$, in which case triangle $A C D$ is blue.) Then, however, $D<A<C$, and triangle $D A C$ is blue, which is a contradiction. This completes the proof.
